@@ -1,0 +1,88 @@
+.container {
+  position: relative;
+  width: 15vh;
+  height: 6vh;
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container .image {
+  width: 6vh;
+  height: 6vh;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.container .panel {
+  background-color: #363333;
+  opacity: 0.9;
+  border: 2px solid black;
+  border-top: none;
+  width: 15vw;
+  position: absolute;
+  top: 115%;
+  right: 30%;
+  transform: translateX(50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .panel p {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+  color: white;
+}
+
+.container .icon {
+  color: white;
+  width: 4vh;
+  height: 4vh;
+  cursor: pointer;
+}
+
+.container .search {
+  position: absolute;
+  top: 50%;
+  width: 5vw;
+  right: 40%;
+  transform: translateY(-50%);
+  animation: searchAnimation 0.8s ease-in forwards;
+}
+
+.container .search input[type="search"] {
+  border: none;
+  height: 4vh;
+  width: 15vw;
+  background-color: #272121;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  animation: searchAnimationWidth 0.8s ease-in forwards;
+}
+
+@keyframes searchAnimation {
+  0% {
+    right: 40%;
+  }
+  100% {
+    right: 240%;
+  }
+}
+
+@keyframes searchAnimationWidth {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 15vw;
+  }
+}

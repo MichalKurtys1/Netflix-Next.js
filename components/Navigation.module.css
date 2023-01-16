@@ -1,0 +1,40 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #363333;
+  opacity: 0.9;
+  height: 8vh;
+  display: flex;
+  z-index: 10;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.link {
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  padding: 0 3%;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 5px;
+  transition: 0.4s;
+  border: 1px solid rgba(27, 21, 21, 0);
+}
+
+.link:hover {
+  border-bottom: 2px solid white;
+}
+
+.container .image {
+  height: 70%;
+  width: auto;
+  margin: 0 3% 0 1%;
+}
