@@ -13,7 +13,6 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
-        <FilmSection />
       </main>
     </>
   );

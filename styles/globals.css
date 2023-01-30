@@ -87,7 +87,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #272121;
+  background: #141414;
 }
 
 a {
@@ -125,3 +125,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.vjs-big-play-centered .vjs-big-play-button {
+  background-color: #007acc !important;
+}
+
+.video-js .vjs-big-play-button {
+  border: none !important;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap");

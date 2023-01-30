@@ -1,0 +1,36 @@
+.separator {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrowDown {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-top: 10px solid #1e1e1e;
+}
+
+.lineShort {
+  width: 25%;
+  height: 2px;
+  background-color: #1e1e1e;
+}
+.lineLong {
+  width: 70%;
+  height: 2px;
+  background-color: #1e1e1e;
+}
+
+.arrowUp {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-bottom: 10px solid #1e1e1e;
+}

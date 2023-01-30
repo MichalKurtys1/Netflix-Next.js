@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navigation from "../../components/Navigation";
 import FilmSection from "../../components/FilmSection";
+import PopularSection from "../../components/PopularSection";
 
 export default function films() {
   return (
@@ -13,7 +14,7 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
-        <FilmSection />
+        <PopularSection />
       </main>
     </>
   );

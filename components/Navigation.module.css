@@ -3,12 +3,15 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #363333;
+  background-color: #000;
   opacity: 0.9;
   height: 8vh;
   display: flex;
   z-index: 10;
   align-items: center;
+  box-shadow: 0px 8px 13px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 8px 13px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 8px 13px -4px rgba(0, 0, 0, 0.75);
 }
 
 .links {
