@@ -1,0 +1,27 @@
+.filterBox {
+  width: 40%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 5vw;
+  margin-top: 10vh;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filterBox .submitFilterBtn {
+  width: 40%;
+  height: 9%;
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  background-color: #007acc;
+  color: white;
+  font-size: 28px;
+}

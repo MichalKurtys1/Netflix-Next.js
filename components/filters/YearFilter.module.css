@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.container h1 {
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px 10px 30px;
+  width: 100%;
+}
+
+.container .SliderBox {
+  width: 100%;
+}

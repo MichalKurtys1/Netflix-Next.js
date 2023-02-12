@@ -1,0 +1,27 @@
+.container {
+  flex-basis: 45%;
+  margin: 0 auto;
+}
+
+.container .listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 25vh;
+  margin: 30px auto;
+}
+
+.listItem h1 {
+  display: block;
+  width: 65%;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.listItem .image {
+  height: 100%;
+  width: 25%;
+  object-fit: cover;
+  border-radius: 10px;
+}

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Navigation from "../../components/Navigation";
 import FilmSection from "../../components/FilmSection";
 import PopularSection from "../../components/PopularSection";
+import Footer from "../../components/Footer";
 
 export default function films() {
   return (
@@ -15,6 +16,7 @@ export default function films() {
       <main>
         <Navigation />
         <PopularSection />
+        <Footer />
       </main>
     </>
   );

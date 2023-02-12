@@ -135,3 +135,7 @@ body {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap");
+
+body {
+  overflow: hidden;
+}

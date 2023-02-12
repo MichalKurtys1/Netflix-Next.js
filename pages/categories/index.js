@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Navigation from "../../components/Navigation";
-import FilmSection from "../../components/FilmSection";
+import Footer from "../../components/Footer";
+import FilterPage from "../../components/filters/FilterPage";
 
 export default function films() {
+  const submitHandler = () => {};
+
   return (
     <>
       <Head>
@@ -13,6 +16,8 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
+        <FilterPage />
+        <Footer />
       </main>
     </>
   );
