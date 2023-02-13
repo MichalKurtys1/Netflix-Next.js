@@ -5,7 +5,7 @@ import YearFilter from "../../components/filters/YearFilter";
 import PlatformFilter from "../../components/filters/PlatformFilter";
 import SortTypeSecection from "../../components/filters/SortTypeSecection";
 import { useSelector } from "react-redux";
-import useFilter from "../../hooks/useFilter";
+import useFilter from "src/hooks/useFilter";
 import FilterResults from "../../components/filters/FilterResults";
 import { useState } from "react";
 import style from "./FilterPage.module.css";

@@ -4,10 +4,10 @@ import SliderItem from "../components/SliderItem";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import img1 from "../public/akademia.jpg";
-import img2 from "../public/black_adam.jpg";
-import img3 from "../public/jurasic.jpg";
-import img4 from "../public/morbius.jpg";
+import img1 from "public/miniatures/akademia.jpg";
+import img2 from "public/miniatures/black_adam.jpg";
+import img3 from "public/miniatures/jurasic.jpg";
+import img4 from "public/miniatures/morbius.jpg";
 
 const filmList = [
   { img: img1, name: "Akademia Dobra i Zła" },

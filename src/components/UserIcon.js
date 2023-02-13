@@ -1,4 +1,4 @@
-import img from "../public/img_avatar.png";
+import img from "public/miniatures/img_avatar.png";
 import Image from "next/image";
 import style from "./UserIcon.module.css";
 import { useState } from "react";

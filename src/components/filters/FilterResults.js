@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import style from "./FilterResults.module.css";
 
-import img1 from "../../public/jurasicWorld.jpg";
-import img2 from "../../public/avatar.jpeg";
-import img3 from "../../public/dracula.jpg";
-import img4 from "../../public/jurasicWorld.jpg";
-import img5 from "../../public/jurasicWorld.jpg";
-import img6 from "../../public/jurasicWorld.jpg";
-import img7 from "../../public/jurasicWorld.jpg";
-import img8 from "../../public/jurasicWorld.jpg";
-import img9 from "../../public/jurasicWorld.jpg";
-import img10 from "../../public/jurasicWorld.jpg";
+import img1 from "public/miniatures/jurasicWorld.jpg";
+import img2 from "public/miniatures/avatar.jpeg";
+import img3 from "public/miniatures/dracula.jpg";
+import img4 from "public/miniatures/jurasicWorld.jpg";
+import img5 from "public/miniatures/jurasicWorld.jpg";
+import img6 from "public/miniatures/jurasicWorld.jpg";
+import img7 from "public/miniatures/jurasicWorld.jpg";
+import img8 from "public/miniatures/jurasicWorld.jpg";
+import img9 from "public/miniatures/jurasicWorld.jpg";
+import img10 from "public/miniatures/jurasicWorld.jpg";
 import Image from "next/image";
 
 const dummyData = [

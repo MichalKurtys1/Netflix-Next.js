@@ -2,7 +2,7 @@ import { useState } from "react";
 import DropDownList from "../UI/DropDownList";
 import style from "./SortTypeSection.module.css";
 import { useDispatch } from "react-redux";
-import { filterActions } from "../../store";
+import { filterActions } from "src/store";
 
 const sortTypes = [
   { name: "Najpopularniejsze" },

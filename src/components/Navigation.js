@@ -1,5 +1,5 @@
 import style from "../components/Navigation.module.css";
-import img2 from "../public/logo.png";
+import logo from "public/miniatures/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import UserIcon from "./UserIcon";
@@ -7,7 +7,7 @@ import UserIcon from "./UserIcon";
 const Navigation = () => {
   return (
     <div className={style.container}>
-      <Image src={img2} alt="Logo" className={style.image} />
+      <Image src={logo} alt="Logo" className={style.image} />
       <div className={style.links}>
         <Link href={"/films"} className={style.link}>
           Filmy

@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterActions } from "../../store";
-import style from "./CategoryItem.module.css";
+import { useDispatch } from "react-redux";
+import { filterActions } from "src/store";
+import style from "./PlatformItem.module.css";
 
-const CategoryItem = (props) => {
+const PlatformItem = (props) => {
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
 
   const clickHandler = () => {
     if (isClicked) {
-      dispatch(filterActions.removeCategory(props.name));
+      dispatch(filterActions.removePlatform(props.name));
       setIsClicked(false);
     } else {
-      dispatch(filterActions.addCategory(props.name));
+      dispatch(filterActions.addPlatform(props.name));
       setIsClicked(true);
     }
   };
@@ -28,4 +28,4 @@ const CategoryItem = (props) => {
   );
 };
 
-export default CategoryItem;
+export default PlatformItem;

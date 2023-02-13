@@ -1,7 +1,7 @@
 import style from "./YearFilter.module.css";
 import DoubleRangeSlider from "../UI/DoubleRangeSlider";
 import { useDispatch } from "react-redux";
-import { filterActions } from "../../store";
+import { filterActions } from "src/store";
 
 const YearFilter = () => {
   const dispatch = useDispatch();

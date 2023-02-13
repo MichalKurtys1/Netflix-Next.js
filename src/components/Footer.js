@@ -1,9 +1,9 @@
 import Link from "next/link";
 import style from "../components/Footer.module.css";
 import Image from "next/image";
-import img1 from "../public/facebook.png";
-import img2 from "../public/messenger.png";
-import img3 from "../public/instagram.png";
+import img1 from "public/miniatures/facebook.png";
+import img2 from "public/miniatures/messenger.png";
+import img3 from "public/miniatures/instagram.png";
 const Footer = () => {
   return (
     <div className={style.container}>

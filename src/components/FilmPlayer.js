@@ -1,9 +1,9 @@
 import Image from "next/image";
-import img1 from "../public/black_adam.jpg";
-import img2 from "../public/czerwonaNota.jpeg";
+import img1 from "public/miniatures/black_adam.jpg";
+import img2 from "public/miniatures/czerwonaNota.jpeg";
 import style from "./FilmPlayer.module.css";
 import "./FilmPlayer.module.css";
-import video from "../public/sample_960x540.mp4";
+import video from "public/videos/sample_960x540.mp4";
 import VideoPlayer from "react-video-js-player";
 import Separator from "../components/UI/Separator";
 const FilmPlayer = () => {
