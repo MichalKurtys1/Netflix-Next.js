@@ -1,8 +1,9 @@
 import Head from "next/head";
-import Navigation from "../../components/Navigation";
-import FilmSection from "../../components/FilmSection";
+import FilmSection from "../../components/MainSection";
+import Footer from "../../components/Footer";
+import Navigation from "../../components/navigation/Navigation";
 
-export default function films() {
+export default function series() {
   return (
     <>
       <Head>
@@ -13,7 +14,8 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
-        <FilmSection />
+        <FilmSection type="series" />
+        <Footer />
       </main>
     </>
   );

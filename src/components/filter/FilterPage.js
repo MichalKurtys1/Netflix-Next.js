@@ -1,12 +1,11 @@
-import FilmSection from "../../components/FilmSection";
-import CategoryFilter from "../../components/filters/CategoryFilter";
-import Footer from "../../components/Footer";
-import YearFilter from "../../components/filters/YearFilter";
-import PlatformFilter from "../../components/filters/PlatformFilter";
-import SortTypeSecection from "../../components/filters/SortTypeSecection";
+import CategoryFilter from "./CategoryFilter";
+import Footer from "../Footer";
+import YearFilter from "./YearFilter";
+import PlatformFilter from "./PlatformFilter";
+import SortTypeSecection from "./SortTypeSecection";
 import { useSelector } from "react-redux";
 import useFilter from "src/hooks/useFilter";
-import FilterResults from "../../components/filters/FilterResults";
+import FilterResults from "./FilterResults";
 import { useState } from "react";
 import style from "./FilterPage.module.css";
 

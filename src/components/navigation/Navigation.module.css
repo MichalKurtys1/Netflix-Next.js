@@ -37,7 +37,11 @@
 }
 
 .container .image {
-  height: 70%;
+  height: 100%;
   width: auto;
-  margin: 0 3% 0 1%;
+}
+
+.linkLogo {
+  height: 70%;
+  padding-bottom: 5px;
 }

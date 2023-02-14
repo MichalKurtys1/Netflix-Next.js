@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Navigation from "../../components/Navigation";
-import FilmSection from "../../components/FilmSection";
 import PopularSection from "../../components/PopularSection";
 import Footer from "../../components/Footer";
+import Navigation from "../../components/navigation/Navigation";
 
 export default function films() {
   return (

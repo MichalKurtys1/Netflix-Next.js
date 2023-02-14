@@ -1,13 +1,16 @@
-import style from "../components/Navigation.module.css";
+import style from "./Navigation.module.css";
 import logo from "public/miniatures/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import UserIcon from "./UserIcon";
+import NavMenu from "./NavMenu";
 
 const Navigation = () => {
   return (
     <div className={style.container}>
-      <Image src={logo} alt="Logo" className={style.image} />
+      <Link href={"/films"} className={style.linkLogo}>
+        <Image src={logo} alt="Logo" className={style.image} />
+      </Link>
+
       <div className={style.links}>
         <Link href={"/films"} className={style.link}>
           Filmy
@@ -21,7 +24,7 @@ const Navigation = () => {
         <Link href={"/categories"} className={style.link}>
           Kategorie
         </Link>
-        <UserIcon />
+        <NavMenu />
       </div>
     </div>
   );

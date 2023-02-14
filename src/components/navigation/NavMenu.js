@@ -1,10 +1,11 @@
 import img from "public/miniatures/img_avatar.png";
 import Image from "next/image";
-import style from "./UserIcon.module.css";
+import style from "./NavMenu.module.css";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-const UserIcon = () => {
+
+const NavMenu = () => {
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -75,4 +76,4 @@ const UserIcon = () => {
   );
 };
 
-export default UserIcon;
+export default NavMenu;

@@ -25,13 +25,29 @@
   transition: 0.5s;
 }
 
-.name {
+.detailBox {
   position: absolute;
   top: 80%;
   left: 0;
-  opacity: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  padding-right: 10px;
+  opacity: 0;
   color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.5s;
+}
+
+.details {
+  font-size: 12px;
+  opacity: 0;
+  color: #919191;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   transition: 0.5s;
@@ -51,6 +67,10 @@
 }
 
 .slide:hover .name {
+  opacity: 1;
+}
+
+.slide:hover .details {
   opacity: 1;
 }
 

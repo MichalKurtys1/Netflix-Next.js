@@ -1,0 +1,151 @@
+.container .descriptionContainer {
+  position: relative;
+  margin: 15vh auto;
+  width: 70vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.container .image {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container .discriptionBox {
+  width: 45%;
+  height: 90%;
+  margin-left: 2%;
+  background-color: #1e1e1e;
+}
+
+.container .discriptionBox h1 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 25px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.container .discriptionBox p.title {
+  display: block;
+  width: 25%;
+  padding-left: 10px;
+  color: white;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+.container .discriptionBox p.descriptionTitle {
+  display: block;
+  width: 100%;
+  padding-left: 15px;
+  color: white;
+  margin: 5px 5px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+.container .discriptionBox p.descriptionText {
+  color: white;
+  margin: 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.container .discriptionBox p.description {
+  color: white;
+  margin: 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.discriptionBox .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #252526;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.discriptionBox .detailsDescription {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #252526;
+  border-radius: 15px;
+  width: 95%;
+  margin: 10px auto;
+}
+
+.discriptionBox .details .description {
+  width: 50%;
+}
+
+.video {
+  margin: 0 auto;
+  margin-bottom: 8%;
+  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
+}
+
+.seasonsBox {
+  width: 60%;
+  margin: 0 auto 50px;
+}
+
+.seasonsBox .seasonBox {
+  margin-bottom: 10px;
+}
+
+.seasonBox .seasonNumber {
+  background-color: #252526;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.seasonBox .epizodesBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.epizodesBox .epizodeBox {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.epizodeBox .epizodeNumber {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  width: 15%;
+  font-weight: bold;
+}
+
+.epizodeBox .epizodeName {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  width: 25%;
+}
+
+.epizodeBox .icon {
+  width: 20px;
+  color: white;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.epizodeBox:hover .icon {
+  opacity: 1;
+}

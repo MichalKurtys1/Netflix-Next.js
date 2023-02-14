@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Navigation from "../../components/Navigation";
-import FilmSection from "../../components/FilmSection";
 import { useRouter } from "next/router";
 import FilmPlayer from "../../components/FilmPlayer";
 import Footer from "../../components/Footer";
+import Navigation from "../../components/navigation/Navigation";
 
 const films = () => {
   return (

@@ -1,11 +1,10 @@
 import Head from "next/head";
-import Navigation from "../../components/navigation/Navigation";
+import { useRouter } from "next/router";
 import Footer from "../../components/Footer";
-import FilterPage from "../../components/filter/FilterPage";
+import Navigation from "../../components/navigation/Navigation";
+import SeriesPlayer from "../../components/SeriesPlayer";
 
-export default function films() {
-  const submitHandler = () => {};
-
+const series = () => {
   return (
     <>
       <Head>
@@ -16,9 +15,11 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
-        <FilterPage />
+        <SeriesPlayer />
         <Footer />
       </main>
     </>
   );
-}
+};
+
+export default series;
