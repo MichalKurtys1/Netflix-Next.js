@@ -51,7 +51,6 @@ const responsive = {
 };
 
 const Slider = (props) => {
-  console.log(props.type);
   return (
     <div className={style.container}>
       <p className={style.category}>{props.category}</p>

@@ -1,12 +1,13 @@
 import Image from "next/image";
 import img1 from "public/miniatures/black_adam.jpg";
 import img2 from "public/miniatures/czerwonaNota.jpeg";
-import style from "./FilmPlayer.module.css";
-import "./FilmPlayer.module.css";
-import video from "public/videos/sample_960x540.mp4";
-import VideoPlayer from "react-video-js-player";
-import Separator from "../components/UI/Separator";
-const FilmPlayer = () => {
+import style from "./FilmDetails.module.css";
+import Separator from "./UI/Separator";
+import Player from "./Player";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+const FilmDetails = () => {
   return (
     <div className={style.container}>
       <div className={style.descriptionContainer}>
@@ -48,9 +49,9 @@ const FilmPlayer = () => {
           </div>
         </div>
       </div>
-      <VideoPlayer src={video} className={style.video} />
+      <Player />
     </div>
   );
 };
 
-export default FilmPlayer;
+export default FilmDetails;

@@ -1,17 +1,18 @@
 import Image from "next/image";
 import img1 from "public/miniatures/black_adam.jpg";
 import img2 from "public/miniatures/czerwonaNota.jpeg";
-import style from "./SeriesPlayer.module.css";
-import "./FilmPlayer.module.css";
+import style from "./SeriesDetails.module.css";
+import "./FilmDetails.module.css";
 import video from "public/videos/sample_960x540.mp4";
 import VideoPlayer from "react-video-js-player";
-import Separator from "../components/UI/Separator";
+import Separator from "./UI/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDoubleRight,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import Player from "./Player";
 
 const seasonsList = [
   {
@@ -30,19 +31,19 @@ const seasonsList = [
   {
     number: 2,
     episodes: [
-      { number: 1, name: "Name1" },
-      { number: 2, name: "Name2" },
-      { number: 3, name: "Name3" },
-      { number: 4, name: "Name4" },
-      { number: 1, name: "Name5" },
-      { number: 2, name: "Name6" },
-      { number: 3, name: "Name7" },
-      { number: 4, name: "Name8" },
+      { number: 1, name: "Pilot", file: "xyz1.mp4" },
+      { number: 2, name: "Fastest Man Alive", file: "xyz1.mp4" },
+      { number: 3, name: "Things You Can't Outrun", file: "xyz1.mp4" },
+      { number: 4, name: "Going Rogue", file: "xyz1.mp4" },
+      { number: 1, name: "Plastique" },
+      { number: 2, name: "The Flash Is Born", file: "xyz1.mp4" },
+      { number: 3, name: "Power Outage", file: "xyz1.mp4" },
+      { number: 4, name: "Flash vs. Arrow", file: "xyz1.mp4" },
     ],
   },
 ];
 
-const SeriesPlayer = () => {
+const SeriesDetails = () => {
   const [currentVid, setCurrentVid] = useState(null);
   let videoNumber;
   let videoTitle;
@@ -121,11 +122,9 @@ const SeriesPlayer = () => {
           </div>
         ))}
       </div>
-      {currentVid !== null && (
-        <VideoPlayer src={video} className={style.video} />
-      )}
+      {currentVid !== null && <Player />}
     </div>
   );
 };
 
-export default SeriesPlayer;
+export default SeriesDetails;

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import FilmPlayer from "../../components/FilmPlayer";
+import FilmDetails from "../../components/FilmDetails";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
 
@@ -15,7 +15,7 @@ const films = () => {
       </Head>
       <main>
         <Navigation />
-        <FilmPlayer />
+        <FilmDetails />
         <Footer />
       </main>
     </>

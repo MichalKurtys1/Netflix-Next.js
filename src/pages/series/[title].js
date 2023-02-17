@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
-import SeriesPlayer from "../../components/SeriesPlayer";
+import SeriesDetails from "../../components/SeriesDetails";
 
 const series = () => {
   return (
@@ -15,7 +15,7 @@ const series = () => {
       </Head>
       <main>
         <Navigation />
-        <SeriesPlayer />
+        <SeriesDetails />
         <Footer />
       </main>
     </>

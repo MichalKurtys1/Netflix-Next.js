@@ -1,0 +1,90 @@
+.container {
+  margin: 0 auto 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.video {
+  margin: 0 auto;
+  width: 80%;
+  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
+}
+
+.container .videoBox {
+  width: 80%;
+}
+
+.container .optionPanel {
+  height: 10vh;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 10vh;
+  background-color: #1e1e1e;
+  padding: 20px;
+}
+
+.optionPanel .thumbPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-basis: 23%;
+}
+
+.optionPanel .thumbPanel .likesValue {
+  width: 25%;
+  height: 80%;
+  padding: 5px;
+  background-color: #252526;
+  border-radius: 10px;
+}
+
+.thumbPanel .likesValue p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+}
+
+.optionPanel .icon {
+  width: 25px;
+  color: white;
+}
+
+.optionPanel .rightBox {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optionPanel .commentsPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-basis: 85%;
+  background-color: #252526;
+  padding: 8px 10px;
+  border-radius: 15px;
+  user-select: none;
+}
+
+.optionPanel .commentIcon {
+  width: 30px;
+  color: white;
+}
+
+.optionPanel .commentsPanel p {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.container .commentSection {
+}
