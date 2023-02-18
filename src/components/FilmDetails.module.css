@@ -86,3 +86,7 @@
 .discriptionBox .details .description {
   width: 50%;
 }
+
+.detailsDescription .separator {
+  width: 90%;
+}

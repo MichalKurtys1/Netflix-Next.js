@@ -26,22 +26,30 @@ const FilmDetails = () => {
               <p className={style.title}>Reżyser</p>
               <p className={style.description}>Jaume Collet-Serra</p>
             </div>
-            <Separator diraction={true} />
+            <div className={style.separator}>
+              <Separator diraction={true} />
+            </div>
             <div className={style.details}>
               <p className={style.title}>Scenariusz</p>
               <p className={style.description}>Adam Sztykiel, Rory Haines</p>
             </div>
-            <Separator diraction={false} />
+            <div className={style.separator}>
+              <Separator diraction={false} />
+            </div>
             <div className={style.details}>
               <p className={style.title}>Gatunek</p>
               <p className={style.description}>Akcja, Sci-Fi</p>
             </div>
-            <Separator diraction={true} />
+            <div className={style.separator}>
+              <Separator diraction={true} />
+            </div>
             <div className={style.details}>
               <p className={style.title}>Produkcja</p>
               <p className={style.description}>USA</p>
             </div>
-            <Separator diraction={false} />
+            <div className={style.separator}>
+              <Separator diraction={false} />
+            </div>
             <div className={style.details}>
               <p className={style.title}>Premiera</p>
               <p className={style.description}>21 października 2022</p>

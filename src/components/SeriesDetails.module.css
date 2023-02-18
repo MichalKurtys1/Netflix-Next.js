@@ -83,6 +83,10 @@
   margin: 10px auto;
 }
 
+.detailsDescription .separator {
+  width: 90%;
+}
+
 .discriptionBox .details .description {
   width: 50%;
 }

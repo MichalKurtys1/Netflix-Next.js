@@ -3,9 +3,12 @@ import Image from "next/image";
 import style from "./NavMenu.module.css";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faSignIn } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
 const NavMenu = () => {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -41,6 +44,10 @@ const NavMenu = () => {
     }
   };
 
+  const loginHandler = () => {
+    router.push("/sign-in");
+  };
+
   return (
     <div className={style.container}>
       <FontAwesomeIcon
@@ -48,12 +55,22 @@ const NavMenu = () => {
         className={style.icon}
         onClick={searchClickHandler}
       />
-      <Image
-        src={img}
-        alt="Landscape picture"
-        className={style.image}
-        onClick={panelClickHandler}
-      />
+      {isLoggedIn && (
+        <Image
+          src={img}
+          alt="Landscape picture"
+          className={style.image}
+          onClick={panelClickHandler}
+        />
+      )}
+      {!isLoggedIn && (
+        <FontAwesomeIcon
+          icon={faSignIn}
+          className={style.icon}
+          onClick={loginHandler}
+        />
+      )}
+
       {panelIsOpen && (
         <div className={style.panel}>
           <p>Ulubione</p>
