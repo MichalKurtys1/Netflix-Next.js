@@ -5,10 +5,15 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/index";
+import Link from "next/link";
 
 const NavMenu = () => {
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.auth.isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(isLogged);
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -48,6 +53,12 @@ const NavMenu = () => {
     router.push("/sign-in");
   };
 
+  const logoutHandler = () => {
+    dispatch(authActions.logOut());
+    setIsLoggedIn(false);
+    setPanelIsOpen(false);
+  };
+
   return (
     <div className={style.container}>
       <FontAwesomeIcon
@@ -73,10 +84,15 @@ const NavMenu = () => {
 
       {panelIsOpen && (
         <div className={style.panel}>
-          <p>Ulubione</p>
+          <p>
+            <Link href={"/favorites"} className={style.link}>
+              Ulubione
+            </Link>
+          </p>
+          <p></p>
           <p>Konto</p>
           <p>Kontakt</p>
-          <p>Wyloguj</p>
+          <p onClick={logoutHandler}>Wyloguj</p>
         </div>
       )}
       {searchIsOpen && (

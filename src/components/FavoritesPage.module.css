@@ -1,0 +1,63 @@
+.container {
+  width: 70%;
+  padding: 20px 0;
+  margin: 15vh auto;
+  background-color: #1e1e1e;
+}
+
+.outputBox {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.outputBox .item {
+  width: 90%;
+  height: 30vh;
+  display: flex;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #252526;
+  border-radius: 15px;
+}
+
+.outputBox .item .image {
+  width: 20%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.outputBox .item .descriptionBox {
+  margin: 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.descriptionBox h1 {
+  margin-bottom: 10px;
+}
+
+.descriptionBox p {
+  text-align: justify;
+}
+
+.container .filterBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 98%;
+  margin: 0 auto;
+}
+
+.filterBox .dropDownBox {
+  width: 40%;
+}
+
+.filterBox .submitBtn {
+  width: 20%;
+  height: 6vh;
+  border: none;
+  border-radius: 10px;
+  background-color: #007acc;
+  color: white;
+  font-size: 22px;
+}

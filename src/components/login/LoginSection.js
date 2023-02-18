@@ -6,10 +6,15 @@ import image from "public/loginPageImg.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/index";
+import { useRouter } from "next/router";
 
 const loginData = { email: "admin@admin.pl", password: "admin" };
 
 const LoginSection = (props) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [isValid, setIsValid] = useState(true);
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -39,7 +44,8 @@ const LoginSection = (props) => {
       return;
     } else {
       setIsValid(true);
-      console.log("done");
+      dispatch(authActions.logIn("01020304050607"));
+      router.push("/films");
     }
   };
 

@@ -3,13 +3,21 @@ import Link from "next/link";
 import Separator from "../UI/Separator";
 import style from "./RegisterSection.module.css";
 import image from "public/registerImg.jpg";
+import imagePupUp from "public/BlackLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faUser,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 const loginData = { nick: "admin", email: "admin@admin.pl", password: "admin" };
 
 const RegisterSection = (props) => {
+  const [pupupIsOpen, setPopupIsOpen] = useState(false);
+
   const [isValidNick, setIsValidNick] = useState(true);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPass, setIsValidPass] = useState(true);
@@ -75,6 +83,12 @@ const RegisterSection = (props) => {
     setEmailInputValue("");
     setPasswordInputValue("");
     setPasswordRepeatInputValue("");
+
+    setPopupIsOpen(true);
+    setTimeout(() => {
+      setPopupIsOpen(false);
+      props.loginHandler();
+    }, 1500);
   };
 
   const clickHandler = () => {
@@ -83,6 +97,15 @@ const RegisterSection = (props) => {
 
   return (
     <div className={style.container}>
+      {pupupIsOpen && (
+        <div className={style.popUp}>
+          <Image src={imagePupUp} alt="logo" className={style.popUpIcon} />
+          <div className={style.iconBox}>
+            <FontAwesomeIcon icon={faCheck} className={style.iconCheck} />
+          </div>
+          <p>Konto stworzone pomyślnie</p>
+        </div>
+      )}
       <div className={style.infoBox}>
         <Image
           src={image}
