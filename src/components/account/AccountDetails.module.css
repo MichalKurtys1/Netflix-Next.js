@@ -1,0 +1,127 @@
+.container .nav {
+  position: relative;
+  width: 30vw;
+  height: 70vh;
+  margin-left: 10vw;
+}
+
+.nav .addotionalLines {
+  position: relative;
+}
+
+.addotionalLines .line {
+  position: relative;
+  width: 20%;
+  height: 1.5px;
+  background-color: #1e1e1e;
+  transform: rotate(90deg);
+}
+
+.nav .addotionalLines .line:nth-child(1) {
+  top: 10vh;
+  left: 6vw;
+}
+.nav .addotionalLines .line:nth-child(2) {
+  top: 10vh;
+  left: 16vw;
+}
+
+.nav .addotionalLines .line:nth-child(3) {
+  top: 25vh;
+  left: 16vw;
+}
+
+.nav .addotionalLines .line:nth-child(4) {
+  top: 40vh;
+  left: 6vw;
+}
+
+.nav .addotionalLines .line:nth-child(5) {
+  top: 55vh;
+  left: 16vw;
+}
+
+.separator {
+  position: absolute;
+  width: 125px;
+  height: 10vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.separator:nth-of-type(1) {
+  transform: rotate(90deg);
+  top: 21vh;
+  left: 5vw;
+}
+
+.separator:nth-of-type(2) {
+  transform: rotate(-90deg);
+  top: 36vh;
+  left: 15vw;
+}
+
+.separator:nth-of-type(3) {
+  transform: rotate(90deg);
+  top: 51vh;
+  left: 5vw;
+}
+
+.arrowDown {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-top: 10px solid #1e1e1e;
+}
+
+.lineShort {
+  width: 40%;
+  height: 2px;
+  background-color: #1e1e1e;
+}
+.lineLong {
+  width: 40%;
+  height: 2px;
+  background-color: #1e1e1e;
+}
+
+.arrowUp {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 10px solid #1e1e1e;
+}
+
+.nav .optionBtn {
+  position: absolute;
+  width: 18vw;
+  border: none;
+  border-radius: 15px;
+  background-color: #252526;
+  color: white;
+  padding: 15px;
+  font-size: 24px;
+}
+
+.nav .optionBtn:nth-of-type(1) {
+  top: 15vh;
+  left: 5vw;
+}
+.nav .optionBtn:nth-of-type(2) {
+  top: 30vh;
+  left: 5vw;
+}
+.nav .optionBtn:nth-of-type(3) {
+  top: 45vh;
+  left: 5vw;
+}
+.nav .optionBtn:nth-of-type(4) {
+  top: 60vh;
+  left: 5vw;
+}

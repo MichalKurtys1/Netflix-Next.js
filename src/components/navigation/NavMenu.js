@@ -89,9 +89,16 @@ const NavMenu = () => {
               Ulubione
             </Link>
           </p>
-          <p></p>
-          <p>Konto</p>
-          <p>Kontakt</p>
+          <p>
+            <Link href={"/account"} className={style.link}>
+              Konto
+            </Link>
+          </p>
+          <p>
+            <Link href={"/contact"} className={style.link}>
+              Support
+            </Link>
+          </p>
           <p onClick={logoutHandler}>Wyloguj</p>
         </div>
       )}

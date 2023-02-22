@@ -9,8 +9,8 @@
 .arrowDown {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
 
   border-top: 10px solid #1e1e1e;
 }
@@ -29,8 +29,8 @@
 .arrowUp {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
 
   border-bottom: 10px solid #1e1e1e;
 }
