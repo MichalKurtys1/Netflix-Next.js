@@ -1,5 +1,5 @@
 import Head from "next/head";
-import FilmSection from "../../components/MainSection";
+import MainSection from "../../components/MainSection";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
 
@@ -14,7 +14,7 @@ const films = () => {
       </Head>
       <main>
         <Navigation />
-        <FilmSection type="films" />
+        <MainSection type="films" />
         <Footer />
       </main>
     </>

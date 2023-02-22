@@ -12,6 +12,7 @@
 }
 
 .container .image {
+  user-select: none;
   width: 6vh;
   height: 6vh;
   border-radius: 10px;
@@ -19,6 +20,7 @@
 }
 
 .container .panel {
+  user-select: none;
   background-color: black;
 
   box-shadow: 0px 8px 13px -4px rgba(0, 0, 0, 0.75);
@@ -30,7 +32,7 @@
   position: absolute;
   top: 115%;
   right: 30%;
-  padding: 10px 0;
+  padding: 20px 0;
   transform: translateX(50%);
   display: flex;
   flex-direction: column;
@@ -54,14 +56,14 @@
 
 .container .search {
   position: absolute;
-  top: 50%;
   width: 5vw;
-  right: 40%;
+  right: 235%;
   transform: translateY(-50%);
   animation: searchAnimation 0.8s ease-in forwards;
 }
 
 .container .search input[type="search"] {
+  user-select: none;
   border: none;
   height: 4vh;
   width: 15vw;
@@ -73,20 +75,28 @@
   animation: searchAnimationWidth 0.8s ease-in forwards;
 }
 
-@keyframes searchAnimation {
-  0% {
-    right: 40%;
-  }
-  100% {
-    right: 240%;
-  }
+.panel .separator {
+  width: 90%;
+  margin: 10px auto;
 }
 
-@keyframes searchAnimationWidth {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 15vw;
-  }
+.panel p.logout {
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 2px solid transparent;
+}
+
+.panel .link {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel .link .icon {
+  width: 20px;
+}
+
+.panel .link p {
+  width: 75%;
 }

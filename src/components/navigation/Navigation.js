@@ -3,6 +3,7 @@ import logo from "public/miniatures/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import NavMenu from "./NavMenu";
+import { motion } from "framer-motion";
 
 const Navigation = () => {
   return (
@@ -13,16 +14,16 @@ const Navigation = () => {
 
       <div className={style.links}>
         <Link href={"/films"} className={style.link}>
-          Filmy
+          <motion.p whileHover={{ scale: 1.1 }}>Filmy</motion.p>
         </Link>
         <Link href={"/series"} className={style.link}>
-          Seriale
+          <motion.p whileHover={{ scale: 1.1 }}>Seriale</motion.p>
         </Link>
         <Link href={"/popular"} className={style.link}>
-          Popularne
+          <motion.p whileHover={{ scale: 1.1 }}>Popularne</motion.p>
         </Link>
         <Link href={"/categories"} className={style.link}>
-          Kategorie
+          <motion.p whileHover={{ scale: 1.1 }}>Kategorie</motion.p>
         </Link>
         <NavMenu />
       </div>

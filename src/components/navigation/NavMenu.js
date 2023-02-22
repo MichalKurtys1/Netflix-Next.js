@@ -3,11 +3,22 @@ import Image from "next/image";
 import style from "./NavMenu.module.css";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faSignIn } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeadphones,
+  faHeadphonesAlt,
+  faHeadphonesSimple,
+  faHeadset,
+  faSearch,
+  faSignIn,
+  faStar,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/index";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import Separator from "../UI/Separator";
 
 const NavMenu = () => {
   const router = useRouter();
@@ -60,59 +71,96 @@ const NavMenu = () => {
   };
 
   return (
-    <div className={style.container}>
-      <FontAwesomeIcon
-        icon={faSearch}
-        className={style.icon}
-        onClick={searchClickHandler}
-      />
-      {isLoggedIn && (
-        <Image
-          src={img}
-          alt="Landscape picture"
-          className={style.image}
-          onClick={panelClickHandler}
-        />
-      )}
-      {!isLoggedIn && (
+    <AnimatePresence>
+      <div className={style.container}>
         <FontAwesomeIcon
-          icon={faSignIn}
+          icon={faSearch}
           className={style.icon}
-          onClick={loginHandler}
+          onClick={searchClickHandler}
         />
-      )}
-
-      {panelIsOpen && (
-        <div className={style.panel}>
-          <p>
-            <Link href={"/favorites"} className={style.link}>
-              Ulubione
-            </Link>
-          </p>
-          <p>
-            <Link href={"/account"} className={style.link}>
-              Konto
-            </Link>
-          </p>
-          <p>
-            <Link href={"/contact"} className={style.link}>
-              Support
-            </Link>
-          </p>
-          <p onClick={logoutHandler}>Wyloguj</p>
-        </div>
-      )}
-      {searchIsOpen && (
-        <div className={style.search}>
-          <input
-            type="search"
-            placeholder="Wyszukaj..."
-            onChange={changeHandler}
-            value={searchInputValue}
+        {isLoggedIn && (
+          <Image
+            src={img}
+            alt="Landscape picture"
+            className={style.image}
+            onClick={panelClickHandler}
           />
-        </div>
-      )}
-    </div>
+        )}
+        {!isLoggedIn && (
+          <FontAwesomeIcon
+            icon={faSignIn}
+            className={style.icon}
+            onClick={loginHandler}
+          />
+        )}
+
+        {panelIsOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className={style.panel}
+          >
+            <Link href={"/account"} className={style.link}>
+              <FontAwesomeIcon icon={faUser} className={style.icon} />
+              <motion.p
+                initial={{ y: 0 }}
+                whileHover={{ x: 8 }}
+                transition={{ delay: 0.1 }}
+              >
+                Konto
+              </motion.p>
+            </Link>
+            <Link href={"/favorites"} className={style.link}>
+              <FontAwesomeIcon icon={faStar} className={style.icon} />
+              <motion.p
+                initial={{ y: 0 }}
+                whileHover={{ x: 8 }}
+                transition={{ delay: 0.1 }}
+              >
+                Ulubione
+              </motion.p>
+            </Link>
+            <Link href={"/contact"} className={style.link}>
+              <FontAwesomeIcon icon={faHeadset} className={style.icon} />
+              <motion.p
+                initial={{ y: 0 }}
+                whileHover={{ x: 8 }}
+                transition={{ delay: 0.1 }}
+              >
+                Support
+              </motion.p>
+            </Link>
+            <div className={style.separator}>
+              <Separator diraction={true} />
+            </div>
+            <motion.p
+              whileHover={{ borderBottom: "2px solid white" }}
+              transition={{ delay: 0.1 }}
+              className={style.logout}
+              onClick={logoutHandler}
+            >
+              Wyloguj się
+            </motion.p>
+          </motion.div>
+        )}
+        {searchIsOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className={style.search}
+          >
+            <input
+              type="search"
+              placeholder="Wyszukaj..."
+              onChange={changeHandler}
+              value={searchInputValue}
+            />
+          </motion.div>
+        )}
+      </div>
+    </AnimatePresence>
   );
 };
 
