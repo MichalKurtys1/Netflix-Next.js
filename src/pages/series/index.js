@@ -1,5 +1,5 @@
 import Head from "next/head";
-import FilmSection from "../../components/MainSection";
+import MainSection from "../../components/MainSection";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
 
@@ -14,7 +14,7 @@ export default function series() {
       </Head>
       <main>
         <Navigation />
-        <FilmSection type="series" />
+        <MainSection type="series" />
         <Footer />
       </main>
     </>

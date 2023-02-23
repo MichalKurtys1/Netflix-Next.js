@@ -23,8 +23,12 @@ const AccountSupport = () => {
         <div className={style.contactBox}>
           <h1>Kontakt</h1>
           <div className={style.buttons}>
-            <button>Zadzwoń do nas</button>
-            <button>Napisz e-mail</button>
+            <button className={style.contactBtn} type="button">
+              Zadzwoń do nas
+            </button>
+            <button className={style.contactBtn} type="button">
+              Napisz e-mail
+            </button>
           </div>
         </div>
         <Separator diraction={false} />

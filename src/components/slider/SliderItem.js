@@ -1,9 +1,10 @@
 import Image from "next/image";
 import style from "./SliderItem.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import Spinner from "../UI/Spiner";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const SliderItem = (props) => {
   const clickHandler = () => {};
@@ -16,10 +17,7 @@ const SliderItem = (props) => {
         <div className={style.detailBox}>
           <p className={style.name}>{props.name}</p>
           <p className={style.details}>{props.details}</p>
-        </div>
-
-        <div className={style.spinner}>
-          <Spinner />
+          <FontAwesomeIcon icon={faPlay} className={style.icon} />
         </div>
       </div>
     </Link>

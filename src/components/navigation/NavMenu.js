@@ -128,7 +128,7 @@ const NavMenu = () => {
                 whileHover={{ x: 8 }}
                 transition={{ delay: 0.1 }}
               >
-                Support
+                Wsparcie
               </motion.p>
             </Link>
             <div className={style.separator}>
