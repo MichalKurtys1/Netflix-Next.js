@@ -1,63 +1,69 @@
 import Image from "next/image";
-import img1 from "public/miniatures/black_adam.jpg";
-import img2 from "public/miniatures/czerwonaNota.jpeg";
+import img1 from "public/film_miniatures/irishman.jpg";
+import img2 from "public/film_miniatures/irishman_vertical.jpg";
 import style from "./FilmDetails.module.css";
 import Separator from "./UI/Separator";
 import Player from "./Player";
-import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { useEffect } from "react";
 
 const FilmDetails = () => {
+  const clickHandler = () => {
+    window.scroll({ top: window.outerWidth * 0.85, behavior: "smooth" });
+  };
+
+  //To rozwiązanie problemu z hydration
+  const [isRendered, setIsRendered] = useState(false);
+  useEffect(() => {
+    setIsRendered(true);
+  }, []);
+  //---------
+
   return (
     <div className={style.container}>
-      <div className={style.descriptionContainer}>
-        <Image src={img1} alt="Logo" className={style.image} />
-        <div className={style.discriptionBox}>
-          <h1>Black Adam</h1>
-          <div className={style.detailsDescription}>
-            <p className={style.descriptionTitle}>Opis</p>
-            <p className={style.descriptionText}>
-              Po blisko pięciu tysiącleciach obdarzony boskimi mocami Black Adam
-              zostaje uwolniony ze swojego ziemskiego grobowca.
+      <div className={style.imageWrapper}>
+        <Image src={img1} alt="Logo" className={style.imageMain} />
+        <div className={style.opacity}></div>
+        <div className={style.imageBox}>
+          <h1>Irlandczyk</h1>
+          <motion.button className={style.tpBtn} onClick={clickHandler}>
+            Przejdź od oglądania
+          </motion.button>
+        </div>
+        <div className={style.descriptionWrapper}>
+          <Image src={img2} alt="Logo" className={style.image} />
+          <div className={style.descriptionBox}>
+            <p className={style.description}>
+              Płatny zabójca Frank Sheeran spogląda wstecz na sekrety, które
+              skrywał jako lojalny członek rodziny mafijnej Bufalino.
             </p>
-          </div>
-          <div className={style.detailsDescription}>
-            <div className={style.details}>
-              <p className={style.title}>Reżyser</p>
-              <p className={style.description}>Jaume Collet-Serra</p>
-            </div>
-            <div className={style.separator}>
-              <Separator diraction={true} />
-            </div>
-            <div className={style.details}>
-              <p className={style.title}>Scenariusz</p>
-              <p className={style.description}>Adam Sztykiel, Rory Haines</p>
-            </div>
             <div className={style.separator}>
               <Separator diraction={false} />
             </div>
-            <div className={style.details}>
-              <p className={style.title}>Gatunek</p>
-              <p className={style.description}>Akcja, Sci-Fi</p>
+            <div className={style.detailsBox}>
+              <div className={style.leftBox}>
+                <p>Reżyseria</p>
+                <p>Scenariusz</p>
+                <p>Gatunek</p>
+                <p>Produkcja</p>
+                <p>Premiera</p>
+              </div>
+              <div className={style.rightBox}>
+                <p>Martin Scorsese</p>
+                <p>Steven Zaillian</p>
+                <p>Biograficzny, Gangsterski</p>
+                <p>USA</p>
+                <p>27 września 2019</p>
+              </div>
             </div>
             <div className={style.separator}>
               <Separator diraction={true} />
-            </div>
-            <div className={style.details}>
-              <p className={style.title}>Produkcja</p>
-              <p className={style.description}>USA</p>
-            </div>
-            <div className={style.separator}>
-              <Separator diraction={false} />
-            </div>
-            <div className={style.details}>
-              <p className={style.title}>Premiera</p>
-              <p className={style.description}>21 października 2022</p>
             </div>
           </div>
         </div>
       </div>
-      <Player />
+      {isRendered && <Player />}
     </div>
   );
 };

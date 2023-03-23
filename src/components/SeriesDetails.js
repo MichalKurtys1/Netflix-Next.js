@@ -1,17 +1,15 @@
 import Image from "next/image";
-import img1 from "public/miniatures/black_adam.jpg";
-import img2 from "public/miniatures/czerwonaNota.jpeg";
+import img1 from "public/film_miniatures/irishman.jpg";
+import img2 from "public/film_miniatures/irishman_vertical.jpg";
 import style from "./SeriesDetails.module.css";
 import "./FilmDetails.module.css";
-import video from "public/videos/sample_960x540.mp4";
-import VideoPlayer from "react-video-js-player";
 import Separator from "./UI/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDoubleRight,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Player from "./Player";
 
 const seasonsList = [
@@ -44,61 +42,61 @@ const seasonsList = [
 ];
 
 const SeriesDetails = () => {
+  const ref = useRef(null);
   const [currentVid, setCurrentVid] = useState(null);
   let videoNumber;
   let videoTitle;
 
-  const ClickHandler = (number, title, file) => {
+  const clickHandler = (number, title, file) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
     videoNumber = number;
     videoTitle = title;
     setCurrentVid(file);
   };
 
+  const scrollHandler = () => {
+    window.scroll({ top: window.outerWidth * 0.8, behavior: "smooth" });
+  };
+
   return (
     <div className={style.container}>
-      <div className={style.descriptionContainer}>
-        <Image src={img1} alt="Logo" className={style.image} />
-        <div className={style.discriptionBox}>
-          <h1>Black Adam</h1>
-          <div className={style.detailsDescription}>
-            <p className={style.descriptionTitle}>Opis</p>
-            <p className={style.descriptionText}>
-              Po blisko pięciu tysiącleciach obdarzony boskimi mocami Black Adam
-              zostaje uwolniony ze swojego ziemskiego grobowca.
+      <div className={style.imageWrapper}>
+        <Image src={img1} alt="Logo" className={style.imageMain} />
+        <div className={style.opacity}></div>
+        <div className={style.imageBox}>
+          <h1>Irlandczyk</h1>
+          <button className={style.tpBtn} onClick={scrollHandler}>
+            Przejdź od oglądania
+          </button>
+        </div>
+        <div className={style.descriptionWrapper}>
+          <Image src={img2} alt="Logo" className={style.image} />
+          <div className={style.descriptionBox}>
+            <p className={style.description}>
+              Płatny zabójca Frank Sheeran spogląda wstecz na sekrety, które
+              skrywał jako lojalny członek rodziny mafijnej Bufalino.
             </p>
-          </div>
-          <div className={style.detailsDescription}>
-            <div className={style.details}>
-              <p className={style.title}>Reżyser</p>
-              <p className={style.description}>Jaume Collet-Serra</p>
-            </div>
-            <div className={style.separator}>
-              <Separator diraction={true} />
-            </div>
-            <div className={style.details}>
-              <p className={style.title}>Scenariusz</p>
-              <p className={style.description}>Adam Sztykiel, Rory Haines</p>
-            </div>
             <div className={style.separator}>
               <Separator diraction={false} />
             </div>
-            <div className={style.details}>
-              <p className={style.title}>Gatunek</p>
-              <p className={style.description}>Akcja, Sci-Fi</p>
+            <div className={style.detailsBox}>
+              <div className={style.leftBox}>
+                <p>Reżyseria</p>
+                <p>Scenariusz</p>
+                <p>Gatunek</p>
+                <p>Produkcja</p>
+                <p>Premiera</p>
+              </div>
+              <div className={style.rightBox}>
+                <p>Martin Scorsese</p>
+                <p>Steven Zaillian</p>
+                <p>Biograficzny, Gangsterski</p>
+                <p>USA</p>
+                <p>27 września 2019</p>
+              </div>
             </div>
             <div className={style.separator}>
               <Separator diraction={true} />
-            </div>
-            <div className={style.details}>
-              <p className={style.title}>Produkcja</p>
-              <p className={style.description}>USA</p>
-            </div>
-            <div className={style.separator}>
-              <Separator diraction={false} />
-            </div>
-            <div className={style.details}>
-              <p className={style.title}>Premiera</p>
-              <p className={style.description}>21 października 2022</p>
             </div>
           </div>
         </div>
@@ -111,9 +109,9 @@ const SeriesDetails = () => {
               {sezon.episodes.map((epizode) => (
                 <div
                   className={style.epizodeBox}
-                  key={epizode.number}
+                  key={epizode.name}
                   onClick={() => {
-                    ClickHandler(epizode.number, epizode.name, epizode.file);
+                    clickHandler(epizode.number, epizode.name, epizode.file);
                   }}
                 >
                   <p
@@ -130,6 +128,7 @@ const SeriesDetails = () => {
           </div>
         ))}
       </div>
+      <div style={{ height: 60 }} ref={ref}></div>
       {currentVid !== null && <Player />}
     </div>
   );

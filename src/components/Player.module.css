@@ -6,85 +6,100 @@
   width: 100%;
 }
 
-.video {
+.vidBox {
+  position: relative;
+  height: 80vh;
+  width: 70vw;
   margin: 0 auto;
-  width: 80%;
-  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.75);
 }
 
-.container .videoBox {
-  width: 80%;
+.video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .container .optionPanel {
   height: 10vh;
-  width: 80%;
-  margin: 0 auto;
+  width: 70vw;
+  margin: 0 auto 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 10vh;
-  background-color: #1e1e1e;
+  background-color: #000;
   padding: 20px;
+}
+
+.optionPanel .leftBox {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optionPanel h1 {
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .optionPanel .thumbPanel {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-basis: 23%;
+  width: 55%;
 }
 
-.optionPanel .thumbPanel .likesValue {
-  width: 25%;
-  height: 80%;
-  padding: 5px;
+.thumbPanel .thumbBox {
   background-color: #252526;
-  border-radius: 10px;
+  border-radius: 50px;
+  width: 7vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 10px;
 }
 
-.thumbPanel .likesValue p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  text-align: center;
+.thumbBox p {
+  font-family: "Roboto", sans-serif;
   color: white;
+  font-weight: bold;
+  /* font-size: 18px; */
 }
 
 .optionPanel .icon {
-  width: 25px;
-  color: white;
+  font-size: 35px;
+  padding-right: 5px;
+  border-right: 3px solid #000;
 }
 
 .optionPanel .rightBox {
-  width: 30%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.optionPanel .commentsPanel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-basis: 85%;
-  background-color: #252526;
-  padding: 8px 10px;
-  border-radius: 15px;
-  user-select: none;
+.rightBox .shareBox {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  border: 2px solid white;
 }
 
-.optionPanel .commentIcon {
-  width: 30px;
+.shareBox .shareIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
+  width: 18px;
 }
 
-.optionPanel .commentsPanel p {
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+.iconRight {
   color: white;
-}
-
-.container .commentSection {
+  width: 35px;
+  margin-left: 20px;
+  font-size: 35px;
 }

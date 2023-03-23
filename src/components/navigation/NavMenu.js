@@ -1,7 +1,7 @@
 import img from "public/miniatures/img_avatar.png";
 import Image from "next/image";
 import style from "./NavMenu.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeadphones,
@@ -20,6 +20,9 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Separator from "../UI/Separator";
 
+const loginHandler = () => {
+  router.push("/sign-in");
+};
 const NavMenu = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -28,6 +31,13 @@ const NavMenu = () => {
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
+
+  //To rozwiązanie problemu z hydration
+  const [isRendered, setIsRendered] = useState(false);
+  useEffect(() => {
+    setIsRendered(true);
+  }, []);
+  //---------
 
   const panelClickHandler = () => {
     if (searchIsOpen) {
@@ -39,7 +49,6 @@ const NavMenu = () => {
       setPanelIsOpen(false);
     }
   };
-
   const changeHandler = (event) => {
     setSearchInputValue(event.target.value);
   };
@@ -60,10 +69,6 @@ const NavMenu = () => {
     }
   };
 
-  const loginHandler = () => {
-    router.push("/sign-in");
-  };
-
   const logoutHandler = () => {
     dispatch(authActions.logOut());
     setIsLoggedIn(false);
@@ -78,7 +83,7 @@ const NavMenu = () => {
           className={style.icon}
           onClick={searchClickHandler}
         />
-        {isLoggedIn && (
+        {isRendered && isLoggedIn && (
           <Image
             src={img}
             alt="Landscape picture"
@@ -86,14 +91,13 @@ const NavMenu = () => {
             onClick={panelClickHandler}
           />
         )}
-        {!isLoggedIn && (
+        {isRendered && !isLoggedIn && (
           <FontAwesomeIcon
             icon={faSignIn}
             className={style.icon}
             onClick={loginHandler}
           />
         )}
-
         {panelIsOpen && (
           <motion.div
             initial={{ opacity: 0 }}

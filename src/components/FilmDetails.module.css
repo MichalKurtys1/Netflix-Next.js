@@ -1,92 +1,108 @@
-.container .descriptionContainer {
+.imageWrapper .imageMain {
   position: relative;
-  margin: 15vh auto;
-  width: 70vw;
-  height: 80vh;
+  width: 100%;
+  height: 100vh;
+}
+
+.imageWrapper .opacity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.imageWrapper .imageBox {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.container .image {
-  width: 50%;
-  height: 100%;
+.imageBox h1 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 50px;
+}
+
+.imageBox .tpBtn {
+  border: none;
+  padding: 15px;
+  background-color: transparent;
+  border-radius: 10px;
+  border-bottom: 2px solid #007acc;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.descriptionWrapper {
+  margin: 30px auto 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.descriptionWrapper .image {
+  width: 25vw;
+  height: 65vh;
+  margin-right: 30px;
   object-fit: cover;
 }
 
-.container .discriptionBox {
-  width: 45%;
-  height: 90%;
-  margin-left: 2%;
-  background-color: #1e1e1e;
+.descriptionWrapper .descriptionBox {
+  width: 40%;
 }
 
-.container .discriptionBox h1 {
+.descriptionWrapper .descriptionBox p.description {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 25px;
-  font-size: 40px;
-  text-align: center;
+  font-family: "Roboto", sans-serif;
+  padding: 10px 20px 20px;
 }
 
-.container .discriptionBox p.title {
-  display: block;
-  width: 25%;
-  padding-left: 10px;
-  color: white;
-  margin: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
+.descriptionWrapper .descriptionBox .separator {
+  width: 95%;
+  margin: 0 auto;
 }
 
-.container .discriptionBox p.descriptionTitle {
-  display: block;
-  width: 100%;
-  padding-left: 15px;
-  color: white;
-  margin: 5px 5px 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-}
-
-.container .discriptionBox p.descriptionText {
-  color: white;
-  margin: 10px 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  text-align: justify;
-}
-
-.container .discriptionBox p.description {
-  color: white;
-  margin: 10px 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-.discriptionBox .details {
+.descriptionWrapper .detailsBox {
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: #252526;
-  width: 100%;
-  border-radius: 15px;
+  justify-content: center;
+  padding: 10px 20px 20px;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
-.discriptionBox .detailsDescription {
+.detailsBox .leftBox {
+  height: 35vh;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #252526;
-  border-radius: 15px;
-  width: 95%;
-  margin: 10px auto;
+  padding-right: 30px;
+  border-right: 2px solid #252526;
 }
 
-.discriptionBox .details .description {
-  width: 50%;
+.detailsBox .leftBox p {
+  padding: 10px;
+  font-size: 22px;
 }
 
-.detailsDescription .separator {
-  width: 90%;
+.detailsBox .rightBox {
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 30px;
+}
+
+.detailsBox .rightBox p {
+  padding: 10px;
+  font-size: 16px;
 }

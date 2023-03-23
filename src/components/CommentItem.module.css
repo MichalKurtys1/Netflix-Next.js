@@ -1,0 +1,228 @@
+.commentContainer {
+  width: 80%;
+  height: 23vh;
+  position: relative;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+
+.commentContainer .profileIcon {
+  position: absolute;
+  top: -10%;
+  left: -17%;
+  height: 20vh;
+  width: 20vh;
+}
+
+.commentContainer .upperBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 10px 50px;
+}
+
+.upperBox .nick {
+  font-size: 26px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.upperBox .date {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #919191;
+}
+
+.commentContainer .commentText {
+  display: block;
+  height: 80%;
+  padding: 0 20px 10px 65px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+.commentContainer .optionPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optionPanel .thumbPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 55%;
+}
+
+.thumbPanel .thumbBox {
+  background-color: #252526;
+  border-radius: 50px;
+  width: 9vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 10px;
+  margin-right: 5px;
+}
+
+.thumbBox p {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-weight: bold;
+}
+
+.optionPanel .icon {
+  font-size: 25px;
+  padding-right: 5px;
+  border-right: 2px solid #000;
+}
+
+.optionPanel .leftBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  border: 2px solid #252526;
+  border-radius: 50px;
+  padding: 0 10px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.optionPanel .leftBox p {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  padding-right: 10px;
+  font-size: 14px;
+}
+
+.optionPanel .leftBox .shareIcon {
+  width: 14px;
+  color: white;
+}
+
+.optionPanel .rightBox {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-bottom: 5px;
+}
+
+.commentReplay {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.commentReplay .replayIcon {
+  color: white;
+  font-size: 25px;
+  margin-left: 5px;
+}
+
+.commentReplay p {
+  position: absolute;
+  bottom: -10%;
+  right: -35%;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+/* xxxxxx */
+
+.replyBox {
+  display: flex;
+  align-items: last baseline;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.replyBox .reply {
+  position: relative;
+  width: 80%;
+  height: 8vh;
+  background-color: #252526;
+  margin: 0 auto 30px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.replyBox .replyIcon {
+  position: absolute;
+  top: -20%;
+  left: -8%;
+  width: 8vh;
+  height: 8vh;
+}
+
+.replyBox .replyUpperBox {
+  padding: 2px 10px 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+}
+
+.replyUpperBox .replyNick {
+  color: white;
+  font-size: 16px;
+}
+
+.replyUpperBox .replyDate {
+  color: #919191;
+  font-size: 10px;
+}
+
+.replyBox .replyText {
+  padding-left: 20px;
+  color: white;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}
+
+.replyInput {
+  width: 60%;
+  margin-left: auto;
+  margin-right: 12%;
+}
+
+.replyInput input[type="text"] {
+  border: none;
+  height: 6vh;
+  width: 25vw;
+  background-color: transparent;
+  border-bottom: 2px solid #007acc;
+  color: white;
+  font-size: 24px;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+.replyInput input[type="text"]:focus {
+  outline: none;
+}
+
+.replyInput button {
+  position: relative;
+  height: 6vh;
+  width: 6vh;
+  border: none;
+  background-color: #007acc;
+  border-radius: 8px;
+}
+
+.replyInput button .replyIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 25px;
+}
