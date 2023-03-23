@@ -15,7 +15,7 @@ import {
   AiOutlineDislike,
   AiOutlineComment,
 } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const likesList = { name: "Irlandczyk", like: 120, dislike: 19 };
 
@@ -24,6 +24,8 @@ const Player = (props) => {
   const [isDisliked, setIsDisliked] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [iconFavorites, setIconFavorites] = useState(star);
+  const [addedToFavorites, setAddedToFavorites] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
 
   const likeHandler = () => {
     if (isLiked) {
@@ -52,6 +54,10 @@ const Player = (props) => {
   const favoritesHandler = () => {
     if (iconFavorites == star) {
       setIconFavorites(faStar);
+      setAddedToFavorites(true);
+      setTimeout(() => {
+        setAddedToFavorites(false);
+      }, 2000);
     } else {
       setIconFavorites(star);
     }
@@ -62,6 +68,14 @@ const Player = (props) => {
       setIsOpen(false);
     } else {
       setIsOpen(true);
+    }
+  };
+
+  const shareHandler = () => {
+    if (shareOpen) {
+      setShareOpen(false);
+    } else {
+      setShareOpen(true);
     }
   };
 
@@ -87,11 +101,7 @@ const Player = (props) => {
           <div className={style.leftBox}>
             <h1>{likesList.name}</h1>
             <div className={style.thumbPanel}>
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: `${isClicked === item.number ? 2 : 1}` }}
-                className={style.thumbBox}
-              >
+              <div className={style.thumbBox}>
                 {isLiked && (
                   <AiFillLike onClick={likeHandler} className={style.icon} />
                 )}
@@ -99,7 +109,7 @@ const Player = (props) => {
                   <AiOutlineLike onClick={likeHandler} className={style.icon} />
                 )}
                 <p>{likesList.like}</p>
-              </motion.div>
+              </div>
               <div className={style.thumbBox}>
                 {isDisliked && (
                   <AiFillDislike
@@ -119,7 +129,11 @@ const Player = (props) => {
           </div>
           <div className={style.rightBox}>
             <div className={style.shareBox}>
-              <FontAwesomeIcon icon={faShare} className={style.shareIcon} />
+              <FontAwesomeIcon
+                icon={faShare}
+                className={style.shareIcon}
+                onClick={shareHandler}
+              />
             </div>
             <FontAwesomeIcon
               icon={iconFavorites}
@@ -132,11 +146,47 @@ const Player = (props) => {
             />
           </div>
         </div>
-        {isOpen && (
-          <div className={style.commentSection}>
-            <CommentSection />
-          </div>
-        )}
+        <AnimatePresence>
+          {shareOpen && (
+            <motion.div
+              className={style.sharePopup}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ delay: 0.15 }}
+            >
+              <p>http://localhost:3000/films/filmId</p>
+              <button onClick={shareHandler}>Kopiuj</button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {addedToFavorites && (
+            <motion.div
+              className={style.addPopup}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ delay: 0.25 }}
+            >
+              <FontAwesomeIcon icon={faStar} className={style.addPopupIcon} />
+              <p>Dodano no ulubionych</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className={style.commentSection}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ delay: 0.25 }}
+            >
+              <CommentSection />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

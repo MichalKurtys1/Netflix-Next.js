@@ -13,6 +13,7 @@ import style from "./CommentItem.module.css";
 import userIcon from "public/ProfileIcon.jpg";
 import { useState } from "react";
 import { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const likesList = { name: "Irlandczyk", like: 120, dislike: 19 };
 
@@ -125,31 +126,46 @@ const CommentItem = (props) => {
           </div>
         </div>
       </div>
-      {replyInputOpen && (
-        <div className={style.replyInput}>
-          <input type="text" placeholder="Napisz odpowiedź" />
-          <button type="submit">
-            <AiOutlineSend className={style.replyIcon} />
-          </button>
-        </div>
-      )}
+      <AnimatePresence>
+        {replyInputOpen && (
+          <motion.div
+            className={style.replyInput}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+          >
+            <input type="text" placeholder="Napisz odpowiedź" />
+            <button type="submit">
+              <AiOutlineSend className={style.replyIcon} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className={style.replyBox}>
-        {replyIsClicked &&
-          relpyAmount !== 0 &&
-          props.comment.reply.map((item) => (
-            <div key={item.nick} className={style.reply}>
-              <Image
-                src={userIcon}
-                alt="userIcon"
-                className={style.replyIcon}
-              />
-              <div className={style.replyUpperBox}>
-                <p className={style.replyNick}>{item.nick}</p>
-                <p className={style.replyDate}>{item.date}</p>
-              </div>
-              <p className={style.replyText}>{item.text}</p>
-            </div>
-          ))}
+        <AnimatePresence>
+          {replyIsClicked &&
+            relpyAmount !== 0 &&
+            props.comment.reply.map((item) => (
+              <motion.div
+                key={item.nick}
+                className={style.reply}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+              >
+                <Image
+                  src={userIcon}
+                  alt="userIcon"
+                  className={style.replyIcon}
+                />
+                <div className={style.replyUpperBox}>
+                  <p className={style.replyNick}>{item.nick}</p>
+                  <p className={style.replyDate}>{item.date}</p>
+                </div>
+                <p className={style.replyText}>{item.text}</p>
+              </motion.div>
+            ))}
+        </AnimatePresence>
       </div>
     </>
   );

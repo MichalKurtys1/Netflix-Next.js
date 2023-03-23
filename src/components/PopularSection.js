@@ -12,6 +12,7 @@ import img8 from "public/miniatures/jurasicWorld.jpg";
 import img9 from "public/miniatures/jurasicWorld.jpg";
 import img10 from "public/miniatures/jurasicWorld.jpg";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const PopularListWorld = [
   {
@@ -85,7 +86,6 @@ const PopularListWorld = [
     place: "10",
   },
 ];
-
 const PopularListPoland = [
   {
     description:
@@ -243,6 +243,11 @@ const PopularSection = (props) => {
       <ul className={style.menu}>
         <li>
           <button
+            style={{
+              backgroundColor: `${
+                displayType === 1 ? "#252526" : "transparent"
+              }`,
+            }}
             className={style.choiseBtn}
             onClick={() => displayTypeHandler(1)}
           >
@@ -251,6 +256,11 @@ const PopularSection = (props) => {
         </li>
         <li>
           <button
+            style={{
+              backgroundColor: `${
+                displayType === 2 ? "#252526" : "transparent"
+              }`,
+            }}
             className={style.choiseBtn}
             onClick={() => displayTypeHandler(2)}
           >
@@ -259,6 +269,11 @@ const PopularSection = (props) => {
         </li>
         <li>
           <button
+            style={{
+              backgroundColor: `${
+                displayType === 3 ? "#252526" : "transparent"
+              }`,
+            }}
             className={style.choiseBtn}
             onClick={() => displayTypeHandler(3)}
           >
@@ -269,36 +284,57 @@ const PopularSection = (props) => {
       <div className={style.listBox}>
         {displayType === 1 &&
           PopularListWorld.map((item) => (
-            <div className={style.listItem} key={item.name}>
+            <motion.div
+              className={style.listItem}
+              key={item.name}
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 15 }}
+              transition={{ delay: 0.25 }}
+            >
               <Image src={item.img} alt="" className={style.image} />
               <div className={style.details}>
                 <h1>{item.name}</h1>
                 <p className={style.place}>{item.place}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         {displayType === 2 &&
           PopularListPoland.map((item) => (
-            <div className={style.listItem} key={item.name}>
+            <motion.div
+              className={style.listItem}
+              key={item.name}
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 15 }}
+              transition={{ delay: 0.25 }}
+            >
               <Image src={item.img} alt="" className={style.image} />
               <div className={style.details}>
                 <h1>{item.name}</h1>
                 <p className={style.place}>{item.place}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         {displayType === 3 &&
           dumyData.map((item) => (
-            <div className={style.listItem} key={item.name}>
+            <motion.div
+              className={style.listItem}
+              key={item.name}
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 15 }}
+              transition={{ delay: 0.25 }}
+            >
               <Image src={item.img} alt="" className={style.image} />
               <div className={style.details}>
                 <h1>{item.name}</h1>
                 <p className={style.place}>{item.place}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
       </div>
     </div>

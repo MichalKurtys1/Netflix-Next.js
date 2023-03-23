@@ -190,17 +190,17 @@
 .replyInput {
   width: 60%;
   margin-left: auto;
-  margin-right: 12%;
+  margin-right: 10%;
 }
 
 .replyInput input[type="text"] {
   border: none;
   height: 6vh;
-  width: 25vw;
+  width: 22vw;
   background-color: transparent;
   border-bottom: 2px solid #007acc;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   margin-right: 10px;
   padding-left: 10px;
 }
@@ -211,8 +211,8 @@
 
 .replyInput button {
   position: relative;
-  height: 6vh;
-  width: 6vh;
+  height: 5.5vh;
+  width: 5.5vh;
   border: none;
   background-color: #007acc;
   border-radius: 8px;

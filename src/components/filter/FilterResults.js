@@ -26,6 +26,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterActions } from "src/store";
+import { motion } from "framer-motion";
 
 const dummyData = [
   {
@@ -168,7 +169,13 @@ const FilterResults = (props) => {
           </div>
         </div>
       )}
-      <div className={style.listBox}>
+      <motion.div
+        className={style.listBox}
+        initial={{ opacity: 0, x: -15 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 15 }}
+        transition={{ delay: 0.25 }}
+      >
         {props.isEnabled &&
           dummyData.map((item) => (
             <div className={style.listItem} key={item.name}>
@@ -180,7 +187,7 @@ const FilterResults = (props) => {
               </div>
             </div>
           ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
