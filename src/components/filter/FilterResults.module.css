@@ -1,6 +1,6 @@
 .container {
-  flex-basis: 45%;
-  margin: 0 auto;
+  flex-basis: 50%;
+  margin: 15vh auto;
 }
 
 .container .listItem {
@@ -23,5 +23,94 @@
   height: 100%;
   width: 25%;
   object-fit: cover;
-  border-radius: 10px;
+}
+
+.menu {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu .iconsBox {
+  display: flex;
+}
+
+.menu .iconsBox .iconBox {
+  padding: 10px;
+}
+
+.iconsBox .iconBox .icon {
+  width: 70px;
+  color: #919191;
+  padding: 5px 15px;
+}
+
+.iconsBox .iconBox .active {
+  color: white;
+}
+
+.iconsBox .iconBox .icon:nth-of-type(odd) {
+  border-right: 3px solid #252526;
+}
+
+.menu .iconsBox .iconBox:nth-of-type(1) {
+  border-right: 4px solid #252526;
+}
+
+.menu .dropDownBox {
+  width: 40%;
+}
+
+.listBox .listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  height: 25vh;
+  width: 90%;
+  color: white;
+  background-color: #252526;
+  margin-bottom: 25px;
+  border-radius: 15px;
+
+  box-shadow: 0px 0px 2px 1px rgba(12, 12, 12, 0.5);
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(12, 12, 12, 0.5);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(12, 12, 12, 0.5);
+}
+
+.listBox .image {
+  width: 22%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.listBox .listItem p.description {
+  text-align: justify;
+  padding: 0 20px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+
+.listBox .listItem h1 {
+  display: block;
+  width: 100%;
+  padding: 10px 20px 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.listBox .details {
+  position: relative;
+  height: 100%;
+}
+
+.listBox .details p.place {
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  color: #919191;
+  right: 0;
+  top: 0;
+  padding-right: 3px;
+  font-size: 14px;
 }

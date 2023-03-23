@@ -12,20 +12,22 @@ import style from "./FilterPage.module.css";
 const FilterPage = () => {
   const [isEnabled, setIsEnabled] = useState(false);
 
+  const clickHandler = () => {
+    setIsEnabled(true);
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={style.filters}>
-      <CategoryFilter />
       <div className={style.filterBox}>
-        <SortTypeSecection />
+        <CategoryFilter />
         <YearFilter />
         <PlatformFilter />
-        <button
-          className={style.submitFilterBtn}
-          onClick={() => setIsEnabled(true)}
-        >
+        <button className={style.submitFilterBtn} onClick={clickHandler}>
           Wyszukaj
         </button>
       </div>
+
       <FilterResults isEnabled={isEnabled} />
     </div>
   );

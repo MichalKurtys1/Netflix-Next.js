@@ -20,9 +20,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Separator from "../UI/Separator";
 
-const loginHandler = () => {
-  router.push("/sign-in");
-};
 const NavMenu = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -31,6 +28,10 @@ const NavMenu = () => {
   const [panelIsOpen, setPanelIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
+
+  const loginHandler = () => {
+    router.push("/sign-in");
+  };
 
   //To rozwiązanie problemu z hydration
   const [isRendered, setIsRendered] = useState(false);

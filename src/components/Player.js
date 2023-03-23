@@ -15,6 +15,7 @@ import {
   AiOutlineDislike,
   AiOutlineComment,
 } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 const likesList = { name: "Irlandczyk", like: 120, dislike: 19 };
 
@@ -86,7 +87,11 @@ const Player = (props) => {
           <div className={style.leftBox}>
             <h1>{likesList.name}</h1>
             <div className={style.thumbPanel}>
-              <div className={style.thumbBox}>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: `${isClicked === item.number ? 2 : 1}` }}
+                className={style.thumbBox}
+              >
                 {isLiked && (
                   <AiFillLike onClick={likeHandler} className={style.icon} />
                 )}
@@ -94,7 +99,7 @@ const Player = (props) => {
                   <AiOutlineLike onClick={likeHandler} className={style.icon} />
                 )}
                 <p>{likesList.like}</p>
-              </div>
+              </motion.div>
               <div className={style.thumbBox}>
                 {isDisliked && (
                   <AiFillDislike

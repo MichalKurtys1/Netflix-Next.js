@@ -14,94 +14,290 @@ import img10 from "public/miniatures/jurasicWorld.jpg";
 import { useState } from "react";
 
 const PopularListWorld = [
-  { place: "1", name: "Jurasic World: Domination", img: img1 },
-  { place: "2", name: "Avatar: Way Of Water", img: img2 },
-  { place: "3", name: "Dracula: Untold", img: img3 },
-  { place: "4", name: "Jurasic World: Domination", img: img4 },
-  { place: "5", name: "Jurasic World: Domination", img: img5 },
-  { place: "6", name: "Jurasic World: Domination", img: img6 },
-  { place: "7", name: "Jurasic World: Domination", img: img7 },
-  { place: "8", name: "Jurasic World: Domination", img: img8 },
-  { place: "9", name: "Jurasic World: Domination", img: img9 },
-  { place: "10", name: "Jurasic World: Domination", img: img10 },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img1,
+    place: "1",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Avatar: Way Of Water",
+    img: img2,
+    place: "2",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Dracula: Untold",
+    img: img3,
+    place: "3",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img4,
+    place: "4",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img5,
+    place: "5",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img6,
+    place: "6",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img7,
+    place: "7",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img8,
+    place: "8",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img9,
+    place: "9",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img10,
+    place: "10",
+  },
 ];
 
 const PopularListPoland = [
-  { place: "1", name: "Dracula: Untold", img: img3 },
-  { place: "2", name: "Avatar: Way Of Water", img: img2 },
-  { place: "3", name: "Jurasic World: Domination", img: img1 },
-  { place: "4", name: "Jurasic World: Domination", img: img4 },
-  { place: "5", name: "Jurasic World: Domination", img: img5 },
-  { place: "6", name: "Jurasic World: Domination", img: img6 },
-  { place: "7", name: "Jurasic World: Domination", img: img7 },
-  { place: "8", name: "Jurasic World: Domination", img: img8 },
-  { place: "9", name: "Jurasic World: Domination", img: img9 },
-  { place: "10", name: "Jurasic World: Domination", img: img10 },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img5,
+    place: "1",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Avatar: Way Of Water",
+    img: img3,
+    place: "2",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Dracula: Untold",
+    img: img2,
+    place: "3",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img1,
+    place: "4",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img5,
+    place: "5",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img6,
+    place: "6",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img7,
+    place: "7",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img8,
+    place: "8",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img9,
+    place: "9",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img10,
+    place: "10",
+  },
+];
+const dumyData = [
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img2,
+    place: "1",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Avatar: Way Of Water",
+    img: img3,
+    place: "2",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Dracula: Untold",
+    img: img1,
+    place: "3",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img1,
+    place: "4",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img5,
+    place: "5",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img6,
+    place: "6",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img7,
+    place: "7",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img8,
+    place: "8",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img9,
+    place: "9",
+  },
+  {
+    description:
+      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
+    name: "Jurasic World: Domination",
+    img: img10,
+    place: "10",
+  },
 ];
 
 const PopularSection = (props) => {
-  const [isClickedWorld, setIsClickedWorld] = useState(true);
-  const [isClickedPoland, setIsClickedPoland] = useState(false);
+  const [displayType, setDisplayType] = useState(1);
 
-  const clickHandlerWorld = () => {
-    if (isClickedPoland) {
-      setIsClickedPoland(false);
-      setIsClickedWorld(true);
-    }
-  };
-
-  const clickHandlerPoland = () => {
-    if (isClickedWorld) {
-      setIsClickedPoland(true);
-      setIsClickedWorld(false);
-    }
+  const displayTypeHandler = (type) => {
+    setDisplayType(type);
   };
 
   return (
     <div className={style.container}>
+      <ul className={style.menu}>
+        <li>
+          <button
+            className={style.choiseBtn}
+            onClick={() => displayTypeHandler(1)}
+          >
+            Filmy
+          </button>
+        </li>
+        <li>
+          <button
+            className={style.choiseBtn}
+            onClick={() => displayTypeHandler(2)}
+          >
+            Wybór publiczności
+          </button>
+        </li>
+        <li>
+          <button
+            className={style.choiseBtn}
+            onClick={() => displayTypeHandler(3)}
+          >
+            Seriale
+          </button>
+        </li>
+      </ul>
       <div className={style.listBox}>
-        <ul className={style.menu}>
-          <li>
-            <button
-              className={style.choiseBtn}
-              onClick={clickHandlerWorld}
-              style={
-                isClickedWorld
-                  ? { background: "#2d2d30" }
-                  : { background: "#141414" }
-              }
-            >
-              Na Świecie
-            </button>
-          </li>
-          <li>
-            <button
-              className={style.choiseBtn}
-              onClick={clickHandlerPoland}
-              style={
-                isClickedPoland
-                  ? { background: "#2d2d30" }
-                  : { background: "#141414" }
-              }
-            >
-              W Polsce
-            </button>
-          </li>
-        </ul>
-        {isClickedWorld &&
+        {displayType === 1 &&
           PopularListWorld.map((item) => (
             <div className={style.listItem} key={item.name}>
-              <p>{item.place}</p>
-              <h1>{item.name}</h1>
               <Image src={item.img} alt="" className={style.image} />
+              <div className={style.details}>
+                <h1>{item.name}</h1>
+                <p className={style.place}>{item.place}</p>
+                <p className={style.description}>{item.description}</p>
+              </div>
             </div>
           ))}
-        {isClickedPoland &&
+        {displayType === 2 &&
           PopularListPoland.map((item) => (
             <div className={style.listItem} key={item.name}>
-              <p>{item.place}</p>
-              <h1>{item.name}</h1>
               <Image src={item.img} alt="" className={style.image} />
+              <div className={style.details}>
+                <h1>{item.name}</h1>
+                <p className={style.place}>{item.place}</p>
+                <p className={style.description}>{item.description}</p>
+              </div>
+            </div>
+          ))}
+        {displayType === 3 &&
+          dumyData.map((item) => (
+            <div className={style.listItem} key={item.name}>
+              <Image src={item.img} alt="" className={style.image} />
+              <div className={style.details}>
+                <h1>{item.name}</h1>
+                <p className={style.place}>{item.place}</p>
+                <p className={style.description}>{item.description}</p>
+              </div>
             </div>
           ))}
       </div>
