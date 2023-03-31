@@ -1,0 +1,36 @@
+.container .titleBox {
+  background-color: #000;
+  color: white;
+  font-family: "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 20px 10px 5px;
+  border-radius: 10px;
+}
+
+.titleBox p {
+  font-size: 20px;
+}
+
+.titleBox .icon {
+  width: 30px;
+}
+
+.container .descBox {
+  border: 2px solid #1e1e1e;
+  color: white;
+  font-family: "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 5px 10px;
+  border-radius: 10px;
+}
+
+.descBox {
+  font-size: 20px;
+  line-height: 130%;
+}

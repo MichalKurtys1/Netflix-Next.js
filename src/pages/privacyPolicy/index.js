@@ -1,8 +1,10 @@
 import Head from "next/head";
+import MainSection from "../../components/MainSection";
+import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
-import AccountDetails from "../../components/account/AccountDetails";
+import PrivacyPolicy from "../../components/PrivacyPolicy";
 
-export default function details() {
+const privacyPolicy = () => {
   return (
     <>
       <Head>
@@ -13,8 +15,11 @@ export default function details() {
       </Head>
       <main>
         <Navigation />
-        <AccountDetails />
+        <PrivacyPolicy />
+        <Footer />
       </main>
     </>
   );
-}
+};
+
+export default privacyPolicy;

@@ -1,0 +1,23 @@
+.iconBox {
+  user-select: none;
+  position: relative;
+}
+
+.iconBox .image {
+  width: 10vw;
+  height: 10vw;
+  margin: 15px;
+  border-radius: 10px;
+  border: 3px solid #141414;
+}
+
+.iconBox .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  padding: 5px;
+  background-color: green;
+  color: white;
+  border-radius: 50px;
+}

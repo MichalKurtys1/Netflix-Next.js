@@ -106,7 +106,10 @@ const NavMenu = () => {
             transition={{ delay: 0.1 }}
             className={style.panel}
           >
-            <Link href={"/account"} className={style.link}>
+            <Link
+              href={"/account?current=accountDetails"}
+              className={style.link}
+            >
               <FontAwesomeIcon icon={faUser} className={style.icon} />
               <motion.p
                 initial={{ y: 0 }}
@@ -116,7 +119,7 @@ const NavMenu = () => {
                 Konto
               </motion.p>
             </Link>
-            <Link href={"/favorites"} className={style.link}>
+            <Link href={"/account?current=favorites"} className={style.link}>
               <FontAwesomeIcon icon={faStar} className={style.icon} />
               <motion.p
                 initial={{ y: 0 }}
@@ -126,7 +129,7 @@ const NavMenu = () => {
                 Ulubione
               </motion.p>
             </Link>
-            <Link href={"/contact"} className={style.link}>
+            <Link href={"/account?current=faq"} className={style.link}>
               <FontAwesomeIcon icon={faHeadset} className={style.icon} />
               <motion.p
                 initial={{ y: 0 }}

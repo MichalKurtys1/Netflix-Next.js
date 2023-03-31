@@ -1,234 +1,130 @@
 .mainBox {
-  position: absolute;
-  top: 15vh;
-  left: 40vw;
-  width: 45vw;
+  margin-left: 20%;
+  margin-top: 10vh;
+  width: 80%;
 }
 
-.mainBox .mainBox {
-  position: absolute;
-  top: 15vh;
-  left: 40%;
-  width: 40vw;
-  height: 60vh;
-}
-
-.mainBox .upperBox {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.mainBox .upperBox h1 {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.mainBox .upperBox .logout {
-  width: 20%;
-  height: 32px;
-  border: none;
-  border-radius: 10px;
-  background-color: #b03a3a;
+.mainBox .infoBox {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.upperBox .logout p {
-  color: white;
-  font-size: 18px;
-  padding-left: 5px;
+.infoBox .image {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 150px;
 }
 
-.upperBox .logout .icon {
-  width: 16%;
-  color: #850b1b;
-}
-
-.mainBox .middleBox {
+.infoBox .detailsBox {
   display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  height: 14vw;
+  width: 30vw;
 }
 
-.middleBox .leftBox {
+.details {
+  margin-left: 30px;
+}
+
+.details h1 {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  margin: 20px 0 20px 30px;
-  padding-right: 20px;
+  font-family: "Roboto";
+  font-weight: normal;
+}
+
+.details .wrapper {
+  display: flex;
+  margin: 10px;
+}
+
+.wrapper .leftBox {
+  width: 20%;
   border-right: 2px solid #252526;
+}
+
+.wrapper .rightBox {
+  width: 20%;
+  padding-left: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .leftBox p {
-  padding: 5px;
-}
-
-.rightBox {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  margin: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  font-family: "Roboto";
+  padding: 5px;
+  font-size: 20px;
 }
 
 .rightBox p {
+  color: #919191;
+  font-family: "Roboto";
   padding: 5px;
+  font-size: 16px;
 }
 
-.mainBox .bottomBox {
-  margin: 20px 0;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-}
-
-.bottomBox p {
-  padding: 5px;
-}
-
-/* ------------------------------ */
-
-.filterBox {
+.premiumBox {
+  margin: 60px auto;
+  width: 23%;
+  font-family: "Roboto";
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.choiseBox {
-  flex-basis: 40%;
-  height: 11vh;
-  margin-left: 2%;
-}
-
-.btnBox {
-  flex-basis: 40%;
-  height: 11vh;
-  margin-left: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.filterBox button {
-  width: 80%;
-  height: 6vh;
-  border: none;
-  background-color: #007acc;
-  border-radius: 10px;
-  color: white;
-  font-size: 20px;
-}
-
-/* ------------------ */
-
-.rightBox h1 {
-  font-size: 22px;
-  margin: 0 0 10px;
-}
-
-.contactBox {
-  margin: 40px 20px;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
+  color: white;
+  font-size: 30px;
 }
 
-.contactBox .buttons button {
-  width: 15vw;
-  border: none;
-  background-color: #141414;
-  border: 2px solid #007acc;
+.premiumBox .classic {
+  padding: 5px;
+}
+
+.premiumBox .stateBtn {
+  background-color: #00980f;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+/* table  */
+
+.table {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.table .tableTitle {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 5px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.tableTitle p {
+  font-family: "Roboto";
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 25px;
+}
+
+.tableRow .tableData {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto";
+  color: white;
   padding: 10px;
-  margin-left: 10px;
+  font-size: 20px;
 }
 
-.contactBox h1 {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 22px;
+.tableData p:nth-of-type(1) {
+  width: 50%;
+  border-right: 2px solid #252526;
 }
 
-.contactBtn {
-  width: 220px;
-  height: 50px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-}
-
-.contactBtn:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #007acc,
-    #3f94e9,
-    #63aeff,
-    #63aeff,
-    #3f94e9,
-    #007acc
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-.contactBtn:active {
-  color: #000;
-}
-
-.contactBtn:active:after {
-  background: transparent;
-}
-
-.contactBtn:hover:before {
-  opacity: 1;
-}
-
-.contactBtn:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
-
-@keyframes glowing {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 400% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
+.tableData p:nth-of-type(2) {
+  color: #919191;
+  padding-left: 10px;
 }

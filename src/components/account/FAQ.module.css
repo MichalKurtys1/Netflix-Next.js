@@ -1,0 +1,26 @@
+.container {
+  margin-left: 20%;
+  margin-top: 15vh;
+  width: 80%;
+}
+
+.container .FAQBox {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.container .FAQBox h1 {
+  color: white;
+  font-family: "Roboto";
+  margin-bottom: 10px;
+}
+
+.container .FAQBox p {
+  color: white;
+  font-family: "Roboto";
+}
+
+.container .contentBox {
+  width: 60%;
+  margin: 40px auto;
+}

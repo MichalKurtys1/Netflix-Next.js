@@ -1,59 +1,18 @@
 .container {
-  width: 90%;
+  width: 80%;
   height: 80vh;
-  margin: 15vh auto 0;
+  margin: 10vh auto 0;
+  margin-left: 20%;
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container .infoBox {
-  position: relative;
-  width: 35%;
-  height: 80vh;
-}
-
-.infoBox .image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.infoBox .opacity {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.75;
-}
-
-.infoBox .info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 95%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.infoBox .info h1 {
-  padding: 10px 0;
-  text-align: center;
-}
-
-.infoBox .info p {
-  font-size: 18px;
-  padding: 0 20px;
-  text-align: justify;
-}
-
 .container .inputBox {
   position: relative;
   width: 35%;
-  height: 80vh;
+  height: 70vh;
   background-color: #252526;
 }
 
@@ -65,8 +24,10 @@
 }
 
 .inputBox .welcomeBox h1 {
-  font-size: 20px;
-  padding: 5px 0;
+  font-size: 25px;
+  padding: 20px;
+  font-weight: normal;
+  text-align: center;
 }
 
 .inputBox .welcomeBox p {
@@ -79,12 +40,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 35%;
+  height: 68%;
 }
 
 .loginForm .input {
   position: relative;
-  width: 60%;
+  width: 70%;
 }
 
 .loginForm .input input[type="text"],
@@ -127,28 +88,13 @@
 }
 
 .loginForm input[type="submit"] {
-  width: 60%;
+  width: 70%;
   height: 6vh;
   border: none;
   border-radius: 8px;
   background-color: #007acc;
   color: white;
   font-size: 20px;
-}
-
-.inputBox .links {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60%;
-  margin: 15px auto;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-}
-
-.links .link {
-  cursor: pointer;
 }
 
 .container .errorBox {

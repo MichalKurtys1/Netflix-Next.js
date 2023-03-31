@@ -247,6 +247,7 @@ const PopularSection = (props) => {
               backgroundColor: `${
                 displayType === 1 ? "#252526" : "transparent"
               }`,
+              borderRadius: `${displayType === 1 ? "15px" : ""}`,
             }}
             className={style.choiseBtn}
             onClick={() => displayTypeHandler(1)}
@@ -260,6 +261,7 @@ const PopularSection = (props) => {
               backgroundColor: `${
                 displayType === 2 ? "#252526" : "transparent"
               }`,
+              borderRadius: `${displayType === 2 ? "15px" : ""}`,
             }}
             className={style.choiseBtn}
             onClick={() => displayTypeHandler(2)}
@@ -273,6 +275,7 @@ const PopularSection = (props) => {
               backgroundColor: `${
                 displayType === 3 ? "#252526" : "transparent"
               }`,
+              borderRadius: `${displayType === 3 ? "15px" : ""}`,
             }}
             className={style.choiseBtn}
             onClick={() => displayTypeHandler(3)}

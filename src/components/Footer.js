@@ -12,12 +12,11 @@ const Footer = () => {
       <div className={style.contactBox}>
         <h1>Kontakt</h1>
         <div className={style.buttons}>
-          <button className={style.contactBtn} type="button">
-            Zadzwoń do nas
-          </button>
-          <button className={style.contactBtn} type="button">
-            Napisz e-mail
-          </button>
+          <Link href={"/account?current=contact"} className={style.link}>
+            <button className={style.contactBtn} type="button">
+              Skontaktuj się z nami
+            </button>
+          </Link>
         </div>
       </div>
       <div className={style.column}>
@@ -32,10 +31,10 @@ const Footer = () => {
         </Link>
       </div>
       <div className={style.column}>
-        <Link href={"/privacy policy"} className={style.link}>
+        <Link href={"/privacyPolicy"} className={style.link}>
           <motion.p whileHover={{ scale: 1.1 }}>Polityka prywatności</motion.p>
         </Link>
-        <Link href={"/terms of use"} className={style.link}>
+        <Link href={"/termsOfUse"} className={style.link}>
           <motion.p whileHover={{ scale: 1.1 }}>Warunki użytkowania</motion.p>
         </Link>
         <div className={style.row}>

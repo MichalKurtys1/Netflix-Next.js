@@ -1,0 +1,21 @@
+.container {
+  width: 60%;
+  margin: 12vh auto 60px;
+  font-family: "Roboto";
+  color: white;
+}
+
+.container h1 {
+  text-align: center;
+  margin: 30px;
+  font-size: 40px;
+}
+
+.textBox p {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.textBox strong {
+  font-size: 30px;
+}

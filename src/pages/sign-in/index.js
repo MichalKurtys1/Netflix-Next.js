@@ -18,7 +18,6 @@ export default function signIn() {
       <main>
         <Navigation />
         <MainLoginSection />
-        <Footer />
       </main>
     </>
   );
