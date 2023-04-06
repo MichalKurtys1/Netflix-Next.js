@@ -115,3 +115,39 @@
   pointer-events: all;
   position: relative;
 }
+
+@media (min-width: 1024px) {
+  .slider {
+    width: 300px;
+  }
+  .thumb {
+    width: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .slider {
+    width: 350px;
+  }
+  .thumb {
+    width: 350px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .slider {
+    width: 400px;
+  }
+  .thumb {
+    width: 400px;
+  }
+}
+
+@media (min-width: 1650px) {
+  .slider {
+    width: 450px;
+  }
+  .thumb {
+    width: 450px;
+  }
+}

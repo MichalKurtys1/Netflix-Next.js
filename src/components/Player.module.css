@@ -9,12 +9,14 @@
 .vidBox {
   position: relative;
   height: 80vh;
-  width: 70vw;
+  width: 80vw;
   margin: 0 auto;
 }
 
 .video {
   position: absolute;
+  width: 100%;
+  height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -158,4 +160,106 @@
   border-radius: 15px;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .container .optionPanel {
+    width: 80vw;
+  }
+  .thumbPanel .thumbBox {
+    width: 9vw;
+    margin-left: 10px;
+  }
+  .thumbBox p {
+    padding: 5px;
+  }
+  .sharePopup {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .thumbPanel .thumbBox {
+    width: 7vw;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .sharePopup {
+    width: 40%;
+  }
+
+  .container .optionPanel {
+    height: 8vh;
+    padding: 10px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .thumbPanel .thumbBox {
+    width: 6vw;
+    margin-left: 10px;
+  }
+
+  .optionPanel .leftBox {
+    width: 20%;
+  }
+
+  .optionPanel .thumbPanel {
+    width: 35%;
+  }
+  .thumbBox p {
+    padding: 5px;
+  }
+  .sharePopup {
+    width: 35%;
+  }
+  .addPopup {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1800px) {
+  .optionPanel h1 {
+    font-size: 40px;
+  }
+  .thumbBox p {
+    padding: 8px;
+    font-size: 22px;
+  }
+
+  .optionPanel .icon {
+    font-size: 40px;
+  }
+  .sharePopup {
+    width: 30%;
+  }
+  .addPopup {
+    width: 30%;
+  }
+
+  .rightBox .shareBox {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    border: 2px solid white;
+  }
+
+  .shareBox .shareIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 26px;
+  }
+
+  .iconRight {
+    color: white;
+    width: 45px;
+    margin-left: 20px;
+    font-size: 55px;
+  }
 }

@@ -103,3 +103,61 @@
   right: 0;
   width: 25px;
 }
+
+@media (min-width: 1024px) {
+  .menu .choiseBtn {
+    width: 15vw;
+  }
+  .container .listBox {
+    width: 70%;
+  }
+  .listBox .listItem {
+    height: 20vw;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container .listBox {
+    width: 60%;
+  }
+  .listBox .listItem {
+    height: 18vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container .listBox {
+    width: 50%;
+  }
+  .listBox .listItem {
+    height: 15vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .menu .choiseBtn {
+    width: 12vw;
+  }
+}
+
+@media (min-width: 1900px) {
+  .listBox .listItem p.description {
+    font-size: 22px;
+  }
+
+  .listBox .listItem h1 {
+    font-size: 40px;
+  }
+
+  .listBox .details p.place {
+    font-size: 40px;
+  }
+  .menu li button {
+    height: 70px;
+    transition: 0.5s;
+  }
+  .menu .choiseBtn {
+    font-size: 24px;
+  }
+}

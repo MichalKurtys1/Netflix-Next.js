@@ -42,3 +42,31 @@
   color: #919191;
   padding-left: 10px;
 }
+
+@media (min-width: 1024px) {
+  .table {
+    width: 65%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .table {
+    width: 55%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .table {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .tableTitle p {
+    font-size: 40px;
+  }
+
+  .tableRow .tableData {
+    font-size: 28px;
+  }
+}

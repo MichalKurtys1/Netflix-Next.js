@@ -1,4 +1,3 @@
-import style from "./MainLoginSection.module.css";
 import LoginSection from "./LoginSection";
 import RegisterSection from "./RegisterSection";
 import { useState } from "react";
@@ -15,7 +14,7 @@ const MainLoginSection = () => {
   };
 
   return (
-    <div className={style.mainContainer}>
+    <div>
       {isOpenLogin && <LoginSection registerHandler={flipHandler} />}
       {!isOpenLogin && <RegisterSection loginHandler={flipHandler} />}
     </div>

@@ -106,3 +106,51 @@
   padding: 10px;
   font-size: 16px;
 }
+
+@media (min-width: 1024px) {
+  .descriptionWrapper .image {
+    height: 65vh;
+    width: 30vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .descriptionWrapper .image {
+    height: 55vh;
+    width: 25vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .descriptionWrapper .descriptionBox {
+    width: 35%;
+  }
+  .descriptionWrapper .image {
+    height: 55vh;
+  }
+}
+
+@media (min-width: 1600px) {
+  .descriptionWrapper .descriptionBox p.description {
+    font-size: 20px;
+  }
+  .detailsBox .leftBox p {
+    padding: 10px;
+    font-size: 26px;
+  }
+
+  .detailsBox .rightBox p {
+    padding: 10px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1680px) {
+  .imageBox h1 {
+    font-size: 70px;
+  }
+
+  .imageBox .tpBtn {
+    font-size: 26px;
+  }
+}

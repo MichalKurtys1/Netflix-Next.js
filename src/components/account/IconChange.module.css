@@ -38,3 +38,13 @@
   color: white;
   font-size: 28px;
 }
+
+@media (min-width: 1024px) {
+  .container h1 {
+    font-size: 60px;
+  }
+
+  .container button {
+    height: 75px;
+  }
+}

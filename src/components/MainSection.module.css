@@ -61,3 +61,42 @@
   left: 5%;
   right: 5%;
 }
+
+@media (min-width: 1024px) and (min-height: 600px) {
+  .imageOpacity h1 {
+    font-size: 24px;
+  }
+  .imageOpacity p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 768px) {
+  .imageOpacity h1 {
+    font-size: 30px;
+  }
+  .imageOpacity p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1600px) and (min-height: 900px) {
+  .imageOpacity h1 {
+    font-size: 34px;
+  }
+  .imageOpacity p {
+    font-size: 20px;
+  }
+  .container .imageWrapper {
+    margin: 10vh 0 16vh;
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1080px) {
+  .imageOpacity h1 {
+    font-size: 40px;
+  }
+  .imageOpacity p {
+    font-size: 24px;
+  }
+}

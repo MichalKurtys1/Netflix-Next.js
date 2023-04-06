@@ -19,3 +19,18 @@
   width: 100%;
   height: 70vh;
 }
+
+@media (min-width: 1024px) {
+  .container {
+    margin: 2vh 0;
+  }
+}
+
+@media (min-width: 1680px) {
+  .container .itemBox {
+    height: 60vh;
+  }
+  .container h1 {
+    font-size: 40px;
+  }
+}

@@ -98,3 +98,27 @@
   width: 30px;
   height: 30px;
 }
+
+@media (min-width: 1024px) {
+  .slide {
+    width: 20vw;
+    height: 14vw;
+    margin: 0 50px;
+  }
+  .name {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slide {
+    width: 16vw;
+    height: 11vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .name {
+    font-size: 16px;
+  }
+}

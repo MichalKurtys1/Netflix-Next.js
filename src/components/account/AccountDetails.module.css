@@ -18,9 +18,9 @@
   align-items: center;
   width: 90%;
   background-color: #141414;
-  margin: 20px auto;
+  margin: 15px auto;
   padding: 5px 10px;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .mainOption .icon {
@@ -202,4 +202,57 @@
   width: 100%;
   font-family: "Roboto";
   text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .container .nav {
+    width: 25%;
+    height: 92vh;
+  }
+  .nav .additionalOption .option {
+    margin: 5px auto;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  .container .nav {
+    width: 25%;
+    height: 93vh;
+    top: 7vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container .nav {
+    width: 20%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .nav .additionalOption .option {
+    margin: 10px auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  .nav .mainOption {
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .mainOption .icon {
+    width: 30px;
+  }
+
+  .mainOption p {
+    font-size: 35px;
+  }
+
+  .option p {
+    font-size: 20px;
+  }
+
+  .option .iconAdditional {
+    width: 15px;
+  }
 }

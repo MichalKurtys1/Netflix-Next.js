@@ -43,3 +43,9 @@
   height: 70%;
   padding-bottom: 5px;
 }
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  .container {
+    height: 7vh;
+  }
+}

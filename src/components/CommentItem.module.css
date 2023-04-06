@@ -1,6 +1,6 @@
 .commentContainer {
   width: 80%;
-  height: 23vh;
+  height: 15vw;
   position: relative;
   background-color: #1e1e1e;
   display: flex;
@@ -12,10 +12,10 @@
 
 .commentContainer .profileIcon {
   position: absolute;
-  top: -10%;
-  left: -17%;
-  height: 20vh;
-  width: 20vh;
+  top: -25px;
+  left: -100px;
+  height: 12vw;
+  width: 12vw;
 }
 
 .commentContainer .upperBox {
@@ -42,7 +42,7 @@
 .commentContainer .commentText {
   display: block;
   height: 80%;
-  padding: 0 20px 10px 65px;
+  padding: 0 20px 5px 65px;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   color: white;
@@ -156,10 +156,10 @@
 
 .replyBox .replyIcon {
   position: absolute;
-  top: -20%;
-  left: -8%;
-  width: 8vh;
-  height: 8vh;
+  top: -10px;
+  left: -50px;
+  width: 6vw;
+  height: 6vw;
 }
 
 .replyBox .replyUpperBox {
@@ -225,4 +225,225 @@
   transform: translate(-50%, -50%);
   color: white;
   font-size: 25px;
+}
+
+@media (min-width: 1024px) {
+  .optionPanel .thumbPanel {
+    width: 75%;
+  }
+
+  .replyInput input[type="text"] {
+    border: none;
+    height: 4vw;
+    width: 28vw;
+    border-bottom: 2px solid #007acc;
+    font-size: 20px;
+  }
+  .replyInput button {
+    height: 4vw;
+    width: 4vw;
+  }
+  .replyBox .reply {
+    width: 80%;
+    height: 6vw;
+  }
+
+  .commentContainer .upperBox {
+    padding: 0 10px 10px 25px;
+  }
+
+  .commentContainer .commentText {
+    padding: 0 20px 5px 35px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .commentContainer .profileIcon {
+    top: -25px;
+    left: -130px;
+  }
+  .commentContainer {
+    width: 80%;
+    height: 14vw;
+  }
+  .replyBox .replyIcon {
+    left: -65px;
+  }
+  .replyInput {
+    width: 60%;
+    margin-left: auto;
+    margin-right: 13%;
+  }
+  .thumbPanel .thumbBox {
+    width: 7vw;
+  }
+}
+
+@media (min-width: 1300px) {
+  .commentContainer .profileIcon {
+    left: -140px;
+  }
+  .commentContainer {
+    width: 80%;
+    height: 13vw;
+  }
+  .replyInput input[type="text"] {
+    border: none;
+    height: 3.5vw;
+    width: 25vw;
+    border-bottom: 2px solid #007acc;
+  }
+  .replyInput button {
+    height: 3.5vw;
+    width: 3.5vw;
+  }
+  .replyInput {
+    width: 60%;
+    margin-left: auto;
+    margin-right: 11%;
+  }
+  .replyBox .reply {
+    width: 80%;
+    height: 5vw;
+  }
+  .replyBox .replyIcon {
+    left: -50px;
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .commentContainer .profileIcon {
+    left: -150px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .commentContainer .profileIcon {
+    left: -140px;
+    height: 10vw;
+    width: 10vw;
+  }
+  .commentContainer {
+    height: 11vw;
+  }
+  .replyBox .replyIcon {
+    left: -55px;
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .commentContainer .profileIcon {
+    left: -140px;
+    height: 10vw;
+    width: 10vw;
+  }
+  .commentContainer {
+    height: 12vw;
+  }
+  .replyInput input[type="text"] {
+    border: none;
+    height: 3.5vw;
+    width: 25vw;
+    border-bottom: 2px solid #007acc;
+    font-size: 24px;
+  }
+  .replyBox .replyIcon {
+    left: -55px;
+    width: 4vw;
+    height: 4vw;
+  }
+  .replyInput button {
+    height: 3.5vw;
+    width: 3.5vw;
+  }
+}
+
+@media (min-width: 1900px) {
+  .replyInput button .replyIcon {
+    font-size: 35px;
+  }
+  .commentContainer .profileIcon {
+    left: -165px;
+    height: 10vw;
+    width: 10vw;
+  }
+  .commentContainer {
+    height: 12vw;
+  }
+  .replyInput input[type="text"] {
+    font-size: 30px;
+  }
+  .replyBox .replyIcon {
+    left: -75px;
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+  .thumbPanel .thumbBox {
+    width: 7vw;
+  }
+  .upperBox .nick {
+    font-size: 35px;
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+
+  .upperBox .date {
+    font-size: 20px;
+  }
+
+  .commentContainer .commentText {
+    padding: 0 20px 5px 40px;
+    font-size: 22px;
+  }
+  .thumbBox p {
+    font-size: 22px;
+  }
+
+  .optionPanel .icon {
+    font-size: 35px;
+  }
+
+  .optionPanel .leftBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    border: 4px solid #252526;
+    border-radius: 50px;
+    padding: 20px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+
+  .optionPanel .leftBox p {
+    font-size: 24px;
+  }
+
+  .optionPanel .leftBox .shareIcon {
+    width: 24px;
+  }
+  .commentReplay .replayIcon {
+    color: white;
+    font-size: 35px;
+  }
+
+  .commentReplay p {
+    font-size: 20px;
+  }
+
+  .replyUpperBox .replyNick {
+    font-size: 24px;
+  }
+
+  .replyUpperBox .replyDate {
+    font-size: 16px;
+  }
+
+  .replyBox .replyText {
+    font-size: 17px;
+  }
 }

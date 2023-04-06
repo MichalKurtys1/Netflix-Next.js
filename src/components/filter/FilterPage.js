@@ -2,7 +2,6 @@ import CategoryFilter from "./CategoryFilter";
 import Footer from "../Footer";
 import YearFilter from "./YearFilter";
 import PlatformFilter from "./PlatformFilter";
-import SortTypeSecection from "./SortTypeSecection";
 import { useSelector } from "react-redux";
 import useFilter from "src/hooks/useFilter";
 import FilterResults from "./FilterResults";

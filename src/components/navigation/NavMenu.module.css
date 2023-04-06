@@ -100,3 +100,158 @@
 .panel .link p {
   width: 75%;
 }
+
+@media (min-width: 1024px) and (min-height: 600px) {
+  .container .panel {
+    width: 18vw;
+    top: 115%;
+    right: 40%;
+  }
+  .container .search {
+    right: 245%;
+  }
+
+  .container .search input[type="search"] {
+    width: 17vw;
+    font-size: 14px;
+  }
+
+  .panel .link {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  .container .panel {
+    width: 18vw;
+    top: 108%;
+    right: 35%;
+  }
+
+  .panel .link {
+    width: 60%;
+  }
+
+  .container .search {
+    right: 235%;
+  }
+
+  .container .search input[type="search"] {
+    width: 20vw;
+    font-size: 16px;
+  }
+
+  .container .icon {
+    width: 3.5vh;
+    height: 3.5vh;
+  }
+
+  .container .image {
+    width: 5.5vh;
+    height: 5.5vh;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 768px) {
+  .container .search {
+    right: 265%;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 950px) {
+  .container .panel {
+    width: 18vw;
+    top: 108%;
+    right: 35%;
+  }
+
+  .panel .link {
+    width: 60%;
+  }
+
+  .container .search {
+    right: 235%;
+  }
+
+  .container .search input[type="search"] {
+    width: 20vw;
+    height: 3.5vh;
+  }
+
+  .container .icon {
+    width: 3vh;
+    height: 3vh;
+  }
+
+  .container .image {
+    width: 5vh;
+    height: 5vh;
+  }
+}
+
+@media (min-width: 1366px) and (min-height: 768px) {
+  .container .panel {
+    width: 17vw;
+    top: 108%;
+    right: 40%;
+  }
+
+  .panel .link {
+    width: 60%;
+  }
+
+  .container .search {
+    right: 235%;
+  }
+
+  .container .search input[type="search"] {
+    width: 16vw;
+    height: 4vh;
+  }
+
+  .container .icon {
+    width: 3.5vh;
+    height: 3.5vh;
+  }
+
+  .container .image {
+    width: 5.5vh;
+    height: 5.5vh;
+  }
+}
+
+@media (min-width: 1500px) and (min-height: 740px) {
+  .container .panel {
+    width: 15vw;
+    top: 108%;
+    right: 30%;
+  }
+
+  .container .search input[type="search"] {
+    width: 15vw;
+    height: 4vh;
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1080px) {
+  .container .panel {
+    width: 15vw;
+    top: 108%;
+    right: 40%;
+  }
+
+  .container .panel p {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+    color: white;
+  }
+
+  .panel .link .icon {
+    width: 24px;
+  }
+
+  .container .search input[type="search"] {
+    font-size: 20px;
+  }
+}

@@ -27,6 +27,8 @@ const Player = (props) => {
   const [addedToFavorites, setAddedToFavorites] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
 
+  let width = window.innerWidth;
+
   const likeHandler = () => {
     if (isLiked) {
       setIsLiked(false);
@@ -93,7 +95,7 @@ const Player = (props) => {
             }
             image={img1}
             className={style.video}
-            width={"70vw"}
+            width={"80vw"}
             height={"80vh"}
           />
         </div>

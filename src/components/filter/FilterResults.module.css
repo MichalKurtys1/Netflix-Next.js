@@ -115,3 +115,100 @@
   padding-right: 3px;
   font-size: 14px;
 }
+
+@media (min-width: 1024px) {
+  .menu {
+    width: 100%;
+  }
+  .menu .iconsBox .iconBox {
+    padding: 5px;
+  }
+
+  .iconsBox .iconBox .icon {
+    width: 65px;
+  }
+
+  .listBox .listItem {
+    height: 16vw;
+    width: 100%;
+  }
+  .listBox .listItem p.description {
+    font-size: 14px;
+  }
+
+  .listBox .listItem h1 {
+    padding: 5px 20px;
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .menu .iconsBox .iconBox {
+    padding: 10px;
+  }
+
+  .iconsBox .iconBox .icon {
+    width: 70px;
+  }
+  .listBox .listItem p.description {
+    font-size: 18px;
+  }
+
+  .listBox .listItem h1 {
+    padding: 10px 20px;
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .menu .iconsBox .iconBox {
+    padding: 10px;
+  }
+  .listBox .listItem {
+    height: 13vw;
+    width: 90%;
+  }
+  .iconsBox .iconBox .icon {
+    width: 75px;
+  }
+  .listBox .listItem p.description {
+    font-size: 18px;
+  }
+
+  .listBox .listItem h1 {
+    padding: 10px 20px;
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .listBox .listItem p.description {
+    font-size: 20px;
+  }
+
+  .listBox .listItem h1 {
+    padding: 10px 20px;
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .menu .iconsBox .iconBox {
+    padding: 10px;
+  }
+  .iconsBox .iconBox .icon {
+    width: 80px;
+  }
+  .listBox .listItem p.description {
+    font-size: 24px;
+  }
+
+  .listBox .listItem h1 {
+    padding: 10px 20px;
+    font-size: 40px;
+  }
+
+  .listBox .details p.place {
+    font-size: 20px;
+  }
+}

@@ -24,7 +24,7 @@ const commentList = [
     reply: [
       {
         nick: "Jagódka",
-        text: "Film nie był zły, da się obejrzeć, nawet można się pośmiać. Dobrze,że nie sugerowałem się komentarzami poprzedników. Można oglądać 7/10",
+        text: "Film nie był zły, da się obejrzeć, nawet można się pośmiać. Dobrze,że nie sugerowałem się komentarzami poprzedników. Można oglądać 7/10.",
         date: "11.03.2023",
       },
       { nick: "Łukasz", text: "Polecam", date: "11.03.2023" },

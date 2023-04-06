@@ -21,3 +21,34 @@
   font-size: 30px;
   color: white;
 }
+
+@media (min-width: 1024px) {
+  .slider {
+    height: 22vw;
+  }
+
+  .category {
+    top: -12vh;
+    left: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slider {
+    height: 19vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .slide {
+    width: 12vw;
+    height: 20vh;
+  }
+}
+
+@media (min-width: 1920px) {
+  .slide {
+    width: 16vw;
+    height: 20vh;
+  }
+}

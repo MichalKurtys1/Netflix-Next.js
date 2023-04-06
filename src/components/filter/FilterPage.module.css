@@ -24,3 +24,15 @@
   color: white;
   font-size: 28px;
 }
+
+@media (min-width: 1600px) {
+  .filterBox .submitFilterBtn {
+    height: 60px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .filterBox .submitFilterBtn {
+    height: 65px;
+  }
+}
