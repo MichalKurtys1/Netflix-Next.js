@@ -212,6 +212,20 @@
   .nav .additionalOption .option {
     margin: 5px auto;
   }
+
+  /* xxx */
+  .popup {
+    height: 25vw;
+    width: 50vw;
+  }
+
+  .popup h1 {
+    font-size: 20px;
+  }
+
+  .popup p {
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1024px) and (min-height: 768px) {
@@ -225,6 +239,20 @@
 @media (min-width: 1200px) {
   .container .nav {
     width: 20%;
+  }
+
+  /* xxx */
+  .popup {
+    height: 22vw;
+    width: 50vw;
+  }
+
+  .popup h1 {
+    font-size: 25px;
+  }
+
+  .popup p {
+    font-size: 22px;
   }
 }
 
@@ -254,5 +282,47 @@
 
   .option .iconAdditional {
     width: 15px;
+  }
+
+  /* xxx */
+  .popup {
+    height: 22vw;
+    width: 45vw;
+  }
+
+  .popup h1 {
+    font-size: 30px;
+  }
+
+  .popup p {
+    font-size: 24px;
+  }
+  .popup .keep {
+    font-size: 26px;
+  }
+  .cancel .iconCancel {
+    width: 60px;
+  }
+}
+
+@media (min-width: 1900px) {
+  /* xxx */
+  .popup {
+    height: 20vw;
+    width: 45vw;
+  }
+
+  .popup h1 {
+    font-size: 36px;
+  }
+
+  .popup p {
+    font-size: 30px;
+  }
+  .popup .keep {
+    font-size: 26px;
+  }
+  .cancel .iconCancel {
+    width: 60px;
   }
 }

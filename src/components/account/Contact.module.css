@@ -167,3 +167,207 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
 }
+
+@media (min-width: 1024px) {
+  .container .numberBox {
+    width: 45%;
+    margin: 12vh auto 10vh;
+  }
+  .wrapper .leftBox {
+    width: 30%;
+  }
+
+  .container {
+    margin: 14vh auto 0;
+    margin-left: 20%;
+    margin-right: auto;
+  }
+
+  .container .loginForm {
+    height: 55%;
+  }
+
+  .inputBox .welcomeBox h1 {
+    font-size: 24px;
+    padding: 20px;
+  }
+
+  .container .infoBox {
+    width: 45%;
+    height: 50vw;
+  }
+
+  .container .inputBox {
+    width: 45%;
+    height: 50vw;
+  }
+
+  .loginForm .input {
+    position: relative;
+    width: 60%;
+  }
+
+  .loginForm .input input[type="text"],
+  .loginForm .input input[type="password"] {
+    padding: 6px 0 6px 5vw;
+    height: 4.5vw;
+    font-size: 18px;
+  }
+
+  .loginForm .input .iconBox {
+    height: 4.5vw;
+    width: 4.5vw;
+    border-radius: 8px;
+  }
+
+  .input .iconBox .icon {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+
+  .loginForm input[type="submit"] {
+    height: 4.5vw;
+  }
+  .container .errorBox {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .loginForm .input input[type="text"],
+  .loginForm .input input[type="password"] {
+    padding: 6px 0 6px 4.5vw;
+    height: 4vw;
+  }
+
+  .container .inputBox {
+    height: 45vw;
+  }
+
+  .container .loginForm {
+    height: 60%;
+  }
+
+  .inputBox .welcomeBox h1 {
+    font-size: 32px;
+    padding: 20px;
+  }
+
+  .loginForm .input .iconBox {
+    height: 4vw;
+    width: 4vw;
+  }
+
+  .input .iconBox .icon {
+    width: 2vw;
+    height: 2vw;
+  }
+
+  .loginForm input[type="submit"] {
+    height: 3.5vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container .errorBox {
+    font-size: 16px;
+  }
+
+  .inputBox .links {
+    font-size: 16px;
+  }
+  .inputBox .welcomeBox h1 {
+    font-size: 40px;
+  }
+
+  .inputBox .welcomeBox p {
+    font-size: 16px;
+  }
+
+  .infoBox .info h1 {
+    font-size: 40px;
+  }
+
+  .infoBox .info p {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .numberBox h1 {
+    font-size: 40px;
+  }
+
+  .wrapper .leftBox {
+    font-size: 28px;
+  }
+  .wrapper .rightBox {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .numberBox h1 {
+    font-size: 45px;
+  }
+
+  .wrapper .leftBox {
+    font-size: 32px;
+  }
+  .wrapper .rightBox {
+    font-size: 28px;
+  }
+
+  .loginForm .input input[type="text"],
+  .loginForm .input input[type="password"] {
+    padding: 6px 0 6px 4vw;
+    height: 3.5vw;
+    font-size: 24px;
+  }
+
+  .container .inputBox {
+    height: 40vw;
+  }
+
+  .container .loginForm {
+    height: 60%;
+  }
+  .loginForm .input .iconBox {
+    height: 3.5vw;
+    width: 3.5vw;
+  }
+
+  .input .iconBox .icon {
+    width: 1.5vw;
+    height: 1.5vw;
+  }
+
+  .loginForm input[type="submit"] {
+    height: 3.5vw;
+    font-size: 30px;
+  }
+
+  .container .errorBox {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .inputBox .links {
+    font-size: 22px;
+  }
+  .inputBox .welcomeBox h1 {
+    font-size: 50px;
+  }
+
+  .inputBox .welcomeBox p {
+    font-size: 22px;
+  }
+
+  .infoBox .info h1 {
+    font-size: 50px;
+  }
+
+  .infoBox .info p {
+    font-size: 30px;
+  }
+}
