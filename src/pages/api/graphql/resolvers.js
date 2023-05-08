@@ -19,6 +19,13 @@ const prisma = new PrismaClient();
 const resolvers = {
 
     Query: {
+       getUsers: async function(parent, args){
+        const users = await prisma.user.findMany();
+        return users;
+       },
+    },
+
+    Mutation: {
         login: async function(parent, args) {
             const email = args.email;
             const password = args.password;
@@ -40,6 +47,8 @@ const resolvers = {
                   });
             }
 
+            const expiration = '1h';
+
             const token = jwt.sign(
                 {
                   userId: user.id.toString(),
@@ -47,13 +56,45 @@ const resolvers = {
                   type: user.type
                 },
                 'MmcXUQpSl3KxyAw',
-                { expiresIn: '1h' }
+                { expiresIn: expiration }
               );
 
-                return { token: token, user: user }
+                return { token: token, email: user.email, nick: user.nick, type: user.type, expiresIn: expiration }
         },
-    },
-
+        createUser: async function(parent, args){
+            const id = Str.random()
+            const existingUser = await prisma.user.findFirst({ 
+                where: {
+                    email: {
+                        equals: args.email
+                    }
+                }
+            });
+            const existingNick = await prisma.user.findFirst({
+                where: {
+                    nick: {
+                        equals: args.nick
+                    }
+                }
+            })
+            if (existingUser || existingNick) {
+                throw new GraphQLError("User already exists", {
+                    extensions: { code: 'BAD_USER_INPUT' },
+                  });
+                }
+            const hashedPw = await bcrypt.hash(args.password, 12);
+            const createdUser = await prisma.user.create({
+                data: {
+                    id: id,
+                    email: args.email,
+                    password: hashedPw,
+                    nick: args.nick,
+                    type: 'user',
+                }
+            })
+            return createdUser;
+        },
+    }
 }
 
 module.exports = { resolvers };
