@@ -1,7 +1,7 @@
 .container {
   width: 90%;
-  height: 80vh;
-  margin: 8vw auto 0;
+  height: 70vh;
+  margin: 13vw auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -350,4 +350,20 @@
   .infoBox .info p {
     font-size: 30px;
   }
+}
+
+.spinnerBox {
+  position: relative;
+  background-color: #000;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner {
+  position: absolute;
+  z-index: 11;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

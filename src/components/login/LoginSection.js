@@ -10,7 +10,17 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../store/index";
 import { useRouter } from "next/router";
 
-const loginData = { email: "admin@admin.pl", password: "admin" };
+import { gql, useMutation } from "@apollo/client";
+import Spinner from "../UI/Spiner";
+
+const LOGIN = gql`
+  mutation Mutation($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      expiresIn
+    }
+  }
+`;
 
 const LoginSection = (props) => {
   const dispatch = useDispatch();
@@ -18,6 +28,7 @@ const LoginSection = (props) => {
   const [isValid, setIsValid] = useState(true);
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
+  const [login, { data, loading, error }] = useMutation(LOGIN);
 
   const changeEmailHandler = (event) => {
     setEmailInputValue(event.target.value);
@@ -34,24 +45,45 @@ const LoginSection = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (emailInputValue !== loginData.email) {
-      setIsValid(false);
-      return;
-    } else if (passwordInputValue !== loginData.password) {
-      setIsValid(false);
-      setEmailInputValue("");
-      setPasswordInputValue("");
-      return;
-    } else {
-      setIsValid(true);
-      dispatch(authActions.logIn("01020304050607"));
-      router.push("/films");
-    }
+    login({
+      variables: { email: emailInputValue, password: passwordInputValue },
+    })
+      .then((data) => {
+        const date = new Date(Date.now()).getTime() + 3600000;
+        const now = new Date(Date.now()).getTime();
+        const time = date - now;
+        setTimeout(() => {
+          dispatch(authActions.logOut());
+        }, time);
+
+        dispatch(
+          authActions.logIn({
+            token: data.data.login.token,
+            expiresIn: new Date(date).toJSON(),
+          })
+        );
+
+        setIsValid(true);
+        router.push("/films");
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsValid(false);
+        setEmailInputValue("");
+        setPasswordInputValue("");
+      });
   };
 
   return (
     <div className={style.container}>
       <div className={style.inputBox}>
+        {loading && (
+          <div className={style.spinnerBox}>
+            <div className={style.spinner}>
+              <Spinner />
+            </div>
+          </div>
+        )}
         <div className={style.welcomeBox}>
           <h1>Witaj z powrotem w FilmInc</h1>
           <p>Proszę zaloguj się żeby odblokować dodatkowe funkcję.</p>
@@ -88,9 +120,6 @@ const LoginSection = (props) => {
           <input type="submit" value="Zaloguj" />
         </form>
         <div className={style.links}>
-          <Link href={"/forget-password"} className={style.link}>
-            Zapomniałeś hasła?
-          </Link>
           <div className={style.link} onClick={clickHandler}>
             Stwórz konto
           </div>

@@ -7,7 +7,6 @@ const Spinner = () => {
     <>
       <div className={style.container}>
         <div className={style.loader}></div>
-        <FontAwesomeIcon icon={faPlay} className={style.icon} />
       </div>
     </>
   );

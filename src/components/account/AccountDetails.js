@@ -26,8 +26,9 @@ import Contact from "./Contact";
 import Link from "next/link";
 import FAQ from "./FAQ";
 import PlanChanage from "./PlanChanage";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const AccountDetails = () => {
   const { push, query } = useRouter();

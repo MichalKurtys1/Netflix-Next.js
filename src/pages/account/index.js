@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navigation from "../../components/navigation/Navigation";
 import AccountDetails from "../../components/account/AccountDetails";
-
+import Auth from "../../hooks/Auth";
 export default function details() {
   return (
     <>
@@ -13,6 +13,7 @@ export default function details() {
       </Head>
       <main>
         <Navigation />
+        <Auth />
         <AccountDetails />
       </main>
     </>

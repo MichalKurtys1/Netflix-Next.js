@@ -13,7 +13,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
-const loginData = { nick: "admin", email: "admin@admin.pl", password: "admin" };
+import { gql, useMutation } from "@apollo/client";
+import Spinner from "../UI/Spiner";
+
+const REGISTER = gql`
+  mutation Mutation($email: String!, $password: String!, $nick: String!) {
+    createUser(email: $email, password: $password, nick: $nick) {
+      nick
+    }
+  }
+`;
 
 const RegisterSection = (props) => {
   const [pupupIsOpen, setPopupIsOpen] = useState(false);
@@ -27,6 +36,8 @@ const RegisterSection = (props) => {
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [passwordRepeatInputValue, setPasswordRepeatInputValue] = useState("");
+
+  const [register, { data, loading, error }] = useMutation(REGISTER);
 
   const changeNickHandler = (event) => {
     setNickInputValue(event.target.value);
@@ -47,14 +58,9 @@ const RegisterSection = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (nickInputValue === loginData.nick) {
-      setIsValidNick(false);
+    if (nickInputValue.length < 6) {
+      setIsValidNick("za krotki");
       setNickInputValue("");
-      return;
-    } else if (emailInputValue === loginData.email) {
-      setIsValidEmail(false);
-      setIsValidNick(true);
-      setEmailInputValue("");
       return;
     } else if (
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInputValue)
@@ -74,21 +80,40 @@ const RegisterSection = (props) => {
       setPasswordRepeatInputValue("");
       return;
     }
-    setIsValidNick(true);
-    setIsValidEmail(true);
-    setIsValidPass(true);
-    setIsValidPassRepeat(true);
 
-    setNickInputValue("");
-    setEmailInputValue("");
-    setPasswordInputValue("");
-    setPasswordRepeatInputValue("");
+    register({
+      variables: {
+        email: emailInputValue,
+        password: passwordInputValue,
+        nick: nickInputValue,
+      },
+    })
+      .then((data) => {
+        setIsValidNick(true);
+        setIsValidEmail(true);
+        setIsValidPass(true);
+        setIsValidPassRepeat(true);
 
-    setPopupIsOpen(true);
-    setTimeout(() => {
-      setPopupIsOpen(false);
-      props.loginHandler();
-    }, 1500);
+        setNickInputValue("");
+        setEmailInputValue("");
+        setPasswordInputValue("");
+        setPasswordRepeatInputValue("");
+
+        setPopupIsOpen(true);
+        setTimeout(() => {
+          setPopupIsOpen(false);
+          props.loginHandler();
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsValidEmail(false);
+        setIsValidNick(false);
+        setIsValidPass(true);
+        setIsValidPassRepeat(true);
+        setNickInputValue("");
+        setEmailInputValue("");
+      });
   };
 
   const clickHandler = () => {
@@ -122,6 +147,13 @@ const RegisterSection = (props) => {
         </div>
       </div>
       <div className={style.inputBox}>
+        {loading && (
+          <div className={style.spinnerBox}>
+            <div className={style.spinner}>
+              <Spinner />
+            </div>
+          </div>
+        )}
         <div className={style.welcomeBox}>
           <h1>Witaj w FilmInc</h1>
           <p>
@@ -138,9 +170,12 @@ const RegisterSection = (props) => {
               value={nickInputValue}
               onChange={changeNickHandler}
             />
+            {isValidNick === "za krotki" && (
+              <div className={style.errorBox}>Podany nick jest za krótki.</div>
+            )}
             {!isValidNick && (
               <div className={style.errorBox}>
-                Podany nick jest już zajęty Proszę spróbuj ponownie.
+                Podany nick lub email jest już zajęty.
               </div>
             )}
             <div className={style.iconBox}>
@@ -156,7 +191,7 @@ const RegisterSection = (props) => {
             />
             {!isValidEmail && (
               <div className={style.errorBox}>
-                Podany emial jest już użyty. Podaj inny adres e-mail.
+                Podany nick lub email jest już użyty.
               </div>
             )}
             {isValidEmail === "not email" && (
@@ -200,15 +235,12 @@ const RegisterSection = (props) => {
               <FontAwesomeIcon icon={faLock} className={style.icon} />
             </div>
           </div>
-          <input type="submit" value="Zaloguj" />
+          <input type="submit" value="Zarejestruj się" />
         </form>
         <div className={style.links}>
           <div className={style.link} onClick={clickHandler}>
             Zaloguj się
           </div>
-          <Link href={"/forget-password"} className={style.link}>
-            Zapomniałeś hasła?
-          </Link>
         </div>
       </div>
     </div>
