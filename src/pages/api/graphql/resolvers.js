@@ -22,6 +22,10 @@ const resolvers = {
       const users = await prisma.user.findMany();
       return users;
     },
+    getFilms: async function (parent, args) {
+      const films = await prisma.films.findMany();
+      return films;
+    },
   },
 
   Mutation: {
@@ -108,6 +112,52 @@ const resolvers = {
         },
       });
       return createdUser;
+    },
+    addFilm: async function (parent, args) {
+      const id = Str.Str.random();
+      const title = args.title;
+      const description = args.description;
+      const director = args.director;
+      const scenario = args.scenario;
+      const genre = args.genre;
+      const production = args.production;
+      const premiere = args.premiere;
+      const miniature = args.miniature;
+      const content = args.content;
+      const duration = args.duration;
+      const like = args.like;
+      const dislike = args.dislike;
+
+      const film = await prisma.films.create({
+        data: {
+          id: id,
+          title: title,
+          description: description,
+          director: director,
+          scenario: scenario,
+          genre: genre,
+          production: production,
+          premiere: premiere,
+          miniature: miniature,
+          content: content,
+          duration: duration,
+          like: like,
+          dislike: dislike,
+        },
+      });
+
+      return film;
+    },
+    getFilm: async function (parent, args) {
+      const title = args.title;
+      const film = await prisma.films.findFirst({
+        where: {
+          title: {
+            equals: title,
+          },
+        },
+      });
+      return film;
     },
   },
 };

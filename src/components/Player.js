@@ -1,7 +1,6 @@
 import style from "./Player.module.css";
 import "./Player.module.css";
 import video from "public/videos/sample_960x540.mp4";
-import img1 from "public/film_miniatures/irishman.jpg";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faShare } from "@fortawesome/free-solid-svg-icons";
@@ -90,10 +89,7 @@ const Player = (props) => {
             playing={true}
             controls={true}
             muted={false}
-            light={
-              "https://firebasestorage.googleapis.com/v0/b/onlineshop-eb044.appspot.com/o/itemsImages%2Firishman.jpg?alt=media&token=ea97bc71-5d10-4b4c-b4fb-a19dcb37fd69"
-            }
-            image={img1}
+            light={"/film_miniatures/" + props.miniature}
             className={style.video}
             width={"80vw"}
             height={"80vh"}
@@ -101,7 +97,7 @@ const Player = (props) => {
         </div>
         <div className={style.optionPanel}>
           <div className={style.leftBox}>
-            <h1>{likesList.name}</h1>
+            <h1>{props.title}</h1>
             <div className={style.thumbPanel}>
               <div className={style.thumbBox}>
                 {isLiked && (
@@ -110,7 +106,7 @@ const Player = (props) => {
                 {!isLiked && (
                   <AiOutlineLike onClick={likeHandler} className={style.icon} />
                 )}
-                <p>{likesList.like}</p>
+                <p>{props.like}</p>
               </div>
               <div className={style.thumbBox}>
                 {isDisliked && (
@@ -125,7 +121,7 @@ const Player = (props) => {
                     className={style.icon}
                   />
                 )}
-                <p>{likesList.dislike}</p>
+                <p>{props.dislike}</p>
               </div>
             </div>
           </div>

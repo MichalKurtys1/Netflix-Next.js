@@ -16,7 +16,6 @@ const films = () => {
       <main>
         <Navigation />
         <FilmDetails />
-        <Footer />
       </main>
     </>
   );

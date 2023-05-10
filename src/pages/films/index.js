@@ -3,7 +3,60 @@ import MainSection from "../../components/MainSection";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
 
-const films = () => {
+import { gql } from "@apollo/client";
+import { client } from "../../lib/apolloClient";
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query Query {
+        getFilms {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          content
+          duration
+          like
+          dislike
+        }
+      }
+    `,
+  });
+
+  let category1 = data.getFilms.filter((film) => film.genre.includes("Sci-Fi"));
+  let category2 = data.getFilms.filter((film) =>
+    film.genre.includes("Gangsterski")
+  );
+  let category3 = data.getFilms.filter((film) =>
+    film.genre.includes("Komedia")
+  );
+  let category4 = data.getFilms.filter((film) =>
+    film.genre.includes("Biograficzny")
+  );
+  let category5 = data.getFilms.filter((film) =>
+    film.genre.includes("Fantasy")
+  );
+
+  return {
+    props: {
+      films: [
+        { genre: "Sci-Fi", list: category1 },
+        { genre: "Gangsterskie", list: category2 },
+        { genre: "Komedie", list: category3 },
+        { genre: "Biograficzne", list: category4 },
+        { genre: "Fantasy", list: category5 },
+      ],
+    },
+  };
+}
+
+const films = ({ films }) => {
   return (
     <>
       <Head>
@@ -14,7 +67,7 @@ const films = () => {
       </Head>
       <main>
         <Navigation />
-        <MainSection type="films" />
+        <MainSection type="films" films={films} />
         <Footer />
       </main>
     </>

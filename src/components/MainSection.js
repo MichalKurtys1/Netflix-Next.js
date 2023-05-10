@@ -8,7 +8,7 @@ import { useState } from "react";
 const img1 = require("public/film_miniatures/wakanda_forever.jpg");
 const img2 = require("public/film_miniatures/lotr3.jpg");
 const img3 = require("public/film_miniatures/irishman.jpg");
-const img4 = require("public/film_miniatures/ant_man_2.jpg");
+const img4 = require("public/film_miniatures/antman_quantumania.jpg");
 const img5 = require("public/film_miniatures/red_notice.jpg");
 const img6 = require("public/film_miniatures/avangers_endgame.jpg");
 const img7 = require("public/film_miniatures/batman_vs_superman.jpg");
@@ -54,60 +54,9 @@ const popularList = [
   },
 ];
 
-const filmList1 = [
-  { img: img1, name: "Czarna Pantera 2", details: "1h 30min" },
-  { img: img2, name: "Władca Pierścieni: Powrót Króla", details: "2h 45min" },
-  { img: img3, name: "Irlandczyk", details: "1h 15min" },
-  { img: img4, name: "Ant-Man i Osa", details: "1h 45min" },
-  { img: img5, name: "Czerwona Nota", details: "1h 30min" },
-  { img: img6, name: "Avangers: Endgame", details: "2h 5min" },
-  { img: img7, name: "Batman Vs Superman", details: "1h 55min" },
-  { img: img8, name: "Faceci w czerni", details: "1h 30min" },
-  { img: img9, name: "Nietykalni", details: "1h 50min" },
-  { img: img10, name: "Avatar: Way Of Water", details: "1h 45min" },
-];
-
-const filmList2 = [
-  { img: img6, name: "Avangers: Endgame", details: "2h 5min" },
-  { img: img7, name: "Batman Vs Superman", details: "1h 55min" },
-  { img: img8, name: "Faceci w czerni", details: "1h 30min" },
-  { img: img9, name: "Nietykalni", details: "1h 50min" },
-  { img: img10, name: "Avatar: Way Of Water", details: "1h 45min" },
-  { img: img1, name: "Czarna Pantera 2", details: "1h 30min" },
-  { img: img2, name: "Władca Pierścieni: Powrót Króla", details: "2h 45min" },
-  { img: img3, name: "Irlandczyk", details: "1h 15min" },
-  { img: img4, name: "Ant-Man i Osa", details: "1h 45min" },
-  { img: img5, name: "Czerwona Nota", details: "1h 30min" },
-];
-
-const filmList3 = [
-  { img: img9, name: "Nietykalni", details: "1h 50min" },
-  { img: img10, name: "Avatar: Way Of Water", details: "1h 45min" },
-  { img: img1, name: "Czarna Pantera 2", details: "1h 30min" },
-  { img: img2, name: "Władca Pierścieni: Powrót Króla", details: "2h 45min" },
-  { img: img6, name: "Avangers: Endgame", details: "2h 5min" },
-  { img: img7, name: "Batman Vs Superman", details: "1h 55min" },
-  { img: img8, name: "Faceci w czerni", details: "1h 30min" },
-  { img: img8, name: "Faceci w czerni", details: "1h 30min" },
-  { img: img9, name: "Nietykalni", details: "1h 50min" },
-  { img: img10, name: "Avatar: Way Of Water", details: "1h 45min" },
-];
-
-const filmList4 = [
-  { img: img1, name: "Czarna Pantera 2", details: "1h 30min" },
-  { img: img2, name: "Władca Pierścieni: Powrót Króla", details: "2h 45min" },
-  { img: img6, name: "Avangers: Endgame", details: "2h 5min" },
-  { img: img7, name: "Batman Vs Superman", details: "1h 55min" },
-  { img: img8, name: "Faceci w czerni", details: "1h 30min" },
-  { img: img8, name: "Faceci w czerni", details: "1h 30min" },
-  { img: img9, name: "Nietykalni", details: "1h 50min" },
-  { img: img10, name: "Avatar: Way Of Water", details: "1h 45min" },
-  { img: img1, name: "Czarna Pantera 2", details: "1h 30min" },
-];
-
 const MainSection = (props) => {
   const [isClicked, setIsClicked] = useState(3);
-
+  console.log(props.films);
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -150,11 +99,13 @@ const MainSection = (props) => {
         ))}
       </div>
       <div className={style.sliderWrapper}>
-        <Slider category="Fantasy" type={props.type} list={filmList1} />
-        <Slider category="Sci-Fi" type={props.type} list={filmList2} />
-        <Slider category="Komedie" type={props.type} list={filmList3} />
-        <Slider category="Akcji" type={props.type} list={filmList4} />
-        <Slider category="Horrory" type={props.type} list={filmList1} />
+        {props.films.map((film) => (
+          <Slider
+            category={film.genre}
+            type={props.type}
+            list={film.list.slice(0, 10)}
+          />
+        ))}
       </div>
     </motion.div>
   );
