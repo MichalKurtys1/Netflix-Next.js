@@ -29,13 +29,18 @@ const typeDefs = gql`
     miniature: String!
     content: String!
     duration: String!
-    like: String!
-    dislike: String!
+    like: Int!
+    dislike: Int!
+  }
+
+  type Popular {
+    films: [Films!]
   }
 
   type Query {
     getUsers(email: String): [User!]
     getFilms: [Films!]
+    getPopular: Popular!
   }
 
   type Mutation {
@@ -52,8 +57,8 @@ const typeDefs = gql`
       miniature: String!
       content: String!
       duration: String!
-      like: String!
-      dislike: String!
+      like: Int!
+      dislike: Int!
     ): Films!
     getFilm(title: String!): Films!
   }

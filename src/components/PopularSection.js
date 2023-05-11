@@ -234,6 +234,8 @@ const dumyData = [
 const PopularSection = (props) => {
   const [displayType, setDisplayType] = useState(1);
 
+  console.log(props);
+
   const displayTypeHandler = (type) => {
     setDisplayType(type);
   };
@@ -286,25 +288,32 @@ const PopularSection = (props) => {
       </ul>
       <div className={style.listBox}>
         {displayType === 1 &&
-          PopularListWorld.map((item) => (
+          props.films.map((item, i) => (
             <motion.div
               className={style.listItem}
-              key={item.name}
+              key={item.id}
               initial={{ opacity: 0, x: -15 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 15 }}
               transition={{ delay: 0.25 }}
             >
-              <Image src={item.img} alt="" className={style.image} />
+              <div
+                className={style.image}
+                style={{
+                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
+                }}
+              ></div>
               <div className={style.details}>
-                <h1>{item.name}</h1>
-                <p className={style.place}>{item.place}</p>
+                <h1>{item.title}</h1>
+                <p className={style.place}>{i + 1}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
             </motion.div>
           ))}
         {displayType === 2 &&
-          PopularListPoland.map((item) => (
+          props.both.map((item, i) => (
             <motion.div
               className={style.listItem}
               key={item.name}
@@ -313,16 +322,23 @@ const PopularSection = (props) => {
               exit={{ opacity: 0, x: 15 }}
               transition={{ delay: 0.25 }}
             >
-              <Image src={item.img} alt="" className={style.image} />
+              <div
+                className={style.image}
+                style={{
+                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
+                }}
+              ></div>
               <div className={style.details}>
-                <h1>{item.name}</h1>
-                <p className={style.place}>{item.place}</p>
+                <h1>{item.title}</h1>
+                <p className={style.place}>{i + 1}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
             </motion.div>
           ))}
         {displayType === 3 &&
-          dumyData.map((item) => (
+          props.series.map((item, i) => (
             <motion.div
               className={style.listItem}
               key={item.name}
@@ -331,10 +347,17 @@ const PopularSection = (props) => {
               exit={{ opacity: 0, x: 15 }}
               transition={{ delay: 0.25 }}
             >
-              <Image src={item.img} alt="" className={style.image} />
+              <div
+                className={style.image}
+                style={{
+                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
+                }}
+              ></div>
               <div className={style.details}>
-                <h1>{item.name}</h1>
-                <p className={style.place}>{item.place}</p>
+                <h1>{item.title}</h1>
+                <p className={style.place}>{i + 1}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
             </motion.div>

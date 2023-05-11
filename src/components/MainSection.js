@@ -56,7 +56,7 @@ const popularList = [
 
 const MainSection = (props) => {
   const [isClicked, setIsClicked] = useState(3);
-  console.log(props.films);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}

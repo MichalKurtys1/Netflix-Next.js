@@ -26,6 +26,15 @@ const resolvers = {
       const films = await prisma.films.findMany();
       return films;
     },
+    getPopular: async function (parent, args) {
+      const films = await prisma.films.findMany({
+        orderBy: {
+          like: "desc",
+        },
+      });
+
+      return { films: films, series: [] };
+    },
   },
 
   Mutation: {

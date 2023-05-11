@@ -27,6 +27,38 @@ model Films {
   miniature   String
   content     String
   duration    String
+  like        Int
+  dislike     Int
+}
+
+model Epizode {
+  id       String @id
+  seasonId String
+  title    String
+  content  String
+  season   Season @relation(fields: [seasonId], references: [id])
+}
+
+model Season {
+  id       String    @id
+  seriesId String
+  title    String
+  epizodes Epizode[]
+  series   Series    @relation(fields: [seriesId], references: [id])
+}
+
+model Series {
+  id          String   @id
+  title       String
+  description String
+  director    String
+  scenario    String
+  genre       String
+  production  String
+  premiere    String
+  miniature   String
+  duration    String
   like        String
   dislike     String
+  seasons     Season[]
 }
