@@ -104,6 +104,7 @@
 .listBox .details {
   position: relative;
   height: 100%;
+  width: 80%;
 }
 
 .listBox .details p.place {

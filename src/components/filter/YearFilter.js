@@ -1,11 +1,8 @@
 import style from "./YearFilter.module.css";
 import DoubleRangeSlider from "../UI/DoubleRangeSlider";
-import { useDispatch } from "react-redux";
 import { filterActions } from "src/store";
 
-const YearFilter = () => {
-  const dispatch = useDispatch();
-
+const YearFilter = (props) => {
   return (
     <div className={style.container}>
       <h1>Rok Produkcji</h1>
@@ -14,9 +11,8 @@ const YearFilter = () => {
           min={0}
           max={43}
           onChange={({ min, max }) => {
-            dispatch(
-              filterActions.changeYear({ from: min + 1980, to: max + 1980 })
-            );
+            props.setFrom(min);
+            props.setTo(max);
           }}
         />
       </div>

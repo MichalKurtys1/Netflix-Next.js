@@ -11,115 +11,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DropDownList from "../UI/DropDownList";
 
-import img1 from "public/miniatures/jurasicWorld.jpg";
-import img2 from "public/miniatures/avatar.jpeg";
-import img3 from "public/miniatures/dracula.jpg";
-import img4 from "public/miniatures/jurasicWorld.jpg";
-import img5 from "public/miniatures/jurasicWorld.jpg";
-import img6 from "public/miniatures/jurasicWorld.jpg";
-import img7 from "public/miniatures/jurasicWorld.jpg";
-import img8 from "public/miniatures/jurasicWorld.jpg";
-import img9 from "public/miniatures/jurasicWorld.jpg";
-import img10 from "public/miniatures/jurasicWorld.jpg";
-
 import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterActions } from "src/store";
 import { motion } from "framer-motion";
 
-const dummyData = [
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img5,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Avatar: Way Of Water",
-    img: img3,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Dracula: Untold",
-    img: img2,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img1,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img5,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img6,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img7,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img8,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img9,
-    date: "2010",
-  },
-  {
-    description:
-      "Zwieńczenie filmowej trylogii wg powieści Tolkiena. Aragorn jednoczy siły Śródziemia, szykując się do bitwy, która ma odwrócić uwagę Saurona od podążających w kierunku Góry Przeznaczenia hobbitów.",
-    name: "Jurasic World: Domination",
-    img: img10,
-    date: "2010",
-  },
-];
-
 const types = [
+  { name: "Wszystko" },
   { name: "W kinach" },
-  { name: "Już wktótce" },
+  { name: "Już wkrótce" },
   { name: "Filmy" },
   { name: "Seriale" },
 ];
 
 const FilterResults = (props) => {
-  const dispatch = useDispatch();
-  const [typeInputValue, setTypeInputValue] = useState("");
-  const [sortType, setSortType] = useState(null);
+  const [type, setType] = useState();
+  const [sort, setSort] = useState(0);
 
-  const changeTypeHandler = (category) => {
-    setTypeInputValue(category);
-    dispatch(filterActions.changeType(category));
-  };
+  console.log(props.data);
 
-  const sortHandler = (type) => {
-    setSortType(type);
+  const sortHandler = (type, sortX = sort) => {
+    setSort(sortX);
+    setType(type);
+    props.setSort(sortX, type);
   };
 
   return (
@@ -130,33 +45,25 @@ const FilterResults = (props) => {
             <div className={style.iconBox}>
               <FontAwesomeIcon
                 icon={faSortAlphaAsc}
-                className={`${style.icon} ${
-                  sortType === 1 ? style.active : ""
-                }`}
-                onClick={() => sortHandler(1)}
+                className={`${style.icon} ${sort === 1 ? style.active : ""}`}
+                onClick={() => sortHandler(type, 1)}
               />
               <FontAwesomeIcon
                 icon={faSortAlphaDownAlt}
-                className={`${style.icon} ${
-                  sortType === 2 ? style.active : ""
-                }`}
-                onClick={() => sortHandler(2)}
+                className={`${style.icon} ${sort === 2 ? style.active : ""}`}
+                onClick={() => sortHandler(type, 2)}
               />
             </div>
             <div className={style.iconBox}>
               <FontAwesomeIcon
                 icon={faSortAmountDown}
-                className={`${style.icon} ${
-                  sortType === 3 ? style.active : ""
-                }`}
-                onClick={() => sortHandler(3)}
+                className={`${style.icon} ${sort === 3 ? style.active : ""}`}
+                onClick={() => sortHandler(type, 3)}
               />
               <FontAwesomeIcon
                 icon={faSortAmountDesc}
-                className={`${style.icon} ${
-                  sortType === 4 ? style.active : ""
-                }`}
-                onClick={() => sortHandler(4)}
+                className={`${style.icon} ${sort === 4 ? style.active : ""}`}
+                onClick={() => sortHandler(type, 4)}
               />
             </div>
           </div>
@@ -164,7 +71,7 @@ const FilterResults = (props) => {
             <DropDownList
               title="Wybierz typ"
               categories={types}
-              onCategoryChange={changeTypeHandler}
+              onCategoryChange={sortHandler}
             />
           </div>
         </div>
@@ -177,12 +84,19 @@ const FilterResults = (props) => {
         transition={{ delay: 0.25 }}
       >
         {props.isEnabled &&
-          dummyData.map((item) => (
+          props.data.map((item) => (
             <div className={style.listItem} key={item.name}>
-              <Image src={item.img} alt="" className={style.image} />
+              <div
+                className={style.image}
+                style={{
+                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
+                }}
+              ></div>
               <div className={style.details}>
-                <h1>{item.name}</h1>
-                <p className={style.place}>{item.date}</p>
+                <h1>{item.title}</h1>
+                <p className={style.place}>{item.premiere}</p>
                 <p className={style.description}>{item.description}</p>
               </div>
             </div>

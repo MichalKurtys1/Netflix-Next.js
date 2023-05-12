@@ -16,7 +16,7 @@ model User {
 }
 
 model Films {
-  id          String @id
+  id          String   @id
   title       String
   description String
   director    String
@@ -29,6 +29,8 @@ model Films {
   duration    String
   like        Int
   dislike     Int
+  platforms   String[]
+  type        String[]
 }
 
 model Epizode {

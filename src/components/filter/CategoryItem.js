@@ -4,15 +4,14 @@ import { filterActions } from "src/store";
 import style from "./CategoryItem.module.css";
 
 const CategoryItem = (props) => {
-  const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
 
   const clickHandler = () => {
     if (isClicked) {
-      dispatch(filterActions.removeCategory(props.name));
+      props.setCategories(props.name, false);
       setIsClicked(false);
     } else {
-      dispatch(filterActions.addCategory(props.name));
+      props.setCategories(props.name, true);
       setIsClicked(true);
     }
   };

@@ -136,7 +136,8 @@ const resolvers = {
       const duration = args.duration;
       const like = args.like;
       const dislike = args.dislike;
-
+      const platforms = args.platforms;
+      const type = args.type;
       const film = await prisma.films.create({
         data: {
           id: id,
@@ -152,6 +153,8 @@ const resolvers = {
           duration: duration,
           like: like,
           dislike: dislike,
+          platforms: platforms,
+          type: type,
         },
       });
 

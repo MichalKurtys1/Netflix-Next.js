@@ -17,6 +17,25 @@ const typeDefs = gql`
     expiresIn: String!
   }
 
+  enum Platforms {
+    NETFLIX
+    HBO_MAX
+    AMAZON_PRIME
+    DISNEY_PLUS
+    APPLE_TV
+    CDA_PREMIUM
+    CANAL_ONLINE
+    PLAYER
+    HULU
+  }
+
+  enum Type {
+    FILM
+    SERIES
+    COMMING_SOON
+    IN_CINEMAS
+  }
+
   type Films {
     id: ID!
     title: String!
@@ -31,6 +50,8 @@ const typeDefs = gql`
     duration: String!
     like: Int!
     dislike: Int!
+    type: [Type!]
+    platforms: [Platforms!]
   }
 
   type Popular {
@@ -59,6 +80,8 @@ const typeDefs = gql`
       duration: String!
       like: Int!
       dislike: Int!
+      type: [Type!]
+      platforms: [Platforms!]
     ): Films!
     getFilm(title: String!): Films!
   }

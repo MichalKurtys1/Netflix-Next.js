@@ -234,8 +234,6 @@ const dumyData = [
 const PopularSection = (props) => {
   const [displayType, setDisplayType] = useState(1);
 
-  console.log(props);
-
   const displayTypeHandler = (type) => {
     setDisplayType(type);
   };
