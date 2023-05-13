@@ -3,7 +3,74 @@ import MainSection from "../../components/MainSection";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
 
-export default function series() {
+import { gql } from "@apollo/client";
+import { client } from "../../lib/apolloClient";
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query Query {
+        getSeries {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          duration
+          like
+          dislike
+          seasons {
+            title
+            epizodes {
+              title
+              content
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  let category1 = data.getSeries.filter((series) =>
+    series.genre.includes("Fantasy")
+  );
+  let category2 = data.getSeries.filter((series) =>
+    series.genre.includes("Animacja")
+  );
+  let category3 = data.getSeries.filter((series) =>
+    series.genre.includes("Dramat")
+  );
+  let category4 = data.getSeries.filter((series) =>
+    series.genre.includes("Horror")
+  );
+  let category5 = data.getSeries.filter((series) =>
+    series.genre.includes("Przygodowy")
+  );
+
+  let popular = data.getSeries
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 5);
+
+  return {
+    props: {
+      series: [
+        { genre: "Fantasy", list: category1 },
+        { genre: "Animowane", list: category2 },
+        { genre: "Dramat", list: category3 },
+        { genre: "Horror", list: category4 },
+        { genre: "Przygodowe", list: category5 },
+      ],
+      popular: popular,
+    },
+  };
+}
+
+export default function series({ series, popular }) {
   return (
     <>
       <Head>
@@ -14,7 +81,7 @@ export default function series() {
       </Head>
       <main>
         <Navigation />
-        <MainSection type="series" />
+        <MainSection type="series" series={series} popular={popular} />
         <Footer />
       </main>
     </>

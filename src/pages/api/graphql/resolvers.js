@@ -26,14 +26,17 @@ const resolvers = {
       const films = await prisma.films.findMany();
       return films;
     },
-    getPopular: async function (parent, args) {
-      const films = await prisma.films.findMany({
-        orderBy: {
-          like: "desc",
+    getSeries: async function (parent, args) {
+      const series = await prisma.series.findMany({
+        include: {
+          seasons: {
+            include: {
+              epizodes: true,
+            },
+          },
         },
       });
-
-      return { films: films, series: [] };
+      return series;
     },
   },
 
@@ -123,38 +126,38 @@ const resolvers = {
       return createdUser;
     },
     addFilm: async function (parent, args) {
-      const id = Str.Str.random();
-      const title = args.title;
-      const description = args.description;
-      const director = args.director;
-      const scenario = args.scenario;
-      const genre = args.genre;
-      const production = args.production;
-      const premiere = args.premiere;
-      const miniature = args.miniature;
-      const content = args.content;
-      const duration = args.duration;
-      const like = args.like;
-      const dislike = args.dislike;
-      const platforms = args.platforms;
-      const type = args.type;
+      const {
+        title,
+        description,
+        director,
+        scenario,
+        genre,
+        production,
+        premiere,
+        miniature,
+        duration,
+        content,
+        like,
+        dislike,
+        platforms,
+        type,
+      } = args;
       const film = await prisma.films.create({
         data: {
-          id: id,
-          title: title,
-          description: description,
-          director: director,
-          scenario: scenario,
-          genre: genre,
-          production: production,
-          premiere: premiere,
-          miniature: miniature,
-          content: content,
-          duration: duration,
-          like: like,
-          dislike: dislike,
-          platforms: platforms,
-          type: type,
+          title,
+          description,
+          director,
+          scenario,
+          genre,
+          production,
+          premiere,
+          miniature,
+          duration,
+          content,
+          like,
+          dislike,
+          platforms,
+          type,
         },
       });
 
@@ -170,6 +173,81 @@ const resolvers = {
         },
       });
       return film;
+    },
+    addSeries: async (parent, args) => {
+      const {
+        title,
+        description,
+        director,
+        scenario,
+        genre,
+        production,
+        premiere,
+        miniature,
+        duration,
+        like,
+        dislike,
+        platforms,
+        type,
+        seasons,
+      } = args;
+      const series = await prisma.series.create({
+        data: {
+          title,
+          description,
+          director,
+          scenario,
+          genre,
+          production,
+          premiere,
+          miniature,
+          duration,
+          like,
+          dislike,
+          platforms,
+          type,
+          seasons: {
+            create: seasons.map((season) => {
+              const { title, epizodes } = season;
+              return {
+                title,
+                epizodes: {
+                  create: epizodes.map((epizode) => {
+                    const { title, content } = epizode;
+                    return { title, content };
+                  }),
+                },
+              };
+            }),
+          },
+        },
+        include: {
+          seasons: {
+            include: {
+              epizodes: true,
+            },
+          },
+        },
+      });
+      return series;
+    },
+    getSerie: async function (parent, args) {
+      const title = args.title;
+      const series = await prisma.series.findFirst({
+        where: {
+          title: {
+            equals: title,
+          },
+        },
+        include: {
+          seasons: {
+            include: {
+              epizodes: true,
+            },
+          },
+        },
+      });
+      return series;
     },
   },
 };

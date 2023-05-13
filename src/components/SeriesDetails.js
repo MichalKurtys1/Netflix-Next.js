@@ -1,6 +1,4 @@
 import Image from "next/image";
-import img1 from "public/film_miniatures/irishman.jpg";
-import img2 from "public/film_miniatures/irishman_vertical.jpg";
 import style from "./SeriesDetails.module.css";
 import "./FilmDetails.module.css";
 import Separator from "./UI/Separator";
@@ -9,43 +7,59 @@ import {
   faAngleDoubleRight,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Player from "./Player";
+import { gql, useMutation } from "@apollo/client";
+import Spinner from "../components/UI/Spiner";
+import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+import Footer from "./Footer";
 
-const seasonsList = [
-  {
-    number: 1,
-    episodes: [
-      { number: 1, name: "Pilot", file: "xyz1.mp4" },
-      { number: 2, name: "Fastest Man Alive", file: "xyz1.mp4" },
-      { number: 3, name: "Things You Can't Outrun", file: "xyz1.mp4" },
-      { number: 4, name: "Going Rogue", file: "xyz1.mp4" },
-      { number: 1, name: "Plastique" },
-      { number: 2, name: "The Flash Is Born", file: "xyz1.mp4" },
-      { number: 3, name: "Power Outage", file: "xyz1.mp4" },
-      { number: 4, name: "Flash vs. Arrow", file: "xyz1.mp4" },
-    ],
-  },
-  {
-    number: 2,
-    episodes: [
-      { number: 1, name: "Pilot", file: "xyz1.mp4" },
-      { number: 2, name: "Fastest Man Alive", file: "xyz1.mp4" },
-      { number: 3, name: "Things You Can't Outrun", file: "xyz1.mp4" },
-      { number: 4, name: "Going Rogue", file: "xyz1.mp4" },
-      { number: 1, name: "Plastique" },
-      { number: 2, name: "The Flash Is Born", file: "xyz1.mp4" },
-      { number: 3, name: "Power Outage", file: "xyz1.mp4" },
-      { number: 4, name: "Flash vs. Arrow", file: "xyz1.mp4" },
-    ],
-  },
-];
+const GETSERIES = gql`
+  mutation Mutation($title: String!) {
+    getSerie(title: $title) {
+      id
+      title
+      description
+      director
+      scenario
+      genre
+      production
+      premiere
+      miniature
+      duration
+      like
+      dislike
+      seasons {
+        title
+        epizodes {
+          title
+          content
+        }
+      }
+    }
+  }
+`;
 
 const SeriesDetails = () => {
   const ref = useRef(null);
+  const router = useRouter();
   const [currentVid, setCurrentVid] = useState(null);
+  const [getSeries, { data, loading, error }] = useMutation(GETSERIES);
+
   let videoNumber;
   let videoTitle;
+
+  useEffect(() => {
+    const path = router.query;
+    if (path.title !== undefined) {
+      getSeries({
+        variables: { title: path.title },
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+  }, [router.query]);
 
   const clickHandler = (number, title, file) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -60,76 +74,106 @@ const SeriesDetails = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.imageWrapper}>
-        <Image src={img1} alt="Logo" className={style.imageMain} />
-        <div className={style.opacity}></div>
-        <div className={style.imageBox}>
-          <h1>Irlandczyk</h1>
-          <button className={style.tpBtn} onClick={scrollHandler}>
-            Przejdź od oglądania
-          </button>
-        </div>
-        <div className={style.descriptionWrapper}>
-          <Image src={img2} alt="Logo" className={style.image} />
-          <div className={style.descriptionBox}>
-            <p className={style.description}>
-              Płatny zabójca Frank Sheeran spogląda wstecz na sekrety, które
-              skrywał jako lojalny członek rodziny mafijnej Bufalino.
-            </p>
-            <div className={style.separator}>
-              <Separator diraction={false} />
-            </div>
-            <div className={style.detailsBox}>
-              <div className={style.leftBox}>
-                <p>Reżyseria</p>
-                <p>Scenariusz</p>
-                <p>Gatunek</p>
-                <p>Produkcja</p>
-                <p>Premiera</p>
-              </div>
-              <div className={style.rightBox}>
-                <p>Martin Scorsese</p>
-                <p>Steven Zaillian</p>
-                <p>Biograficzny, Gangsterski</p>
-                <p>USA</p>
-                <p>27 września 2019</p>
-              </div>
-            </div>
-            <div className={style.separator}>
-              <Separator diraction={true} />
-            </div>
+      {data !== undefined && (
+        <div className={style.imageWrapper}>
+          <Image
+            src={"/film_miniatures/" + data.getSerie.miniature}
+            layout="fill"
+            objectFit="cover"
+            alt="Logo"
+            className={style.imageMain}
+          />
+
+          <div className={style.opacity}></div>
+          <div className={style.imageBox}>
+            <h1>{data.getSerie.title}</h1>
+            <motion.button className={style.tpBtn} onClick={clickHandler}>
+              Przejdź od oglądania
+            </motion.button>
           </div>
-        </div>
-      </div>
-      <div className={style.seasonsBox}>
-        {seasonsList.map((sezon) => (
-          <div className={style.seasonBox} key={sezon.number}>
-            <p className={style.seasonNumber}>{`Sezon ${sezon.number} `}</p>
-            <div className={style.epizodesBox}>
-              {sezon.episodes.map((epizode) => (
-                <div
-                  className={style.epizodeBox}
-                  key={epizode.name}
-                  onClick={() => {
-                    clickHandler(epizode.number, epizode.name, epizode.file);
-                  }}
-                >
-                  <p
-                    className={style.epizodeNumber}
-                  >{`Odcinek ${epizode.number}`}</p>
-                  <p className={style.epizodeName}>{epizode.name}</p>
-                  <FontAwesomeIcon
-                    icon={faAngleDoubleRight}
-                    className={style.icon}
-                  />
+          <div className={style.descriptionWrapper}>
+            <div
+              className={style.image}
+              style={{
+                backgroundImage: `url("/film_miniatures/${data.getSerie.miniature}")`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+              }}
+            ></div>
+            <div className={style.descriptionBox}>
+              <p className={style.description}>{data.getSerie.description}</p>
+              <div className={style.separator}>
+                <Separator diraction={false} />
+              </div>
+              <div className={style.detailsBox}>
+                <div className={style.leftBox}>
+                  <p>Reżyseria</p>
+                  <p>Scenariusz</p>
+                  <p>Gatunek</p>
+                  <p>Produkcja</p>
+                  <p>Premiera</p>
                 </div>
-              ))}
+                <div className={style.rightBox}>
+                  <p>{data.getSerie.director}</p>
+                  <p>{data.getSerie.scenario}</p>
+                  <p>{data.getSerie.genre}</p>
+                  <p>{data.getSerie.production}</p>
+                  <p>{data.getSerie.premiere}</p>
+                </div>
+              </div>
+              <div className={style.separator}>
+                <Separator diraction={true} />
+              </div>
             </div>
           </div>
-        ))}
+        </div>
+      )}
+      <div className={style.seasonsBox}>
+        {data !== undefined &&
+          data.getSerie.seasons.map((sezon) => (
+            <div className={style.seasonBox} key={sezon.title}>
+              <p className={style.seasonNumber}>{sezon.title}</p>
+              <div className={style.epizodesBox}>
+                {sezon.epizodes.map((epizode) => (
+                  <div
+                    className={style.epizodeBox}
+                    key={epizode.title}
+                    onClick={() => {
+                      clickHandler(
+                        epizode.number,
+                        epizode.title,
+                        epizode.content
+                      );
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faAngleDoubleRight}
+                      className={style.icon}
+                    />
+                    <p className={style.epizodeNumber}>{epizode.title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
       </div>
       <div style={{ height: 60 }} ref={ref}></div>
-      {currentVid !== null && <Player />}
+
+      {data !== undefined && currentVid !== null && (
+        <Player
+          title={data.getSerie.title}
+          like={data.getSerie.like}
+          dislike={data.getSerie.dislike}
+          miniature={data.getSerie.miniature}
+          film={currentVid}
+        />
+      )}
+      {(data === undefined || loading) && (
+        <div className={style.spinner}>
+          <Spinner />
+        </div>
+      )}
+      {data !== undefined && <Footer />}
     </div>
   );
 };

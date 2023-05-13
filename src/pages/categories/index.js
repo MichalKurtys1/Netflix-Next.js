@@ -27,13 +27,36 @@ export async function getStaticProps() {
           type
           platforms
         }
+        getSeries {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          duration
+          like
+          dislike
+          type
+          platforms
+        }
       }
     `,
   });
 
+  let films = data.getFilms;
+  let series = data.getSeries;
+
+  let both = films
+    .concat(series)
+    .slice()
+    .sort((a, b) => b.like - a.like);
   return {
     props: {
-      data: data,
+      data: both,
     },
   };
 }

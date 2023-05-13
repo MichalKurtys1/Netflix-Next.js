@@ -10,7 +10,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const SliderItem = (props) => {
   const clickHandler = () => {};
-  console.log(props);
+
   return (
     <Link href={`/${props.type}/${props.title}`}>
       <div className={style.slide} onClick={clickHandler}>

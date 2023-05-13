@@ -89,7 +89,7 @@ const Player = (props) => {
             playing={true}
             controls={true}
             muted={false}
-            light={"/film_miniatures/" + props.miniature}
+            light={"/miniatures/black_bgc.jpg"}
             className={style.video}
             width={"80vw"}
             height={"80vh"}

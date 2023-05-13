@@ -36,12 +36,15 @@ export async function getStaticProps() {
   let category3 = data.getFilms.filter((film) =>
     film.genre.includes("Komedia")
   );
-  let category4 = data.getFilms.filter((film) =>
-    film.genre.includes("Biograficzny")
-  );
+  let category4 = data.getFilms.filter((film) => film.genre.includes("Dramat"));
   let category5 = data.getFilms.filter((film) =>
     film.genre.includes("Fantasy")
   );
+
+  let popular = data.getFilms
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 5);
 
   return {
     props: {
@@ -49,14 +52,15 @@ export async function getStaticProps() {
         { genre: "Sci-Fi", list: category1 },
         { genre: "Gangsterskie", list: category2 },
         { genre: "Komedie", list: category3 },
-        { genre: "Biograficzne", list: category4 },
+        { genre: "Dramat", list: category4 },
         { genre: "Fantasy", list: category5 },
       ],
+      popular: popular,
     },
   };
 }
 
-const films = ({ films }) => {
+const films = ({ films, popular }) => {
   return (
     <>
       <Head>
@@ -67,7 +71,7 @@ const films = ({ films }) => {
       </Head>
       <main>
         <Navigation />
-        <MainSection type="films" films={films} />
+        <MainSection type="films" films={films} popular={popular} />
         <Footer />
       </main>
     </>

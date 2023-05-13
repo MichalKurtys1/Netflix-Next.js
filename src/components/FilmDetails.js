@@ -1,13 +1,10 @@
 import Image from "next/image";
-import img1 from "public/film_miniatures/irishman.jpg";
-import img2 from "public/film_miniatures/irishman_vertical.jpg";
 import style from "./FilmDetails.module.css";
 import Separator from "./UI/Separator";
 import Player from "./Player";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useEffect } from "react";
-
 import { gql, useMutation } from "@apollo/client";
 import Spinner from "../components/UI/Spiner";
 import { useRouter } from "next/router";
@@ -37,7 +34,7 @@ const FilmDetails = () => {
   const router = useRouter();
 
   const [getFilm, { data, loading, error }] = useMutation(GETFILM);
-  console.log(data);
+
   useEffect(() => {
     const path = router.query;
     if (path.title !== undefined) {
@@ -122,6 +119,7 @@ const FilmDetails = () => {
           like={data.getFilm.like}
           dislike={data.getFilm.dislike}
           miniature={data.getFilm.miniature}
+          film={data.getFilm.content}
         />
       )}
       {(data === undefined || loading) && (

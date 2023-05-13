@@ -148,6 +148,7 @@
   color: white;
   opacity: 0;
   transition: 0.5s;
+  margin-right: 10px;
 }
 
 .epizodeBox:hover .icon {
@@ -201,12 +202,13 @@
 }
 
 .descriptionWrapper {
-  margin: 30px auto 80px;
+  margin: 105vh auto 80px;
   display: flex;
   justify-content: center;
 }
 
 .descriptionWrapper .image {
+  text-align: center;
   width: 25vw;
   height: 65vh;
   margin-right: 30px;
@@ -332,4 +334,11 @@
   .imageBox .tpBtn {
     font-size: 26px;
   }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -137,11 +137,13 @@ const FilterPage = (props) => {
   };
 
   const clickHandler = (x, y) => {
-    let data = props.data.getFilms;
+    let data = props.data;
     let results = [];
-
+    console.log(data);
     results = categoryFilter(data, results, categories);
+    console.log(results);
     results = yearFilter(data, results, yearFrom, yearTo);
+    console.log(results);
     results = platformFilter(data, results, platforms);
     results = typeFilter(data, results, y);
     results = sortFilter(data, results, x);

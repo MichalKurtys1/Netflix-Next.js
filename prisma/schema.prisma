@@ -16,7 +16,6 @@ model User {
 }
 
 model Films {
-  id          String   @id
   title       String
   description String
   director    String
@@ -31,26 +30,10 @@ model Films {
   dislike     Int
   platforms   String[]
   type        String[]
-}
-
-model Epizode {
-  id       String @id
-  seasonId String
-  title    String
-  content  String
-  season   Season @relation(fields: [seasonId], references: [id])
-}
-
-model Season {
-  id       String    @id
-  seriesId String
-  title    String
-  epizodes Epizode[]
-  series   Series    @relation(fields: [seriesId], references: [id])
+  id          Int      @id @default(autoincrement())
 }
 
 model Series {
-  id          String   @id
   title       String
   description String
   director    String
@@ -60,7 +43,26 @@ model Series {
   premiere    String
   miniature   String
   duration    String
-  like        String
-  dislike     String
+  like        Int
+  dislike     Int
+  id          Int      @id @default(autoincrement())
+  platforms   String[]
+  type        String[]
   seasons     Season[]
+}
+
+model Season {
+  title    String
+  id       Int       @id @default(autoincrement())
+  seriesId Int
+  epizodes Epizode[]
+  series   Series    @relation(fields: [seriesId], references: [id])
+}
+
+model Epizode {
+  title    String
+  content  String
+  id       Int    @id @default(autoincrement())
+  seasonId Int
+  season   Season @relation(fields: [seasonId], references: [id])
 }

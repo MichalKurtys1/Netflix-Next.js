@@ -10,36 +10,60 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query Query {
-        getPopular {
-          films {
-            title
-            description
-            director
-            scenario
-            genre
-            production
-            premiere
-            miniature
-            content
-            duration
-            like
-            dislike
-            id
-          }
+        getFilms {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          content
+          duration
+          like
+          dislike
+          type
+          platforms
+        }
+        getSeries {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          duration
+          like
+          dislike
         }
       }
     `,
   });
 
-  let films = data.getPopular.films.slice(0, 10);
-  let series = data.getPopular.films.slice(0, 10);
-  let both = films.concat(series);
-  both = both.sort((a, b) => b.like - a.like).slice(0, 10);
+  let films = data.getFilms
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 10);
+  let series = data.getSeries
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 10);
+
+  let both = films
+    .concat(series)
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 10);
 
   return {
     props: {
-      films: data.getPopular.films.slice(0, 10),
-      series: data.getPopular.films.slice(0, 10),
+      films: films,
+      series: series,
       both: both,
     },
   };

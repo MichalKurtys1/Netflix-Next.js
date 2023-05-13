@@ -41,7 +41,14 @@ const Slider = (props) => {
           ))}
         {props.type === "series" &&
           props.list.map((item) => (
-            <SliderItem type={props.type} key={item.id} details={item} />
+            <SliderItem
+              type={props.type}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              duration={item.duration}
+              miniature={item.miniature}
+            />
           ))}
       </Carousel>
     </div>

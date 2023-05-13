@@ -54,14 +54,52 @@ const typeDefs = gql`
     platforms: [Platforms!]
   }
 
-  type Popular {
-    films: [Films!]
+  type Epizode {
+    id: ID!
+    seasonId: ID!
+    title: String!
+    content: String!
+  }
+
+  type Season {
+    id: ID!
+    seriesId: ID!
+    title: String!
+    epizodes: [Epizode!]
+  }
+
+  type Series {
+    id: ID!
+    title: String!
+    description: String!
+    director: String!
+    scenario: String!
+    genre: String!
+    production: String!
+    premiere: String!
+    miniature: String!
+    duration: String!
+    like: Int!
+    dislike: Int!
+    seasons: [Season!]
+    type: [Type!]
+    platforms: [Platforms!]
+  }
+
+  input EpizodeInput {
+    title: String!
+    content: String!
+  }
+
+  input SeasonInput {
+    title: String!
+    epizodes: [EpizodeInput!]
   }
 
   type Query {
     getUsers(email: String): [User!]
     getFilms: [Films!]
-    getPopular: Popular!
+    getSeries: [Series!]
   }
 
   type Mutation {
@@ -84,6 +122,23 @@ const typeDefs = gql`
       platforms: [Platforms!]
     ): Films!
     getFilm(title: String!): Films!
+    addSeries(
+      title: String!
+      description: String!
+      director: String!
+      scenario: String!
+      genre: String!
+      production: String!
+      premiere: String!
+      miniature: String!
+      duration: String!
+      like: Int!
+      dislike: Int!
+      type: [Type!]
+      platforms: [Platforms!]
+      seasons: [SeasonInput!]
+    ): Series!
+    getSerie(title: String!): Series!
   }
 `;
 
