@@ -40,7 +40,12 @@ const filterSlice = createSlice({
   },
 });
 
-let initAuthValues = { token: null, expiresIn: null, isLoggedIn: false };
+let initAuthValues = {
+  token: null,
+  expiresIn: null,
+  nick: null,
+  isLoggedIn: false,
+};
 
 if (typeof window !== "undefined") {
   if (
@@ -51,18 +56,26 @@ if (typeof window !== "undefined") {
     const now = new Date(Date.now());
     const time = date - now;
     if (time <= 0) {
-      initAuthValues = { token: null, expiresIn: null, isLoggedIn: false };
+      initAuthValues = {
+        token: null,
+        expiresIn: null,
+        nick: null,
+        isLoggedIn: false,
+      };
       localStorage.removeItem("token");
       localStorage.removeItem("expiresIn");
+      localStorage.removeItem("nick");
     } else {
       setTimeout(() => {
         localStorage.removeItem("token");
         localStorage.removeItem("expiresIn");
+        localStorage.removeItem("nick");
         window.location.reload();
       }, time);
       initAuthValues = {
         token: localStorage.getItem("token"),
         expiresIn: localStorage.getItem("expiresIn"),
+        nick: localStorage.getItem("nick"),
         isLoggedIn: true,
       };
     }
@@ -77,15 +90,19 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.token = action.payload.token;
       state.expiresIn = action.payload.expiresIn;
+      state.nick = action.payload.nick;
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("expiresIn", action.payload.expiresIn);
+      localStorage.setItem("nick", action.payload.nick);
     },
     logOut(state) {
       state.isLoggedIn = false;
       state.token = null;
       state.expiresIn = null;
+      state.nick = null;
       localStorage.removeItem("token");
       localStorage.removeItem("expiresIn");
+      localStorage.removeItem("nick");
     },
   },
 });

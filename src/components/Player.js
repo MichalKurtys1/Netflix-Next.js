@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faShare } from "@fortawesome/free-solid-svg-icons";
 import { faStar as star } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CommentSection from "./commentSection";
 import {
   AiFillLike,
@@ -15,8 +15,27 @@ import {
   AiOutlineComment,
 } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
+import { gql, useMutation } from "@apollo/client";
 
-const likesList = { name: "Irlandczyk", like: 120, dislike: 19 };
+const GETCOMMENTS = gql`
+  mutation Mutation($title: String!) {
+    getComments(title: $title) {
+      responses {
+        nick
+        content
+        createdAt
+      }
+      like
+      dislike
+      createdAt
+      content
+      id
+      user {
+        nick
+      }
+    }
+  }
+`;
 
 const Player = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -25,6 +44,16 @@ const Player = (props) => {
   const [iconFavorites, setIconFavorites] = useState(star);
   const [addedToFavorites, setAddedToFavorites] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
+
+  const [getComments, { data, loading, error }] = useMutation(GETCOMMENTS);
+
+  useEffect(() => {
+    getComments({
+      variables: { title: props.title },
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
 
   let width = window.innerWidth;
 
@@ -173,7 +202,7 @@ const Player = (props) => {
           )}
         </AnimatePresence>
         <AnimatePresence>
-          {isOpen && (
+          {data !== undefined && isOpen && (
             <motion.div
               className={style.commentSection}
               initial={{ opacity: 0, y: 15 }}
@@ -181,7 +210,7 @@ const Player = (props) => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.25 }}
             >
-              <CommentSection />
+              <CommentSection comments={data} title={props.title} />
             </motion.div>
           )}
         </AnimatePresence>

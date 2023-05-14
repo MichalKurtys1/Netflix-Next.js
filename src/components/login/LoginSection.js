@@ -18,6 +18,7 @@ const LOGIN = gql`
     login(email: $email, password: $password) {
       token
       expiresIn
+      nick
     }
   }
 `;
@@ -55,11 +56,12 @@ const LoginSection = (props) => {
         setTimeout(() => {
           dispatch(authActions.logOut());
         }, time);
-
+        console.log(data.data.login);
         dispatch(
           authActions.logIn({
             token: data.data.login.token,
             expiresIn: new Date(date).toJSON(),
+            nick: data.data.login.nick,
           })
         );
 

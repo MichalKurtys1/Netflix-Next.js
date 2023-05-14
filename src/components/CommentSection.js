@@ -16,51 +16,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import CommentItem from "./CommentItem";
 
-const commentList = [
-  {
-    nick: "ArturXXX",
-    text: "Super serial polecam każdemu",
-    date: "11.03.2023",
-    reply: [
-      {
-        nick: "Jagódka",
-        text: "Film nie był zły, da się obejrzeć, nawet można się pośmiać. Dobrze,że nie sugerowałem się komentarzami poprzedników. Można oglądać 7/10.",
-        date: "11.03.2023",
-      },
-      { nick: "Łukasz", text: "Polecam", date: "11.03.2023" },
-    ],
-  },
-  {
-    nick: "Komodor",
-    text: "Film nie był zły, da się obejrzeć, nawet można się pośmiać. Dobrze,że nie sugerowałem się komentarzami poprzedników. Można oglądać 7/10",
-    date: "21.02.2023",
-  },
-  {
-    nick: "Franek44",
-    text: "Wspaniały, chyba najlepszy odcinek dotychczas",
-    date: "07.11.2022",
-  },
-  {
-    nick: "NoVqU",
-    text: "Lekki i przyjemny. Nie udana kontynuacja wcześniejszej wersji. Można go zaliczyć do kina familijnrgo by go obejrzeć przy obiedzie z rodziną.",
-    date: "29.10.2022",
-    reply: [
-      { nick: "Jagódka", text: "Super serial", date: "11.03.2023" },
-      { nick: "Łukasz", text: "Polecam", date: "11.03.2023" },
-    ],
-  },
-];
+import { gql, useMutation } from "@apollo/client";
+import { useSelector } from "react-redux";
 
-const CommentSection = () => {
+const ADDCOMMENT = gql`
+  mutation Mutation($title: String!, $nick: String!, $content: String!) {
+    addComment(title: $title, nick: $nick, content: $content) {
+      id
+      user {
+        nick
+      }
+      content
+      createdAt
+      like
+      dislike
+      responses {
+        id
+        nick
+        content
+        createdAt
+        commentId
+      }
+    }
+  }
+`;
+
+const CommentSection = (props) => {
   const commentInput = useRef();
+  const [inputValue, setInputValue] = useState();
+  const [addComment, { data, loading, error }] = useMutation(ADDCOMMENT);
+  const nick = useSelector((state) => state.auth.nick);
+  const [comments, setComments] = useState(props.comments);
+
+  const changeHandler = (e) => {
+    setInputValue(e.target.value);
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
     if (commentInput.current.value.length > 0) {
-      // Wysłać do bazy i odświeżyć
-    } else {
-      // Wyświetlić error
+      addComment({
+        variables: {
+          title: props.title,
+          nick: nick,
+          content: inputValue,
+        },
+      })
+        .then((data) => {
+          comments.getComments.push(data.data.addComment);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
+    setInputValue("");
   };
 
   return (
@@ -71,17 +80,24 @@ const CommentSection = () => {
           alt="userIcon"
           className={style.profileIconInput}
         />
-        <input ref={commentInput} type="text" placeholder="Dodaj komentarz" />
+        <input
+          ref={commentInput}
+          type="text"
+          placeholder="Dodaj komentarz"
+          value={inputValue}
+          onChange={changeHandler}
+        />
         <button type="submit">
           <AiOutlineSend className={style.sendIcon} />
         </button>
       </form>
       <div className={style.outputBox}>
-        {commentList.map((comment) => (
-          <div key={comment.text}>
-            <CommentItem comment={comment} />
-          </div>
-        ))}
+        {comments !== undefined &&
+          comments.getComments.map((comment) => (
+            <div key={comment.text}>
+              <CommentItem comment={comment} />
+            </div>
+          ))}
       </div>
     </div>
   );

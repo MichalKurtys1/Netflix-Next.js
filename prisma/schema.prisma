@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  id       String @id
+  id       String     @id
   password String
   email    String
   nick     String
   type     String
+  comments Comments[]
 }
 
 model Films {
@@ -31,7 +32,8 @@ model Films {
   platforms   String[]
   type        String[]
   poster      String
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
+  comments    Comments[]
 }
 
 model Series {
@@ -46,10 +48,11 @@ model Series {
   duration    String
   like        Int
   dislike     Int
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   platforms   String[]
   type        String[]
   poster      String
+  comments    Comments[]
   seasons     Season[]
 }
 
@@ -67,4 +70,28 @@ model Epizode {
   id       Int    @id @default(autoincrement())
   seasonId Int
   season   Season @relation(fields: [seasonId], references: [id])
+}
+
+model Responses {
+  id        Int      @id @default(autoincrement())
+  nick      String
+  content   String
+  createdAt String
+  commentId Int
+  comment   Comments @relation(fields: [commentId], references: [id])
+}
+
+model Comments {
+  id        Int         @id @default(autoincrement())
+  content   String
+  userId    String
+  filmId    Int?
+  seriesId  Int?
+  createdAt String
+  dislike   Int         @default(0)
+  like      Int         @default(0)
+  film      Films?      @relation(fields: [filmId], references: [id])
+  series    Series?     @relation(fields: [seriesId], references: [id])
+  user      User        @relation(fields: [userId], references: [id])
+  responses Responses[]
 }
