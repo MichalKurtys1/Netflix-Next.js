@@ -54,9 +54,12 @@ const NavMenu = () => {
     setSearchInputValue(event.target.value);
   };
 
-  const searchClickHandler = () => {
+  const searchClickHandler = (e) => {
     if (searchIsOpen == true && searchInputValue !== "") {
-      console.log("submit");
+      router.push({
+        pathname: "/categories",
+        query: { search: searchInputValue },
+      });
       setSearchInputValue("");
     }
 

@@ -23,6 +23,7 @@ export async function getStaticProps() {
           duration
           like
           dislike
+          poster
           seasons {
             title
             epizodes {

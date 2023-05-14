@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterActions } from "src/store";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const types = [
   { name: "Wszystko" },
@@ -28,9 +29,7 @@ const types = [
 const FilterResults = (props) => {
   const [type, setType] = useState();
   const [sort, setSort] = useState(0);
-
-  console.log(props.data);
-
+  console.log(props);
   const sortHandler = (type, sortX = sort) => {
     setSort(sortX);
     setType(type);
@@ -85,21 +84,30 @@ const FilterResults = (props) => {
       >
         {props.isEnabled &&
           props.data.map((item) => (
-            <div className={style.listItem} key={item.name}>
-              <div
-                className={style.image}
-                style={{
-                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
-                  backgroundPosition: "center center",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-              <div className={style.details}>
-                <h1>{item.title}</h1>
-                <p className={style.place}>{item.premiere}</p>
-                <p className={style.description}>{item.description}</p>
+            <Link
+              href={`/${item.__typename === "Films" ? "films" : "series"}/${
+                item.title
+              }`}
+            >
+              <div className={style.listItem} key={item.name}>
+                <div
+                  className={style.image}
+                  style={{
+                    backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                    backgroundPosition: "center center",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div className={style.details}>
+                  <h1>{item.title}</h1>
+                  <p className={style.place}>
+                    {item.commingSoon !== undefined && item.commingSoon}
+                    {item.commingSoon === undefined && item.premiere}
+                  </p>
+                  <p className={style.description}>{item.description}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
       </motion.div>
     </div>

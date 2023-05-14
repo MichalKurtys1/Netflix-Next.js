@@ -37,6 +37,7 @@ const Slider = (props) => {
               title={item.title}
               duration={item.duration}
               miniature={item.miniature}
+              poster={item.poster}
             />
           ))}
         {props.type === "series" &&
@@ -48,6 +49,7 @@ const Slider = (props) => {
               title={item.title}
               duration={item.duration}
               miniature={item.miniature}
+              poster={item.poster}
             />
           ))}
       </Carousel>

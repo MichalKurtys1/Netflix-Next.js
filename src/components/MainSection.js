@@ -45,7 +45,6 @@ const MainSection = (props) => {
                 {item.description}
               </p>
             </motion.div>
-            {/* <Image src={item.img} alt="Logo" className={style.image} /> */}
             <div
               className={style.image}
               style={{

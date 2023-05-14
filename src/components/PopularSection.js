@@ -2,6 +2,7 @@ import Image from "next/image";
 import style from "./PopularSection.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const PopularSection = (props) => {
   const [displayType, setDisplayType] = useState(1);
@@ -59,78 +60,99 @@ const PopularSection = (props) => {
       <div className={style.listBox}>
         {displayType === 1 &&
           props.films.map((item, i) => (
-            <motion.div
-              className={style.listItem}
-              key={item.id}
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 15 }}
-              transition={{ delay: 0.25 }}
+            <Link
+              href={`/${item.__typename === "Films" ? "films" : "series"}/${
+                item.title
+              }`}
+              style={{ width: "100%" }}
             >
-              <div
-                className={style.image}
-                style={{
-                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
-                  backgroundPosition: "center center",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-              <div className={style.details}>
-                <h1>{item.title}</h1>
-                <p className={style.place}>{i + 1}</p>
-                <p className={style.description}>{item.description}</p>
-              </div>
-            </motion.div>
+              <motion.div
+                className={style.listItem}
+                key={item.id}
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 15 }}
+                transition={{ delay: 0.25 }}
+              >
+                <div
+                  className={style.image}
+                  style={{
+                    backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                    backgroundPosition: "center center",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div className={style.details}>
+                  <h1>{item.title}</h1>
+                  <p className={style.place}>{i + 1}</p>
+                  <p className={style.description}>{item.description}</p>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         {displayType === 2 &&
           props.both.map((item, i) => (
-            <motion.div
-              className={style.listItem}
-              key={item.name}
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 15 }}
-              transition={{ delay: 0.25 }}
+            <Link
+              href={`/${item.__typename === "Films" ? "films" : "series"}/${
+                item.title
+              }`}
+              style={{ width: "100%" }}
             >
-              <div
-                className={style.image}
-                style={{
-                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
-                  backgroundPosition: "center center",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-              <div className={style.details}>
-                <h1>{item.title}</h1>
-                <p className={style.place}>{i + 1}</p>
-                <p className={style.description}>{item.description}</p>
-              </div>
-            </motion.div>
+              <motion.div
+                className={style.listItem}
+                key={item.name}
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 15 }}
+                transition={{ delay: 0.25 }}
+              >
+                <div
+                  className={style.image}
+                  style={{
+                    backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                    backgroundPosition: "center center",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div className={style.details}>
+                  <h1>{item.title}</h1>
+                  <p className={style.place}>{i + 1}</p>
+                  <p className={style.description}>{item.description}</p>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         {displayType === 3 &&
           props.series.map((item, i) => (
-            <motion.div
-              className={style.listItem}
-              key={item.name}
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 15 }}
-              transition={{ delay: 0.25 }}
+            <Link
+              href={`/${item.__typename === "Films" ? "films" : "series"}/${
+                item.title
+              }`}
+              style={{ width: "100%" }}
             >
-              <div
-                className={style.image}
-                style={{
-                  backgroundImage: `url("/film_miniatures/${item.miniature}")`,
-                  backgroundPosition: "center center",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-              <div className={style.details}>
-                <h1>{item.title}</h1>
-                <p className={style.place}>{i + 1}</p>
-                <p className={style.description}>{item.description}</p>
-              </div>
-            </motion.div>
+              <motion.div
+                className={style.listItem}
+                key={item.name}
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 15 }}
+                transition={{ delay: 0.25 }}
+              >
+                <div
+                  className={style.image}
+                  style={{
+                    backgroundImage: `url("/film_miniatures/${item.miniature}")`,
+                    backgroundPosition: "center center",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div className={style.details}>
+                  <h1>{item.title}</h1>
+                  <p className={style.place}>{i + 1}</p>
+                  <p className={style.description}>{item.description}</p>
+                </div>
+              </motion.div>
+            </Link>
           ))}
       </div>
     </div>

@@ -30,6 +30,7 @@ model Films {
   dislike     Int
   platforms   String[]
   type        String[]
+  poster      String
   id          Int      @id @default(autoincrement())
 }
 
@@ -48,6 +49,7 @@ model Series {
   id          Int      @id @default(autoincrement())
   platforms   String[]
   type        String[]
+  poster      String
   seasons     Season[]
 }
 

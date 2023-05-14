@@ -52,6 +52,7 @@ const typeDefs = gql`
     dislike: Int!
     type: [Type!]
     platforms: [Platforms!]
+    poster: String!
   }
 
   type Epizode {
@@ -84,6 +85,7 @@ const typeDefs = gql`
     seasons: [Season!]
     type: [Type!]
     platforms: [Platforms!]
+    poster: String!
   }
 
   input EpizodeInput {
@@ -120,6 +122,7 @@ const typeDefs = gql`
       dislike: Int!
       type: [Type!]
       platforms: [Platforms!]
+      poster: String!
     ): Films!
     getFilm(title: String!): Films!
     addSeries(
@@ -136,6 +139,7 @@ const typeDefs = gql`
       dislike: Int!
       type: [Type!]
       platforms: [Platforms!]
+      poster: String!
       seasons: [SeasonInput!]
     ): Series!
     getSerie(title: String!): Series!

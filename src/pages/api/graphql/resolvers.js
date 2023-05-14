@@ -140,6 +140,7 @@ const resolvers = {
         like,
         dislike,
         platforms,
+        poster,
         type,
       } = args;
       const film = await prisma.films.create({
@@ -158,6 +159,7 @@ const resolvers = {
           dislike,
           platforms,
           type,
+          poster,
         },
       });
 
@@ -190,6 +192,7 @@ const resolvers = {
         platforms,
         type,
         seasons,
+        poster,
       } = args;
       const series = await prisma.series.create({
         data: {
@@ -205,6 +208,7 @@ const resolvers = {
           like,
           dislike,
           platforms,
+          poster,
           type,
           seasons: {
             create: seasons.map((season) => {

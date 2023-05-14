@@ -7,6 +7,7 @@ import useFilter from "src/hooks/useFilter";
 import FilterResults from "./FilterResults";
 import { useEffect, useState } from "react";
 import style from "./FilterPage.module.css";
+import { useRouter } from "next/router";
 
 const categoryFilter = (data, results, categories) => {
   if (!categories.length <= 0) {
@@ -63,8 +64,8 @@ const typeFilter = (data, results, type) => {
     if (resultType !== "") {
       let typeResults = [];
       results.forEach((item) => {
-        item.type.forEach((platform) => {
-          if (platform === resultType) {
+        item.type.forEach((type) => {
+          if (type === resultType) {
             typeResults.push(item);
           }
         });
@@ -99,12 +100,25 @@ const sortFilter = (data, results, sort) => {
 };
 
 const FilterPage = (props) => {
+  const router = useRouter();
   const [isEnabled, setIsEnabled] = useState(false);
   const [results, setResults] = useState(props.data);
   const [categories, setCategories] = useState([]);
   const [platforms, setPlatforms] = useState([]);
   const [yearFrom, setYearFrom] = useState(0);
   const [yearTo, setYearTo] = useState(43);
+
+  useEffect(() => {
+    if (router.query.search !== undefined) {
+      setResults(
+        results.filter((item) =>
+          item.title.toLowerCase().includes(router.query.search.toLowerCase())
+        )
+      );
+      setIsEnabled(true);
+      window.scroll({ top: 0, behavior: "smooth" });
+    }
+  }, [router.query]);
 
   const onSetCategories = (category, state) => {
     if (state) {
@@ -139,16 +153,24 @@ const FilterPage = (props) => {
   const clickHandler = (x, y) => {
     let data = props.data;
     let results = [];
-    console.log(data);
+
     results = categoryFilter(data, results, categories);
-    console.log(results);
     results = yearFilter(data, results, yearFrom, yearTo);
-    console.log(results);
     results = platformFilter(data, results, platforms);
     results = typeFilter(data, results, y);
     results = sortFilter(data, results, x);
 
-    setResults(results);
+    let finalResults = [];
+    results.forEach((item, i) => {
+      item.type.forEach((type) => {
+        if (type === "COMMING_SOON") {
+          item.commingSoon = "Comming Soon";
+        }
+      });
+      finalResults.push(item);
+    });
+
+    setResults(finalResults);
     setIsEnabled(true);
     window.scroll({ top: 0, behavior: "smooth" });
   };

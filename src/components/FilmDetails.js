@@ -26,6 +26,7 @@ const GETFILM = gql`
       duration
       like
       dislike
+      poster
     }
   }
 `;
@@ -80,7 +81,7 @@ const FilmDetails = () => {
             <div
               className={style.image}
               style={{
-                backgroundImage: `url("/film_miniatures/${data.getFilm.miniature}")`,
+                backgroundImage: `url("/film_posters/${data.getFilm.poster}")`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
               }}

@@ -15,7 +15,7 @@ const SliderItem = (props) => {
     <Link href={`/${props.type}/${props.title}`}>
       <div className={style.slide} onClick={clickHandler}>
         <Image
-          src={"/film_miniatures/" + props.miniature}
+          src={"/film_posters/" + props.poster}
           alt="Film"
           layout="fill"
           objectFit="cover"

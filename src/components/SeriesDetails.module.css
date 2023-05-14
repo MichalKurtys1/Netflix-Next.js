@@ -132,7 +132,7 @@
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  width: 15%;
+  width: 100%;
   font-weight: bold;
 }
 
@@ -281,7 +281,7 @@
 @media (min-width: 1200px) {
   .descriptionWrapper .image {
     height: 55vh;
-    width: 25vw;
+    width: 40vw;
   }
 }
 

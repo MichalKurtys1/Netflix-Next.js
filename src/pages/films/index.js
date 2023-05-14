@@ -24,6 +24,7 @@ export async function getStaticProps() {
           duration
           like
           dislike
+          poster
         }
       }
     `,

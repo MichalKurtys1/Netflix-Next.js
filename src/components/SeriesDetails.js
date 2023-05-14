@@ -30,6 +30,7 @@ const GETSERIES = gql`
       duration
       like
       dislike
+      poster
       seasons {
         title
         epizodes {
@@ -95,7 +96,7 @@ const SeriesDetails = () => {
             <div
               className={style.image}
               style={{
-                backgroundImage: `url("/film_miniatures/${data.getSerie.miniature}")`,
+                backgroundImage: `url("/film_posters/${data.getSerie.poster}")`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
               }}
@@ -130,11 +131,14 @@ const SeriesDetails = () => {
       )}
       <div className={style.seasonsBox}>
         {data !== undefined &&
-          data.getSerie.seasons.map((sezon) => (
+          data.getSerie.seasons.map((sezon, idx) => (
             <div className={style.seasonBox} key={sezon.title}>
-              <p className={style.seasonNumber}>{sezon.title}</p>
+              <p className={style.seasonNumber}>
+                {"Sezon "}
+                {idx + 1}
+              </p>
               <div className={style.epizodesBox}>
-                {sezon.epizodes.map((epizode) => (
+                {sezon.epizodes.map((epizode, index) => (
                   <div
                     className={style.epizodeBox}
                     key={epizode.title}
@@ -150,7 +154,10 @@ const SeriesDetails = () => {
                       icon={faAngleDoubleRight}
                       className={style.icon}
                     />
-                    <p className={style.epizodeNumber}>{epizode.title}</p>
+                    <p className={style.epizodeNumber}>
+                      {"Odcinek " + (index + 1) + ":  "}
+                      {epizode.title}
+                    </p>
                   </div>
                 ))}
               </div>
