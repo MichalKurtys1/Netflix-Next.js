@@ -3,7 +3,73 @@ import PopularSection from "../../components/PopularSection";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/navigation/Navigation";
 
-export default function films() {
+import { gql } from "@apollo/client";
+import { client } from "../../lib/apolloClient";
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query Query {
+        getFilms {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          content
+          duration
+          like
+          dislike
+          type
+          platforms
+        }
+        getSeries {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          duration
+          like
+          dislike
+        }
+      }
+    `,
+  });
+
+  let films = data.getFilms
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 10);
+  let series = data.getSeries
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 10);
+
+  let both = films
+    .concat(series)
+    .slice()
+    .sort((a, b) => b.like - a.like)
+    .slice(0, 10);
+
+  return {
+    props: {
+      films: films,
+      series: series,
+      both: both,
+    },
+  };
+}
+
+export default function popular({ films, series, both }) {
   return (
     <>
       <Head>
@@ -14,7 +80,7 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
-        <PopularSection />
+        <PopularSection films={films} series={series} both={both} />
         <Footer />
       </main>
     </>

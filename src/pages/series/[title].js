@@ -16,7 +16,6 @@ const series = () => {
       <main>
         <Navigation />
         <SeriesDetails />
-        <Footer />
       </main>
     </>
   );

@@ -1,7 +1,6 @@
 .imageWrapper .imageMain {
   position: relative;
   width: 100%;
-  height: 100vh;
 }
 
 .imageWrapper .opacity {
@@ -43,13 +42,14 @@
 }
 
 .descriptionWrapper {
-  margin: 30px auto 80px;
+  margin: 105vh auto 80px;
   display: flex;
   justify-content: center;
 }
 
 .descriptionWrapper .image {
-  width: 25vw;
+  text-align: center;
+  width: 20vw;
   height: 65vh;
   margin-right: 30px;
   object-fit: cover;
@@ -117,7 +117,7 @@
 @media (min-width: 1200px) {
   .descriptionWrapper .image {
     height: 55vh;
-    width: 25vw;
+    width: 40vw;
   }
 }
 
@@ -153,4 +153,11 @@
   .imageBox .tpBtn {
     font-size: 26px;
   }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

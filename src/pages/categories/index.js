@@ -3,7 +3,65 @@ import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/Footer";
 import FilterPage from "../../components/filter/FilterPage";
 
-export default function films() {
+import { gql } from "@apollo/client";
+import { client } from "../../lib/apolloClient";
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query Query {
+        getFilms {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          content
+          duration
+          like
+          dislike
+          type
+          platforms
+        }
+        getSeries {
+          id
+          title
+          description
+          director
+          scenario
+          genre
+          production
+          premiere
+          miniature
+          duration
+          like
+          dislike
+          type
+          platforms
+        }
+      }
+    `,
+  });
+
+  let films = data.getFilms;
+  let series = data.getSeries;
+
+  let both = films
+    .concat(series)
+    .slice()
+    .sort((a, b) => b.like - a.like);
+  return {
+    props: {
+      data: both,
+    },
+  };
+}
+
+export default function categories({ data }) {
   const submitHandler = () => {};
 
   return (
@@ -16,7 +74,7 @@ export default function films() {
       </Head>
       <main>
         <Navigation />
-        <FilterPage />
+        <FilterPage data={data} />
         <Footer />
       </main>
     </>

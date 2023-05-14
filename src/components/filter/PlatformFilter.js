@@ -6,20 +6,24 @@ const platforms = [
   { name: "HBO Max" },
   { name: "Amazon Prime" },
   { name: "Disney Plus" },
-  { name: "Apple TV+" },
+  { name: "Apple TV" },
   { name: "CDA Premium" },
   { name: "Canal+ Online" },
   { name: "Player" },
   { name: "Hulu" },
 ];
 
-const PlatformFilter = () => {
+const PlatformFilter = (props) => {
   return (
     <div className={style.container}>
       <h1>Platforma Streamingowa</h1>
       <div className={style.itemBox}>
         {platforms.map((item) => (
-          <PlatformItem key={item.name} name={item.name} />
+          <PlatformItem
+            key={item.name}
+            name={item.name}
+            setPlatforms={props.setPlatforms}
+          />
         ))}
       </div>
     </div>

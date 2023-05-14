@@ -32,20 +32,24 @@ const Slider = (props) => {
           props.list.map((item) => (
             <SliderItem
               type={props.type}
-              key={item.name}
-              img={item.img}
-              name={item.name}
-              details={item.details}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              duration={item.duration}
+              miniature={item.miniature}
+              poster={item.poster}
             />
           ))}
         {props.type === "series" &&
           props.list.map((item) => (
             <SliderItem
               type={props.type}
-              key={item.name}
-              img={item.img}
-              name={item.name}
-              details={item.details}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              duration={item.duration}
+              miniature={item.miniature}
+              poster={item.poster}
             />
           ))}
       </Carousel>

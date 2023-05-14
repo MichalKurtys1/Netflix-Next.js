@@ -35,22 +35,19 @@
 }
 
 .optionPanel .leftBox {
-  width: 40%;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .optionPanel h1 {
   color: white;
   font-family: "Roboto", sans-serif;
+  margin-right: 10px;
 }
 
 .optionPanel .thumbPanel {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 55%;
 }
 
 .thumbPanel .thumbBox {

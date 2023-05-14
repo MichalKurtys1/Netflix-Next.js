@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function useFilter() {
@@ -8,14 +9,11 @@ function useFilter() {
   const yearFrom = useSelector((state) => state.filter.yearFrom);
   const yearTo = useSelector((state) => state.filter.yearTo);
 
-  console.log(categoryList);
-  console.log(platformList);
-  console.log(sort);
-  console.log(type);
-  console.log(yearFrom);
-  console.log(yearTo);
+  useEffect(() => {
+    console.log(type);
+  }, []);
 
-  return;
+  return { categoryList, platformList, sort, type, yearFrom, yearTo };
 }
 
 export default useFilter;

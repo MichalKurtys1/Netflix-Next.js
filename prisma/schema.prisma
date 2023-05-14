@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,9 +8,63 @@ datasource db {
 }
 
 model User {
-  id String @id
+  id       String @id
   password String
-  email String
-  nick String
-  type String
+  email    String
+  nick     String
+  type     String
+}
+
+model Films {
+  title       String
+  description String
+  director    String
+  scenario    String
+  genre       String
+  production  String
+  premiere    String
+  miniature   String
+  content     String
+  duration    String
+  like        Int
+  dislike     Int
+  platforms   String[]
+  type        String[]
+  poster      String
+  id          Int      @id @default(autoincrement())
+}
+
+model Series {
+  title       String
+  description String
+  director    String
+  scenario    String
+  genre       String
+  production  String
+  premiere    String
+  miniature   String
+  duration    String
+  like        Int
+  dislike     Int
+  id          Int      @id @default(autoincrement())
+  platforms   String[]
+  type        String[]
+  poster      String
+  seasons     Season[]
+}
+
+model Season {
+  title    String
+  id       Int       @id @default(autoincrement())
+  seriesId Int
+  epizodes Epizode[]
+  series   Series    @relation(fields: [seriesId], references: [id])
+}
+
+model Epizode {
+  title    String
+  content  String
+  id       Int    @id @default(autoincrement())
+  seasonId Int
+  season   Season @relation(fields: [seasonId], references: [id])
 }

@@ -4,15 +4,14 @@ import { filterActions } from "src/store";
 import style from "./PlatformItem.module.css";
 
 const PlatformItem = (props) => {
-  const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
 
   const clickHandler = () => {
     if (isClicked) {
-      dispatch(filterActions.removePlatform(props.name));
+      props.setPlatforms(props.name, false);
       setIsClicked(false);
     } else {
-      dispatch(filterActions.addPlatform(props.name));
+      props.setPlatforms(props.name, true);
       setIsClicked(true);
     }
   };

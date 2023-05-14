@@ -22,6 +22,22 @@ const resolvers = {
       const users = await prisma.user.findMany();
       return users;
     },
+    getFilms: async function (parent, args) {
+      const films = await prisma.films.findMany();
+      return films;
+    },
+    getSeries: async function (parent, args) {
+      const series = await prisma.series.findMany({
+        include: {
+          seasons: {
+            include: {
+              epizodes: true,
+            },
+          },
+        },
+      });
+      return series;
+    },
   },
 
   Mutation: {
@@ -108,6 +124,134 @@ const resolvers = {
         },
       });
       return createdUser;
+    },
+    addFilm: async function (parent, args) {
+      const {
+        title,
+        description,
+        director,
+        scenario,
+        genre,
+        production,
+        premiere,
+        miniature,
+        duration,
+        content,
+        like,
+        dislike,
+        platforms,
+        poster,
+        type,
+      } = args;
+      const film = await prisma.films.create({
+        data: {
+          title,
+          description,
+          director,
+          scenario,
+          genre,
+          production,
+          premiere,
+          miniature,
+          duration,
+          content,
+          like,
+          dislike,
+          platforms,
+          type,
+          poster,
+        },
+      });
+
+      return film;
+    },
+    getFilm: async function (parent, args) {
+      const title = args.title;
+      const film = await prisma.films.findFirst({
+        where: {
+          title: {
+            equals: title,
+          },
+        },
+      });
+      return film;
+    },
+    addSeries: async (parent, args) => {
+      const {
+        title,
+        description,
+        director,
+        scenario,
+        genre,
+        production,
+        premiere,
+        miniature,
+        duration,
+        like,
+        dislike,
+        platforms,
+        type,
+        seasons,
+        poster,
+      } = args;
+      const series = await prisma.series.create({
+        data: {
+          title,
+          description,
+          director,
+          scenario,
+          genre,
+          production,
+          premiere,
+          miniature,
+          duration,
+          like,
+          dislike,
+          platforms,
+          poster,
+          type,
+          seasons: {
+            create: seasons.map((season) => {
+              const { title, epizodes } = season;
+              return {
+                title,
+                epizodes: {
+                  create: epizodes.map((epizode) => {
+                    const { title, content } = epizode;
+                    return { title, content };
+                  }),
+                },
+              };
+            }),
+          },
+        },
+        include: {
+          seasons: {
+            include: {
+              epizodes: true,
+            },
+          },
+        },
+      });
+      return series;
+    },
+    getSerie: async function (parent, args) {
+      const title = args.title;
+      const series = await prisma.series.findFirst({
+        where: {
+          title: {
+            equals: title,
+          },
+        },
+        include: {
+          seasons: {
+            include: {
+              epizodes: true,
+            },
+          },
+        },
+      });
+      return series;
     },
   },
 };
