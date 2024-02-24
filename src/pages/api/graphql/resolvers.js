@@ -380,6 +380,56 @@ const resolvers = {
 
       return newResponse;
     },
+    modifyLikes: async function (parent, args) {
+      const { id, type, value } = args;
+
+      if (type === "Films") {
+        let film = await prisma.films.update({
+          where: {
+            id: id,
+          },
+          data: {
+            like: value,
+          },
+        });
+      } else if (type === "Series") {
+        let serie = await prisma.series.update({
+          where: {
+            id: id,
+          },
+          data: {
+            like: value,
+          },
+        });
+      }
+
+      return value;
+    },
+    modifyDislikes: async function (parent, args) {
+      const { id, type, value } = args;
+
+      if (type === "Films") {
+        let film = await prisma.films.update({
+          where: {
+            id: id,
+          },
+          data: {
+            dislike: value,
+          },
+        });
+      } else if (type === "Series") {
+        let serie = await prisma.series.update({
+          where: {
+            id: id,
+          },
+          data: {
+            dislike: value,
+          },
+        });
+      }
+
+      return value;
+    },
   },
 };
 

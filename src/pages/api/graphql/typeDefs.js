@@ -166,6 +166,8 @@ const typeDefs = gql`
     addComment(title: String!, nick: String!, content: String!): Comments!
     getComments(title: String!): [Comments!]
     addResponse(id: Int!, nick: String!, content: String!): Responses!
+    modifyLikes(id: Int!, value: Int!, type: String!): Int!
+    modifyDislikes(id: Int!, value: Int!, type: String!): Int!
   }
 `;
 
