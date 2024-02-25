@@ -98,6 +98,26 @@ const typeDefs = gql`
     epizodes: [EpizodeInput!]
   }
 
+  type Responses {
+    id: ID!
+    nick: String!
+    content: String!
+    createdAt: String!
+    commentId: ID!
+  }
+
+  type Comments {
+    id: ID!
+    user: User!
+    film: Films
+    series: Series
+    content: String!
+    createdAt: String!
+    like: Int!
+    dislike: Int!
+    responses: [Responses!]
+  }
+
   type Query {
     getUsers(email: String): [User!]
     getFilms: [Films!]
@@ -143,6 +163,11 @@ const typeDefs = gql`
       seasons: [SeasonInput!]
     ): Series!
     getSerie(title: String!): Series!
+    addComment(title: String!, nick: String!, content: String!): Comments!
+    getComments(title: String!): [Comments!]
+    addResponse(id: Int!, nick: String!, content: String!): Responses!
+    modifyLikes(id: Int!, value: Int!, type: String!): Int!
+    modifyDislikes(id: Int!, value: Int!, type: String!): Int!
   }
 `;
 

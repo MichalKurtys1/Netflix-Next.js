@@ -116,6 +116,8 @@ const FilmDetails = () => {
       )}
       {data !== undefined && isRendered && (
         <Player
+          type="Films"
+          id={data.getFilm.id}
           title={data.getFilm.title}
           like={data.getFilm.like}
           dislike={data.getFilm.dislike}

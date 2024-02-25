@@ -253,6 +253,183 @@ const resolvers = {
       });
       return series;
     },
+    addComment: async function (parent, args) {
+      const { title, nick, content } = args;
+
+      let user = await prisma.user.findFirst({
+        where: {
+          nick: {
+            equals: nick,
+          },
+        },
+      });
+
+      if (!user) {
+        throw new GraphQLError("User not found", {
+          extensions: { code: "BAD_USER" },
+        });
+      }
+
+      let film = await prisma.films.findFirst({
+        where: {
+          title: {
+            equals: title,
+          },
+        },
+      });
+
+      let serie = await prisma.series.findFirst({
+        where: {
+          title: {
+            equals: title,
+          },
+        },
+      });
+
+      const currentTimestamp = new Date(Date.now()).toLocaleString();
+
+      let filmId;
+      let serieId;
+      let comment;
+      if (film) {
+        filmId = film.id;
+        serieId = undefined;
+        comment = await prisma.comments.create({
+          data: {
+            content: content,
+            createdAt: currentTimestamp,
+            user: {
+              connect: {
+                id: user.id,
+              },
+            },
+            film: {
+              connect: {
+                id: filmId,
+              },
+            },
+          },
+          include: {
+            user: true,
+            film: true,
+          },
+        });
+      } else if (serie) {
+        serieId = serie.id;
+        filmId = undefined;
+        comment = await prisma.comments.create({
+          data: {
+            content: content,
+            user: {
+              connect: {
+                id: user.id,
+              },
+            },
+            series: {
+              connect: {
+                id: serieId,
+              },
+            },
+          },
+          include: {
+            user: true,
+            series: true,
+          },
+        });
+      } else {
+        throw new GraphQLError("Film or Serie not found", {
+          extensions: { code: "NOT_FOUND" },
+        });
+      }
+      return comment;
+    },
+    getComments: async function (parent, args) {
+      const title = args.title;
+      const comment = await prisma.comments.findMany({
+        where: {
+          OR: [{ film: { title } }, { series: { title } }],
+        },
+        include: {
+          user: true,
+          film: true,
+          series: true,
+          responses: true,
+        },
+      });
+      return comment;
+    },
+    addResponse: async function (parent, args) {
+      const { id, nick, content } = args;
+      const currentTimestamp = new Date(Date.now()).toLocaleString();
+
+      const newResponse = await prisma.responses.create({
+        data: {
+          nick,
+          content,
+          createdAt: currentTimestamp,
+          comment: {
+            connect: {
+              id: id,
+            },
+          },
+        },
+        include: {
+          comment: true,
+        },
+      });
+
+      return newResponse;
+    },
+    modifyLikes: async function (parent, args) {
+      const { id, type, value } = args;
+
+      if (type === "Films") {
+        let film = await prisma.films.update({
+          where: {
+            id: id,
+          },
+          data: {
+            like: value,
+          },
+        });
+      } else if (type === "Series") {
+        let serie = await prisma.series.update({
+          where: {
+            id: id,
+          },
+          data: {
+            like: value,
+          },
+        });
+      }
+
+      return value;
+    },
+    modifyDislikes: async function (parent, args) {
+      const { id, type, value } = args;
+
+      if (type === "Films") {
+        let film = await prisma.films.update({
+          where: {
+            id: id,
+          },
+          data: {
+            dislike: value,
+          },
+        });
+      } else if (type === "Series") {
+        let serie = await prisma.series.update({
+          where: {
+            id: id,
+          },
+          data: {
+            dislike: value,
+          },
+        });
+      }
+
+      return value;
+    },
   },
 };
 

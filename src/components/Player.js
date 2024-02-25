@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faShare } from "@fortawesome/free-solid-svg-icons";
 import { faStar as star } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CommentSection from "./commentSection";
 import {
   AiFillLike,
@@ -15,8 +15,39 @@ import {
   AiOutlineComment,
 } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
+import { gql, useMutation } from "@apollo/client";
 
-const likesList = { name: "Irlandczyk", like: 120, dislike: 19 };
+const GETCOMMENTS = gql`
+  mutation Mutation($title: String!) {
+    getComments(title: $title) {
+      responses {
+        nick
+        content
+        createdAt
+      }
+      like
+      dislike
+      createdAt
+      content
+      id
+      user {
+        nick
+      }
+    }
+  }
+`;
+
+const MODIFYLIKES = gql`
+  mutation Mutation($modifyLikesId: Int!, $value: Int!, $type: String!) {
+    modifyLikes(id: $modifyLikesId, value: $value, type: $type)
+  }
+`;
+
+const MODIFYDISLIKES = gql`
+  mutation Mutation($modifyDislikesId: Int!, $value: Int!, $type: String!) {
+    modifyDislikes(id: $modifyDislikesId, value: $value, type: $type)
+  }
+`;
 
 const Player = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -25,30 +56,93 @@ const Player = (props) => {
   const [iconFavorites, setIconFavorites] = useState(star);
   const [addedToFavorites, setAddedToFavorites] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
+  const [likes, setLikes] = useState(props.like);
+  const [dislikes, setDislikes] = useState(props.dislike);
+  const [getComments, { data, loading, error }] = useMutation(GETCOMMENTS);
+  const [modifyLikes, { data1, loading1, error1 }] = useMutation(MODIFYLIKES);
+  const [modifyDislikes, { data2, loading2, error2 }] =
+    useMutation(MODIFYDISLIKES);
+
+  useEffect(() => {
+    getComments({
+      variables: { title: props.title },
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
 
   let width = window.innerWidth;
 
   const likeHandler = () => {
     if (isLiked) {
+      let like = likes;
+      setLikes(like - 1);
       setIsLiked(false);
+      modifyLikes({
+        variables: {
+          modifyLikesId: +props.id,
+          value: like - 1,
+          type: props.type,
+        },
+      })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      //Temporary
-      likesList.like++;
-
+      let like = likes;
+      setLikes(like + 1);
       setIsLiked(true);
-      setIsDisliked(false);
+      modifyLikes({
+        variables: {
+          modifyLikesId: +props.id,
+          value: like + 1,
+          type: props.type,
+        },
+      })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      if (isDisliked) {
+        let dislike = dislikes;
+        setDislikes(dislike - 1);
+        setIsDisliked(false);
+        modifyDislikes({
+          variables: {
+            modifyDislikesId: +props.id,
+            value: dislike - 1,
+            type: props.type,
+          },
+        })
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
   };
 
   const dislikeHandler = () => {
     if (isDisliked) {
+      let dislike = dislikes;
+      setDislikes(dislike - 1);
       setIsDisliked(false);
     } else {
-      //Temporary
-      likesList.dislike++;
-
+      let dislike = dislikes;
+      setDislikes(dislike + 1);
       setIsDisliked(true);
-      setIsLiked(false);
+      if (isLiked) {
+        let like = likes;
+        setLikes(like - 1);
+        setIsLiked(false);
+      }
     }
   };
 
@@ -106,7 +200,7 @@ const Player = (props) => {
                 {!isLiked && (
                   <AiOutlineLike onClick={likeHandler} className={style.icon} />
                 )}
-                <p>{props.like}</p>
+                <p>{likes}</p>
               </div>
               <div className={style.thumbBox}>
                 {isDisliked && (
@@ -121,7 +215,7 @@ const Player = (props) => {
                     className={style.icon}
                   />
                 )}
-                <p>{props.dislike}</p>
+                <p>{dislikes}</p>
               </div>
             </div>
           </div>
@@ -173,7 +267,7 @@ const Player = (props) => {
           )}
         </AnimatePresence>
         <AnimatePresence>
-          {isOpen && (
+          {data !== undefined && isOpen && (
             <motion.div
               className={style.commentSection}
               initial={{ opacity: 0, y: 15 }}
@@ -181,7 +275,7 @@ const Player = (props) => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.25 }}
             >
-              <CommentSection />
+              <CommentSection comments={data} title={props.title} />
             </motion.div>
           )}
         </AnimatePresence>

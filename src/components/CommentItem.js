@@ -14,8 +14,20 @@ import userIcon from "public/ProfileIcon.jpg";
 import { useState } from "react";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { gql, useMutation } from "@apollo/client";
+import { useSelector } from "react-redux";
 
-const likesList = { name: "Irlandczyk", like: 120, dislike: 19 };
+const SETRESPONSE = gql`
+  mutation Mutation($addResponseId: Int!, $nick: String!, $content: String!) {
+    addResponse(id: $addResponseId, nick: $nick, content: $content) {
+      id
+      nick
+      content
+      createdAt
+      commentId
+    }
+  }
+`;
 
 const CommentItem = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -23,16 +35,21 @@ const CommentItem = (props) => {
   const [replyIsClicked, setReplyIsClicked] = useState(false);
   const [replyInputOpen, setReplyInputOpen] = useState(false);
   const [relpyAmount, setReplyAmount] = useState();
+  const [inputValue, setInputValue] = useState();
+  const nick = useSelector((state) => state.auth.nick);
+  const [setResponse, { data, loading, error }] = useMutation(SETRESPONSE);
+  const [responses, setResponses] = useState(props.comment.responses);
 
   useEffect(() => {
-    if (!props.comment.reply) {
+    if (!props.comment.responses) {
       setReplyAmount(0);
+      setResponses([]);
       return;
     }
-    if (props.comment.reply !== undefined) {
-      setReplyAmount(props.comment.reply.length);
+    if (props.comment.responses !== null) {
+      setReplyAmount(props.comment.responses.length);
     }
-  }, [props.comment.reply]);
+  }, [props.comment.responses]);
 
   const replyInputHandler = () => {
     if (replyInputOpen) {
@@ -75,15 +92,39 @@ const CommentItem = (props) => {
     }
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setReplyInputOpen(false);
+    setResponse({
+      variables: {
+        addResponseId: +props.comment.id,
+        nick: nick,
+        content: inputValue,
+      },
+    })
+      .then((data) => {
+        responses.push(data.data.addResponse);
+        setReplyAmount(relpyAmount + 1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setInputValue("");
+  };
+
+  const changeHandler = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <>
-      <div className={style.commentContainer} key={props.comment.nick}>
+      <div className={style.commentContainer} key={props.comment.createdAt}>
         <Image src={userIcon} alt="userIcon" className={style.profileIcon} />
         <div className={style.upperBox}>
-          <p className={style.nick}>{props.comment.nick}</p>
-          <p className={style.date}>{props.comment.date}</p>
+          <p className={style.nick}>{props.comment.user.nick}</p>
+          <p className={style.date}>{props.comment.createdAt.split(" ")[0]}</p>
         </div>
-        <p className={style.commentText}>{props.comment.text}</p>
+        <p className={style.commentText}>{props.comment.content}</p>
         <div className={style.optionPanel}>
           <div className={style.leftBox} onClick={replyInputHandler}>
             <p>Odpowiedz</p>
@@ -98,7 +139,7 @@ const CommentItem = (props) => {
                 {!isLiked && (
                   <AiOutlineLike onClick={likeHandler} className={style.icon} />
                 )}
-                <p>{likesList.like}</p>
+                <p>{props.comment.like}</p>
               </div>
               <div className={style.thumbBox}>
                 {isDisliked && (
@@ -113,7 +154,7 @@ const CommentItem = (props) => {
                     className={style.icon}
                   />
                 )}
-                <p>{likesList.dislike}</p>
+                <p>{props.comment.dislike}</p>
               </div>
             </div>
             <div className={style.commentReplay}>
@@ -134,20 +175,28 @@ const CommentItem = (props) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
           >
-            <input type="text" placeholder="Napisz odpowiedź" />
-            <button type="submit">
-              <AiOutlineSend className={style.replyIcon} />
-            </button>
+            <form onSubmit={submitHandler}>
+              <input
+                type="text"
+                placeholder="Napisz odpowiedź"
+                value={inputValue}
+                onChange={changeHandler}
+              />
+              <button type="submit">
+                <AiOutlineSend className={style.replyIcon} />
+              </button>
+            </form>
           </motion.div>
         )}
       </AnimatePresence>
       <div className={style.replyBox}>
         <AnimatePresence>
           {replyIsClicked &&
-            relpyAmount !== 0 &&
-            props.comment.reply.map((item) => (
+            responses !== undefined &&
+            responses !== null &&
+            responses.map((item) => (
               <motion.div
-                key={item.nick}
+                key={item.createdAt}
                 className={style.reply}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -160,9 +209,9 @@ const CommentItem = (props) => {
                 />
                 <div className={style.replyUpperBox}>
                   <p className={style.replyNick}>{item.nick}</p>
-                  <p className={style.replyDate}>{item.date}</p>
+                  <p className={style.replyDate}>{item.createdAt}</p>
                 </div>
-                <p className={style.replyText}>{item.text}</p>
+                <p className={style.replyText}>{item.content}</p>
               </motion.div>
             ))}
         </AnimatePresence>

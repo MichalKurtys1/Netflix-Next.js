@@ -29,7 +29,6 @@ const types = [
 const FilterResults = (props) => {
   const [type, setType] = useState();
   const [sort, setSort] = useState(0);
-  console.log(props);
   const sortHandler = (type, sortX = sort) => {
     setSort(sortX);
     setType(type);
